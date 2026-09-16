@@ -1,1629 +1,1417 @@
 <!DOCTYPE html>
 <html lang="am">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ምስጢር — የኢትዮጵያ ዲቴክቲቭ</title>
 
-    <meta name="theme-color" content="#0b0b0d">
+<style>
+*{box-sizing:border-box}
 
-    <title>ምስጢር — የኢትዮጵያ ዲቴክቲቭ</title>
+body{
+margin:0;
+font-family:Arial,"Noto Sans Ethiopic",sans-serif;
+background:#07090d;
+color:#eee;
+min-height:100vh;
+}
 
-    <link rel="stylesheet" href="style.css">
+.screen{
+display:none;
+min-height:100vh;
+padding:22px;
+animation:fade .35s ease;
+}
+
+.active{display:block}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(8px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.container{
+max-width:850px;
+margin:auto;
+}
+
+.logo{
+text-align:center;
+padding-top:55px;
+}
+
+.logo .icon{
+font-size:75px;
+filter:drop-shadow(0 0 20px #777);
+}
+
+.logo h1{
+font-size:35px;
+margin:15px 0 5px;
+letter-spacing:2px;
+}
+
+.logo p{color:#999}
+
+.menu{
+margin-top:45px;
+display:grid;
+gap:14px;
+}
+
+button{
+width:100%;
+padding:17px;
+border:none;
+border-radius:10px;
+background:#151922;
+color:#fff;
+font-size:17px;
+cursor:pointer;
+border:1px solid #292e39;
+transition:.2s;
+}
+
+button:hover{
+background:#202632;
+transform:translateY(-2px);
+}
+
+.primary{
+background:#b51e2a;
+border-color:#d3313c;
+}
+
+.primary:hover{
+background:#d12834;
+}
+
+.back{
+margin-bottom:20px;
+width:auto;
+padding:10px 16px;
+font-size:14px;
+}
+
+h2{
+font-size:27px;
+margin-top:5px;
+}
+
+h3{margin-top:5px}
+
+.card{
+background:#10131a;
+border:1px solid #292e39;
+border-radius:14px;
+padding:20px;
+margin:15px 0;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.card p{
+line-height:1.8;
+color:#d1d1d1;
+}
+
+.case-header{
+border-left:4px solid #b51e2a;
+padding-left:15px;
+}
+
+.meta{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin:20px 0;
+}
+
+.meta div{
+background:#11151d;
+padding:14px;
+border-radius:10px;
+text-align:center;
+}
+
+.meta small{
+display:block;
+color:#777;
+margin-bottom:5px;
+}
+
+.location-grid,
+.clue-grid,
+.suspect-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:13px;
+}
+
+.location{
+min-height:130px;
+text-align:left;
+padding:18px;
+}
+
+.location span{
+font-size:35px;
+display:block;
+margin-bottom:10px;
+}
+
+.location small{color:#888}
+
+.clue{
+text-align:left;
+min-height:130px;
+}
+
+.clue .emoji{font-size:30px}
+
+.locked{opacity:.45}
+
+.evidence-count{
+background:#171b23;
+padding:12px;
+border-radius:8px;
+margin-bottom:15px;
+color:#bbb;
+}
+
+.progress{
+height:7px;
+background:#1a1d24;
+border-radius:20px;
+overflow:hidden;
+margin:10px 0 20px;
+}
+
+.progress div{
+height:100%;
+background:#b51e2a;
+width:0%;
+transition:.4s;
+}
+
+.dialogue{
+background:#0c0f15;
+border-left:3px solid #777;
+padding:16px;
+margin:12px 0;
+line-height:1.8;
+}
+
+.you{border-left-color:#b51e2a}
+
+.secret{border-left-color:#d39b27}
+
+.danger{color:#ff626c}
+
+.good{color:#67d58a}
+
+.warning{color:#e5b95b}
+
+textarea{
+width:100%;
+min-height:180px;
+resize:vertical;
+background:#0b0e13;
+color:#eee;
+border:1px solid #303642;
+border-radius:10px;
+padding:15px;
+font-size:16px;
+}
+
+.result{
+text-align:center;
+padding:30px 15px;
+}
+
+.result .big{font-size:70px}
+
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#eee;
+color:#111;
+padding:12px 20px;
+border-radius:30px;
+display:none;
+z-index:999;
+max-width:90%;
+text-align:center;
+}
+
+@media(max-width:600px){
+.screen{padding:15px}
+.logo{padding-top:35px}
+.logo h1{font-size:28px}
+.location-grid,
+.clue-grid,
+.suspect-grid{
+grid-template-columns:1fr;
+}
+.meta{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-<!-- =========================
-     HOME
-========================= -->
-
+<!-- HOME -->
 <section id="home" class="screen active">
+<div class="container">
 
-    <div class="home-content">
+<div class="logo">
+<div class="icon">🕵️</div>
+<h1>ምስጢር</h1>
+<p>የኢትዮጵያ ዲቴክቲቭ</p>
+</div>
 
-        <div class="detective-icon">🕵️</div>
+<div class="menu">
 
-        <h1>ምስጢር</h1>
+<button class="primary" onclick="startCase()">
+▶ ጉዳይ ጀምር
+</button>
 
-        <p class="subtitle">
-            የኢትዮጵያ ዲቴክቲቭ
-        </p>
+<button onclick="show('cases')">
+📁 ጉዳዮች
+</button>
 
-        <div class="menu">
+<button onclick="showEvidence()">
+🔎 ማስረጃዎች
+</button>
 
-            <button class="menu-button"
-                    onclick="openCase()">
-                ▶ ጉዳይ ጀምር
-            </button>
+<button onclick="showNotes()">
+📓 ማስታወሻ
+</button>
 
-            <button class="menu-button"
-                    onclick="showScreen('cases')">
-                📁 ጉዳዮች
-            </button>
+<button onclick="openTelegram()">
+💬 እርዳታ / አስተያየት
+</button>
 
-            <button class="menu-button"
-                    onclick="showScreen('evidence')">
-                📂 ማስረጃዎች
-            </button>
+</div>
 
-            <button class="menu-button"
-                    onclick="showNotes()">
-                📓 ማስታወሻ
-            </button>
-
-        </div>
-
-        <p class="version">
-            ስሪት 2.0
-        </p>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     CASES
-========================= -->
-
+<!-- CASES -->
 <section id="cases" class="screen">
+<div class="container">
 
-    <div class="container">
+<button class="back" onclick="show('home')">← ተመለስ</button>
 
-        <div class="topbar">
+<h2>📁 ጉዳዮች</h2>
 
-            <button class="back"
-                    onclick="showScreen('home')">
-                ←
-            </button>
+<div class="card">
 
-            <h2>📁 ጉዳዮች</h2>
+<h3>ጉዳይ #001 — የጠፋው ሰው</h3>
 
-            <span></span>
+<p>
+ቦሌ፣ አዲስ አበባ። 32 ዓመቱ ሚካኤል ከቤቱ በሚያስገርም
+ሁኔታ ጠፍቷል።
+በቤቱ ውስጥ ትንሽ የደም ነጠብጣብ ተገኝቷል።
+የቤቱ በር በግድ አልተከፈተም።
+ስልኩም የለም።
+</p>
 
-        </div>
+<button class="primary" onclick="startCase()">
+ጉዳዩን ክፈት
+</button>
 
-        <div class="case-card">
+</div>
 
-            <div class="case-icon">
-                🏠
-            </div>
-
-            <div class="case-info">
-
-                <span class="case-label">
-                    ጉዳይ #001
-                </span>
-
-                <h2>
-                    የጠፋው ሰው
-                </h2>
-
-                <p>
-                    አንድ ሰው ከቤቱ በሚስጥር
-                    ጠፍቷል። እውነቱን ማግኘት
-                    የአንተ ስራ ነው።
-                </p>
-
-                <button class="gold-button"
-                        onclick="openCase()">
-                    ምርመራ ጀምር
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="locked-case">
-
-            🔒 ጉዳይ #002
-
-            <small>
-                የመጀመሪያውን ጉዳይ ጨርስ
-            </small>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     CASE INTRO
-========================= -->
+<!-- INTRO -->
+<section id="intro" class="screen">
+<div class="container">
 
-<section id="caseIntro" class="screen">
+<button class="back" onclick="show('home')">
+← ተመለስ
+</button>
 
-    <div class="container">
+<div class="case-header">
 
-        <div class="topbar">
+<h2>ጉዳይ #001</h2>
 
-            <button class="back"
-                    onclick="showScreen('home')">
-                ←
-            </button>
+<p>የጠፋው ሰው</p>
 
-            <h2>ጉዳይ #001</h2>
+</div>
 
-            <span></span>
+<div class="meta">
 
-        </div>
+<div>
+<small>ቦታ</small>
+ቦሌ
+</div>
 
-        <div class="case-cover">
+<div>
+<small>ሰዓት</small>
+11:40 PM
+</div>
 
-            <div>🕵️</div>
+<div>
+<small>ሰው</small>
+ሚካኤል
+</div>
 
-            <h1>የጠፋው ሰው</h1>
+</div>
 
-            <p>
-                📍 ቦሌ፣ አዲስ አበባ
-            </p>
 
-        </div>
+<div class="card">
 
-        <div class="story-card">
+<h3>🌧️ የምሽቱ ታሪክ</h3>
 
-            <p>
-                ሌሊት 11:40 ነው።
-            </p>
+<p>
+ሌሊቱ 11፡40 ነበር። ቦሌ አካባቢ ዝናብ እየዘነበ ነበር።
+የመንገዱ መብራቶች በእርጥብ አስፋልት ላይ ይንጸባረቁ ነበር።
+</p>
 
-            <p>
-                የ32 ዓመቱ ሚካኤል ከአፓርታማው
-                በሚስጥር ጠፍቷል።
-            </p>
+<p>
+በአንድ የመኖሪያ ሕንፃ ሶስተኛ ፎቅ ላይ የሚኖረው ሚካኤል
+በዚያ ምሽት በቤቱ እንደነበር ይታመናል።
+ነገር ግን ጠዋት ላይ ቤቱ ተከፍቶ ሲገኝ ሚካኤል አልነበረም።
+</p>
 
-            <p>
-                የቤቱ በር በግድ አልተከፈተም።
-                ስልኩ ግን አልተገኘም።
-            </p>
+<p>
+በመኝታ ክፍሉ ውስጥ በምንጣፉ ላይ ትንሽ የደም ነጠብጣብ
+ነበር። በጠረጴዛው ላይ ግማሽ የተጠጣ ውሃ ነበር።
+አንድ መሳቢያ ተከፍቶ ነበር።
+</p>
 
-            <p>
-                በመኝታ ክፍሉ አጠገብ
-                ትንሽ የደም ነጠብጣብ
-                ተገኝቷል።
-            </p>
+<p>
+የሚያስገርመው ግን በሩ በግድ እንደተከፈተ ምንም ምልክት
+አልነበረም። ሚካኤል የሚያውቀውን ሰው በሩን ከፍቶለት
+ሊሆን ይችላል።
+</p>
 
-            <p class="warning">
-                ⚠️ ይህ ቀላል ጉዳይ አይደለም።
-            </p>
+<p>
+አንተ የምትፈታው ጥያቄ አንድ ብቻ አይደለም።
+“ሚካኤልን ማን ወሰደው?” ብቻ ሳይሆን፣
+<strong>“ሚካኤል በእርግጥ ተወስዷል?”</strong>
+የሚለውንም መመርመር አለብህ።
+</p>
 
-        </div>
+</div>
 
-        <button class="gold-button large"
-                onclick="startInvestigation()">
-            🔎 ወደ ምርመራው ግባ
-        </button>
+<button class="primary" onclick="startInvestigation()">
+🔦 ምርመራ ጀምር
+</button>
 
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     INVESTIGATION
-========================= -->
-
+<!-- INVESTIGATION -->
 <section id="investigation" class="screen">
+<div class="container">
 
-    <div class="container">
+<button class="back" onclick="show('home')">
+← ዋና ገጽ
+</button>
 
-        <div class="topbar">
+<h2>🔦 የምርመራ ቦታ</h2>
 
-            <button class="back"
-                    onclick="showScreen('home')">
-                ←
-            </button>
+<div class="evidence-count">
+የተሰበሰበ ማስረጃ፦
+<strong id="count">0</strong> / 12
+</div>
 
-            <h2>🔎 ምርመራ</h2>
+<div class="progress">
+<div id="progress"></div>
+</div>
 
-            <span id="progressText">
-                0%
-            </span>
+<p style="color:#999">
+እያንዳንዱን ቦታ በጥንቃቄ መመርመር።
+አንዳንድ ማስረጃዎች በሌሎች ማስረጃዎች ትርጉም ያገኛሉ።
+</p>
 
-        </div>
+<div class="location-grid">
 
+<button class="location" onclick="search('bedroom')">
+<span>🛏️</span>
+<strong>መኝታ ክፍል</strong>
+<small>ደም፣ መሳቢያ፣ ሰዓት</small>
+</button>
 
-        <!-- LOCATION -->
+<button class="location" onclick="search('living')">
+<span>🛋️</span>
+<strong>ሳሎን</strong>
+<small>ብርጭቆ፣ ወንበር፣ ወረቀት</small>
+</button>
 
-        <div class="location-card">
+<button class="location" onclick="search('entrance')">
+<span>🚪</span>
+<strong>መግቢያ</strong>
+<small>በር፣ ቁልፍ፣ ካሜራ</small>
+</button>
 
-            <span>📍 አሁን ያለኸው ቦታ</span>
+<button class="location" onclick="search('outside')">
+<span>🌧️</span>
+<strong>ከሕንፃው ውጭ</strong>
+<small>አሻራ፣ ታክሲ፣ ዝናብ</small>
+</button>
 
-            <h2 id="locationName">
-                ሚካኤል ቤት
-            </h2>
+</div>
 
-        </div>
+<br>
 
+<button onclick="showSuspects()">
+👥 ተጠርጣሪዎችን መጠይቅ
+</button>
 
-        <!-- INVESTIGATION AREA -->
+<button onclick="showEvidence()">
+🔎 የተሰበሰበውን ማስረጃ ይመልከቱ
+</button>
 
-        <div id="investigationContent">
+<button onclick="showNotes()">
+📓 ማስታወሻ
+</button>
 
-            <div class="story-card">
+<!-- ACCUSATION BUTTON -->
+<button class="primary" onclick="showDecision()">
+⚖️ ተጠርጣሪ ክሰስ
+</button>
 
-                <h2>
-                    የምርመራ ቦታ
-                </h2>
-
-                <p>
-                    የት መጀመሪያ መመርመር
-                    ትፈልጋለህ?
-                </p>
-
-            </div>
-
-
-            <div class="location-grid">
-
-                <button onclick="searchLocation('bedroom')">
-                    🛏️
-                    <span>መኝታ ክፍል</span>
-                </button>
-
-                <button onclick="searchLocation('livingroom')">
-                    🛋️
-                    <span>ሳሎን</span>
-                </button>
-
-                <button onclick="searchLocation('entrance')">
-                    🚪
-                    <span>መግቢያ</span>
-                </button>
-
-                <button onclick="searchLocation('outside')">
-                    🌃
-                    <span>የሕንፃው ውጭ</span>
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- QUICK MENU -->
-
-        <div class="quick-menu">
-
-            <button onclick="showScreen('evidence')">
-                📂 ማስረጃ
-                <b id="evidenceCount">0</b>
-            </button>
-
-            <button onclick="showScreen('suspects')">
-                👥 ተጠርጣሪዎች
-            </button>
-
-            <button onclick="showNotes()">
-                📓 ማስታወሻ
-            </button>
-
-            <button onclick="showScreen('decision')">
-                ⚖️ ውሳኔ
-            </button>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     EVIDENCE
-========================= -->
+<!-- CLUES -->
+<section id="clues" class="screen">
+<div class="container">
 
+<button class="back" onclick="show('investigation')">
+← ወደ ምርመራ
+</button>
+
+<h2 id="locationTitle">🔎 ፍንጭ</h2>
+
+<div id="clueList"></div>
+
+</div>
+</section>
+
+
+<!-- EVIDENCE -->
 <section id="evidence" class="screen">
+<div class="container">
 
-    <div class="container">
+<button class="back" onclick="show('investigation')">
+← ወደ ምርመራ
+</button>
 
-        <div class="topbar">
+<h2>🔎 የማስረጃ ፋይል</h2>
 
-            <button class="back"
-                    onclick="goBack()">
-                ←
-            </button>
+<div id="evidenceList"></div>
 
-            <h2>📂 ማስረጃ</h2>
-
-            <span id="evidenceTotal">
-                0
-            </span>
-
-        </div>
-
-        <div id="evidenceList">
-
-            <div class="empty-state">
-
-                🔍
-
-                <h3>
-                    ምንም ማስረጃ የለም
-                </h3>
-
-                <p>
-                    ቦታዎችን በመመርመር
-                    ማስረጃ ሰብስብ።
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     SUSPECTS
-========================= -->
-
+<!-- SUSPECTS -->
 <section id="suspects" class="screen">
+<div class="container">
 
-    <div class="container">
+<button class="back" onclick="show('investigation')">
+← ወደ ምርመራ
+</button>
 
-        <div class="topbar">
+<h2>👥 ተጠርጣሪዎች</h2>
 
-            <button class="back"
-                    onclick="goBack()">
-                ←
-            </button>
+<div class="card">
 
-            <h2>👥 ተጠርጣሪዎች</h2>
+<h3>⚠️ የዲቴክቲቭ ማስታወሻ</h3>
 
-            <span></span>
+<p>
+አንድ ሰው ሊዋሽ ይችላል።
+ይህ ግን በራሱ ወንጀለኛ ነው ማለት አይደለም።
+ቃላቸውን ከማስረጃው ጋር አነጻጽር።
+</p>
 
-        </div>
+</div>
 
+<div class="suspect-grid">
 
-        <div class="suspect-card">
+<button class="location" onclick="question('dawit')">
+<span>👨</span>
+<strong>ዳዊት</strong>
+<small>የሚካኤል የቅርብ ጓደኛ</small>
+</button>
 
-            <div class="avatar">
-                👨
-            </div>
+<button class="location" onclick="question('sara')">
+<span>👩</span>
+<strong>ሳራ</strong>
+<small>ጎረቤት</small>
+</button>
 
-            <div>
+<button class="location" onclick="question('natnael')">
+<span>👨‍💼</span>
+<strong>ናትናኤል</strong>
+<small>የሥራ ባልደረባ</small>
+</button>
 
-                <h3>
-                    ዳዊት
-                </h3>
+</div>
 
-                <small>
-                    የሚካኤል የቅርብ ጓደኛ
-                </small>
-
-            </div>
-
-            <button onclick="interrogate('dawit')">
-                ጠይቅ
-            </button>
-
-        </div>
-
-
-        <div class="suspect-card">
-
-            <div class="avatar">
-                👩
-            </div>
-
-            <div>
-
-                <h3>
-                    ሳራ
-                </h3>
-
-                <small>
-                    የሚካኤል ጎረቤት
-                </small>
-
-            </div>
-
-            <button onclick="interrogate('sara')">
-                ጠይቅ
-            </button>
-
-        </div>
-
-
-        <div class="suspect-card">
-
-            <div class="avatar">
-                👨
-            </div>
-
-            <div>
-
-                <h3>
-                    ናትናኤል
-                </h3>
-
-                <small>
-                    የሚካኤል የስራ ባልደረባ
-                </small>
-
-            </div>
-
-            <button onclick="interrogate('natnael')">
-                ጠይቅ
-            </button>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     NOTES
-========================= -->
+<!-- INTERROGATION -->
+<section id="interrogation" class="screen">
+<div class="container">
 
+<button class="back" onclick="show('suspects')">
+← ወደ ተጠርጣሪዎች
+</button>
+
+<h2 id="suspectName"></h2>
+
+<div id="dialogue"></div>
+
+<div id="questions"></div>
+
+</div>
+</section>
+
+
+<!-- NOTES -->
 <section id="notes" class="screen">
+<div class="container">
 
-    <div class="container">
+<button class="back" onclick="show('investigation')">
+← ተመለስ
+</button>
 
-        <div class="topbar">
+<h2>📓 የዲቴክቲቭ ማስታወሻ</h2>
 
-            <button class="back"
-                    onclick="goBack()">
-                ←
-            </button>
+<div class="card">
 
-            <h2>📓 ማስታወሻ</h2>
+<p>
+ያስተዋልከውን ነገር ጻፍ።
+የተጠርጣሪዎችን ቃል፣ የማስረጃ ግንኙነት እና
+የራስህን ግምት መመዝገብ ትችላለህ።
+</p>
 
-            <span></span>
+<textarea id="noteText"
+placeholder="ማስታወሻህን እዚህ ጻፍ..."></textarea>
 
-        </div>
+<br><br>
 
-        <div class="story-card">
+<button class="primary" onclick="saveNotes()">
+💾 አስቀምጥ
+</button>
 
-            <p>
-                ያገኘኸውን ፍንጭ፣ ጥርጣሬ
-                ወይም ማንኛውንም ሀሳብ
-                እዚህ ጻፍ።
-            </p>
+</div>
 
-        </div>
-
-        <textarea
-            id="notesText"
-            placeholder="ማስታወሻህን እዚህ ጻፍ..."
-        ></textarea>
-
-        <button class="gold-button large"
-                onclick="saveNotes()">
-            💾 አስቀምጥ
-        </button>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     DECISION
-========================= -->
-
+<!-- DECISION -->
 <section id="decision" class="screen">
+<div class="container">
 
-    <div class="container">
+<button class="back" onclick="show('investigation')">
+← ወደ ምርመራ
+</button>
 
-        <div class="topbar">
+<h2>⚖️ የመጨረሻ ውሳኔ</h2>
 
-            <button class="back"
-                    onclick="goBack()">
-                ←
-            </button>
+<div class="card">
 
-            <h2>⚖️ የመጨረሻ ውሳኔ</h2>
+<h3>የምትከሰው ማንን ነው?</h3>
 
-            <span></span>
+<p>
+የሰበሰብከውን ማስረጃ እና ከተጠርጣሪዎቹ
+የሰማኸውን ቃል በሙሉ አስብ።
+</p>
 
-        </div>
+<p class="warning">
+⚠️ አንድ ተጠርጣሪ በእርግጥ ወንጀለኛ ነው።
+</p>
 
-        <div class="story-card">
+</div>
 
-            <h2>
-                ምን እንደተፈጠረ ታስባለህ?
-            </h2>
+<button onclick="decision('dawit')">
+👨 ዳዊትን ክሰስ
+</button>
 
-            <p>
-                ማስረጃዎቹን እና የተጠርጣሪዎቹን
-                ቃለ-መጠይቅ ካነጻጸርክ በኋላ
-                ውሳኔህን ስጥ።
-            </p>
+<button onclick="decision('sara')">
+👩 ሳራን ክሰስ
+</button>
 
-        </div>
+<button class="primary" onclick="decision('natnael')">
+👨‍💼 ናትናኤልን ክሰስ
+</button>
 
-        <button class="decision"
-                onclick="makeDecision('dawit')">
-            👨 ዳዊት
-        </button>
+<button onclick="decision('none')">
+❓ ማንንም አልከስም
+</button>
 
-        <button class="decision"
-                onclick="makeDecision('sara')">
-            👩 ሳራ
-        </button>
-
-        <button class="decision"
-                onclick="makeDecision('natnael')">
-            👨 ናትናኤል
-        </button>
-
-        <button class="decision"
-                onclick="makeDecision('unknown')">
-            ❓ እስካሁን አላወቅሁም
-        </button>
-
-        <div id="resultArea"></div>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- =========================
-     TOAST
-========================= -->
+<!-- RESULT -->
+<section id="result" class="screen">
+<div class="container">
 
-<div id="toast"></div>
+<div class="result">
 
+<div class="big" id="resultIcon"></div>
 
-<script src="game.js"></script>
+<h2 id="resultTitle"></h2>
 
-</body>
-</html>        /* HOME */
+<div class="card">
+<p id="resultText"></p>
+</div>
 
-        #home {
-            text-align: center;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background:
-                radial-gradient(circle at center, #27201a 0%, #0b0b0d 60%);
-        }
+<button class="primary" onclick="show('investigation')">
+🔎 ምርመራውን ቀጥል
+</button>
 
-        #home.active {
-            display: flex;
-        }
+<button onclick="show('home')">
+🏠 ዋና ገጽ
+</button>
 
-        .logo {
-            font-size: 48px;
-            margin-bottom: 8px;
-        }
+</div>
 
-        .game-title {
-            font-size: 35px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #d6a85b;
-        }
-
-        .subtitle {
-            color: #999;
-            font-size: 16px;
-            margin-top: 8px;
-            margin-bottom: 45px;
-        }
-
-        .menu {
-            width: 100%;
-            max-width: 360px;
-        }
-
-        .menu-btn {
-            width: 100%;
-            padding: 17px;
-            margin: 8px 0;
-            border: 1px solid #4d3b25;
-            border-radius: 10px;
-            background: #171517;
-            color: #eee;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .menu-btn:hover {
-            background: #272019;
-            border-color: #d6a85b;
-            transform: translateY(-2px);
-        }
-
-        /* COMMON */
-
-        .topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-        }
-
-        .back-btn {
-            background: transparent;
-            border: none;
-            color: #bbb;
-            font-size: 25px;
-            cursor: pointer;
-        }
-
-        .case-number {
-            color: #d6a85b;
-            font-size: 14px;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: auto;
-        }
-
-        .card {
-            background: #151417;
-            border: 1px solid #302c30;
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-
-        .card h2 {
-            color: #d6a85b;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: #ccc;
-            line-height: 1.8;
-        }
-
-        .main-btn {
-            width: 100%;
-            border: none;
-            border-radius: 10px;
-            padding: 16px;
-            background: #9b6d32;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .main-btn:hover {
-            background: #b27d3b;
-        }
-
-        .section-title {
-            font-size: 27px;
-            margin-bottom: 20px;
-            color: #d6a85b;
-        }
-
-        /* CASE INTRO */
-
-        .case-image {
-            height: 190px;
-            border-radius: 15px;
-            background:
-                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
-                radial-gradient(circle, #49382b, #111);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 75px;
-            margin-bottom: 20px;
-        }
-
-        .location {
-            color: #aaa;
-            margin: 10px 0 20px;
-        }
-
-        /* INVESTIGATION */
-
-        .stats {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-
-        .stat {
-            flex: 1;
-            background: #151417;
-            border: 1px solid #302c30;
-            border-radius: 10px;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .stat-value {
-            display: block;
-            font-size: 22px;
-            color: #d6a85b;
-            font-weight: bold;
-        }
-
-        .stat-label {
-            color: #888;
-            font-size: 12px;
-        }
-
-        .choice-btn {
-            width: 100%;
-            text-align: left;
-            padding: 17px;
-            margin: 7px 0;
-            background: #171619;
-            border: 1px solid #383438;
-            border-radius: 10px;
-            color: #eee;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .choice-btn:hover {
-            border-color: #d6a85b;
-            background: #211d18;
-        }
-
-        .clue {
-            border-left: 3px solid #9b6d32;
-            padding: 12px 15px;
-            margin: 10px 0;
-            background: #19171a;
-            border-radius: 6px;
-        }
-
-        .clue-title {
-            color: #d6a85b;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        /* SUSPECTS */
-
-        .suspect {
-            background: #151417;
-            border: 1px solid #302c30;
-            border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 12px;
-        }
-
-        .suspect-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 12px;
-        }
-
-        .suspect-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #272226;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 27px;
-        }
-
-        .suspect h3 {
-            color: #eee;
-        }
-
-        .suspect small {
-            color: #888;
-        }
-
-        /* NOTES */
-
-        textarea {
-            width: 100%;
-            min-height: 250px;
-            resize: vertical;
-            padding: 15px;
-            background: #111013;
-            border: 1px solid #39343a;
-            border-radius: 10px;
-            color: white;
-            font-family: inherit;
-            font-size: 16px;
-            outline: none;
-        }
-
-        textarea:focus {
-            border-color: #d6a85b;
-        }
-
-        /* DECISION */
-
-        .decision-btn {
-            width: 100%;
-            padding: 17px;
-            margin: 7px 0;
-            border-radius: 10px;
-            background: #171619;
-            border: 1px solid #383438;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-        }
-
-        .decision-btn:hover {
-            border-color: #d6a85b;
-        }
-
-        .result {
-            text-align: center;
-            padding: 25px;
-            border-radius: 14px;
-            background: #151417;
-            border: 1px solid #302c30;
-            margin-top: 20px;
-        }
-
-        .result-icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
-
-        .result h2 {
-            color: #d6a85b;
-            margin-bottom: 12px;
-        }
-
-        /* TOAST */
-
-        #toast {
-            position: fixed;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #272328;
-            border: 1px solid #554c55;
-            color: white;
-            padding: 14px 20px;
-            border-radius: 10px;
-            max-width: 90%;
-            text-align: center;
-            transition: .3s;
-            z-index: 999;
-        }
-
-        #toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        @media(max-width: 500px) {
-            .game-title {
-                font-size: 30px;
-            }
-
-            .logo {
-                font-size: 42px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<!-- ================= HOME ================= -->
-
-<section id="home" class="screen active">
-
-    <div class="logo">🕵️</div>
-
-    <div class="game-title">ምስጢር</div>
-
-    <div class="subtitle">
-        የኢትዮጵያ ዲቴክቲቭ
-    </div>
-
-    <div class="menu">
-
-        <button class="menu-btn" onclick="showScreen('caseIntro')">
-            ▶ ጨዋታ ጀምር
-        </button>
-
-        <button class="menu-btn" onclick="showScreen('cases')">
-            📁 ጉዳዮች
-        </button>
-
-        <button class="menu-btn" onclick="showScreen('notes')">
-            📓 የእኔ ማስታወሻ
-        </button>
-
-        <button class="menu-btn" onclick="showMessage('ቅንብሮች በቅርቡ ይጨመራሉ።')">
-            ⚙️ ቅንብሮች
-        </button>
-
-    </div>
-
+</div>
 </section>
 
 
-<!-- ================= CASES ================= -->
-
-<section id="cases" class="screen">
-
-    <div class="container">
-
-        <div class="topbar">
-            <button class="back-btn" onclick="showScreen('home')">←</button>
-            <span class="case-number">ጉዳዮች</span>
-            <span></span>
-        </div>
-
-        <h1 class="section-title">📁 የጉዳዮች ፋይል</h1>
-
-        <div class="card">
-
-            <h2>ጉዳይ #001</h2>
-
-            <p>
-                <strong>የጠፋው ሰው</strong>
-            </p>
-
-            <p>
-                ሚካኤል ከቤቱ በሚስጥር ጠፍቷል።
-                በቤቱ ውስጥ አንዳንድ አስገራሚ
-                ማስረጃዎች ተገኝተዋል።
-            </p>
-
-            <button class="main-btn" onclick="showScreen('caseIntro')">
-                ጉዳዩን ክፈት
-            </button>
-
-        </div>
-
-        <div class="card" style="opacity:.45">
-
-            <h2>🔒 ጉዳይ #002</h2>
-
-            <p>
-                ይህ ጉዳይ የመጀመሪያውን ጉዳይ
-                ካጠናቀቅክ በኋላ ይከፈታል።
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CASE INTRO ================= -->
-
-<section id="caseIntro" class="screen">
-
-    <div class="container">
-
-        <div class="topbar">
-            <button class="back-btn" onclick="showScreen('home')">←</button>
-            <span class="case-number">ጉዳይ #001</span>
-            <span></span>
-        </div>
-
-        <div class="case-image">
-            🏠
-        </div>
-
-        <div class="card">
-
-            <h2>የጠፋው ሰው</h2>
-
-            <div class="location">
-                📍 ቦሌ፣ አዲስ አበባ
-            </div>
-
-            <p>
-                ሌሊት 11:40 ነው።
-                የ32 ዓመቱ ሚካኤል ከአፓርታማው
-                በሚስጥር ጠፍቷል።
-            </p>
-
-            <br>
-
-            <p>
-                የቤቱ በር በግድ አልተከፈተም።
-                ስልኩም አልተገኘም።
-                ነገር ግን በመኝታ ክፍሉ አቅራቢያ
-                ትንሽ የደም ነጠብጣብ ተገኝቷል።
-            </p>
-
-            <br>
-
-            <p>
-                ሦስት ሰዎች ስለ ሚካኤል የሚያውቁ
-                ነገር አለ ተብሎ ይጠረጠራል።
-            </p>
-
-            <button class="main-btn" onclick="startInvestigation()">
-                🔎 ምርመራ ጀምር
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= INVESTIGATION ================= -->
-
-<section id="investigation" class="screen">
-
-    <div class="container">
-
-        <div class="topbar">
-            <button class="back-btn" onclick="showScreen('home')">←</button>
-            <span class="case-number">ጉዳይ #001</span>
-            <span>🔎</span>
-        </div>
-
-        <div class="stats">
-
-            <div class="stat">
-                <span class="stat-value" id="clueCount">0</span>
-                <span class="stat-label">ማስረጃ</span>
-            </div>
-
-            <div class="stat">
-                <span class="stat-value" id="suspectCount">3</span>
-                <span class="stat-label">ተጠርጣሪ</span>
-            </div>
-
-            <div class="stat">
-                <span class="stat-value" id="progress">0%</span>
-                <span class="stat-label">ምርመራ</span>
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <h2>📍 ሚካኤል ቤት</h2>
-
-            <p>
-                በአሁኑ ጊዜ በሚካኤል አፓርታማ ውስጥ ነህ።
-                የት መጀመሪያ ትመረምራለህ?
-            </p>
-
-        </div>
-
-        <button class="choice-btn" onclick="investigate('blood')">
-            🩸 የደም ነጠብጣቡን መመርመር
-        </button>
-
-        <button class="choice-btn" onclick="investigate('phone')">
-            📱 የተሰበረውን ስልክ መመርመር
-        </button>
-
-        <button class="choice-btn" onclick="investigate('door')">
-            🚪 የቤቱን በር መመርመር
-        </button>
-
-        <button class="choice-btn" onclick="showScreen('suspects')">
-            👥 ተጠርጣሪዎችን መጠየቅ
-        </button>
-
-        <button class="choice-btn" onclick="showScreen('notes')">
-            📓 ማስታወሻዬን ክፈት
-        </button>
-
-        <button class="main-btn" onclick="showScreen('decision')">
-            ⚖️ የመጨረሻ ውሳኔ
-        </button>
-
-        <div id="cluesArea" style="margin-top:20px;"></div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= SUSPECTS ================= -->
-
-<section id="suspects" class="screen">
-
-    <div class="container">
-
-        <div class="topbar">
-            <button class="back-btn" onclick="showScreen('investigation')">←</button>
-            <span class="case-number">ተጠርጣሪዎች</span>
-            <span></span>
-        </div>
-
-        <h1 class="section-title">👥 ተጠርጣሪዎች</h1>
-
-        <div class="suspect">
-
-            <div class="suspect-header">
-
-                <div class="suspect-icon">👨</div>
-
-                <div>
-                    <h3>ዳዊት</h3>
-                    <small>የሚካኤል የቅርብ ጓደኛ</small>
-                </div>
-
-            </div>
-
-            <p>
-                "እኔ ከሚካኤል ጋር ከሳምንት በላይ
-                አልተገናኘሁም።"
-            </p>
-
-            <button class="choice-btn" onclick="interrogate('dawit')">
-                💬 ዳዊትን ጠይቅ
-            </button>
-
-        </div>
-
-
-        <div class="suspect">
-
-            <div class="suspect-header">
-
-                <div class="suspect-icon">👩</div>
-
-                <div>
-                    <h3>ሳራ</h3>
-                    <small>የሚካኤል ጎረቤት</small>
-                </div>
-
-            </div>
-
-            <p>
-                "በዚያ ሌሊት ከቤቱ ውስጥ
-                ጩኸት ሰማሁ።"
-            </p>
-
-            <button class="choice-btn" onclick="interrogate('sara')">
-                💬 ሳራን ጠይቅ
-            </button>
-
-        </div>
-
-
-        <div class="suspect">
-
-            <div class="suspect-header">
-
-                <div class="suspect-icon">👨</div>
-
-                <div>
-                    <h3>ናትናኤል</h3>
-                    <small>የሚካኤል የስራ ባልደረባ</small>
-                </div>
-
-            </div>
-
-            <p>
-                "ሚካኤል በራሱ ፈቃድ ሄዶ
-                ይሆናል።"
-            </p>
-
-            <button class="choice-btn" onclick="interrogate('natnael')">
-                💬 ናትናኤልን ጠይቅ
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= NOTES ================= -->
-
-<section id="notes" class="screen">
-
-    <div class="container">
-
-        <div class="topbar">
-            <button class="back-btn" onclick="goBackFromNotes()">←</button>
-            <span class="case-number">የእኔ ማስታወሻ</span>
-            <span>📓</span>
-        </div>
-
-        <h1 class="section-title">📓 የዲቴክቲቭ ማስታወሻ</h1>
-
-        <div class="card">
-
-            <p style="margin-bottom:15px;">
-                ያገኘኸውን ፍንጭ ወይም የምትጠራጠረውን
-                ነገር እዚህ ጻፍ።
-            </p>
-
-            <textarea
-                id="notesText"
-                placeholder="ማስታወሻህን እዚህ ጻፍ..."
-            ></textarea>
-
-            <button class="main-btn" onclick="saveNotes()">
-                💾 ማስታወሻ አስቀምጥ
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= DECISION ================= -->
-
-<section id="decision" class="screen">
-
-    <div class="container">
-
-        <div class="topbar">
-            <button class="back-btn" onclick="showScreen('investigation')">←</button>
-            <span class="case-number">የመጨረሻ ውሳኔ</span>
-            <span>⚖️</span>
-        </div>
-
-        <div class="card">
-
-            <h2>⚖️ ምን እንደተፈጠረ ታስባለህ?</h2>
-
-            <p>
-                ያገኘኸውን ማስረጃ እና የተጠርጣሪዎቹን
-                ቃል ካነጻጸርክ በኋላ ውሳኔህን ስጥ።
-            </p>
-
-        </div>
-
-        <button class="decision-btn" onclick="makeDecision('dawit')">
-            👨 ዳዊት ተጠያቂ ነው
-        </button>
-
-        <button class="decision-btn" onclick="makeDecision('sara')">
-            👩 ሳራ ተጠያቂ ናት
-        </button>
-
-        <button class="decision-btn" onclick="makeDecision('natnael')">
-            👨 ናትናኤል ተጠያቂ ነው
-        </button>
-
-        <button class="decision-btn" onclick="makeDecision('unknown')">
-            ❓ በቂ ማስረጃ የለም
-        </button>
-
-        <div id="resultArea"></div>
-
-    </div>
-
-</section>
-
-
-<!-- TOAST -->
-
-<div id="toast"></div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-    /* ================= GAME DATA ================= */
+let evidence=JSON.parse(
+localStorage.getItem("detectiveEvidence")||"[]"
+);
+
+let notes=localStorage.getItem("detectiveNotes")||"";
+
+
+const clues={
+
+bedroom:[
+
+{
+id:"blood",
+icon:"🩸",
+title:"የደም ነጠብጣብ",
+text:"በምንጣፉ ላይ ትንሽ የደም ነጠብጣብ ተገኘ። የደሙ መጠን ትልቅ ጉዳት እንደደረሰ አያሳይም። የላብራቶሪ ምርመራ ደሙ የሚካኤል መሆኑን ያረጋግጣል።"
+},
+
+{
+id:"drawer",
+icon:"🗄️",
+title:"የተከፈተው መሳቢያ",
+text:"መሳቢያው ተከፍቶ ነበር። በውስጡ የገንዘብ ካርድ፣ የድሮ ፎቶ እና ባዶ ኤንቨሎፕ አለ። ገንዘብ ግን አልጠፋም።"
+},
+
+{
+id:"watch",
+icon:"⌚",
+title:"የተሰበረው ሰዓት",
+text:"በአልጋው ጎን የሚካኤል ሰዓት ተገኘ። 11:17 ላይ ቆሟል። ይህ በተፈጥሮ የቆመበት ጊዜ መሆኑ ግን ገና አልተረጋገጠም።"
+}
+
+],
+
+living:[
+
+{
+id:"glass",
+icon:"🥛",
+title:"የውሃ ብርጭቆ",
+text:"በጠረጴዛው ላይ ግማሽ የተጠጣ ውሃ አለ። ሁለት የጣት አሻራዎች ተገኝተዋል። አንዱ የሚካኤል ነው። ሁለተኛው ግን የናትናኤል አሻራ መሆኑ ተረጋግጧል።"
+},
+
+{
+id:"chair",
+icon:"🪑",
+title:"የተንቀሳቀሰው ወንበር",
+text:"አንድ ወንበር ከጠረጴዛው ርቆ ተገኘ። በመሬቱ ላይ ትንሽ የጭቃ ምልክት አለ።"
+},
+
+{
+id:"paper",
+icon:"📄",
+title:"የተቀደደ ወረቀት",
+text:"በቆሻሻ መጣያ ውስጥ '11:30... ቦታውን አትርሳ...' የሚል የተቀደደ ወረቀት ተገኘ። የእጅ ጽሁፉ የናትናኤል ነው።"
+}
+
+],
+
+entrance:[
+
+{
+id:"door",
+icon:"🚪",
+title:"የመግቢያ በር",
+text:"በሩ በግድ አልተከፈተም። መቆለፊያው ደህና ነው። ሚካኤል የሚያውቀውን ሰው ወደ ቤቱ እንዳስገባ ይጠቁማል።"
+},
+
+{
+id:"key",
+icon:"🔑",
+title:"የቤቱ ቁልፍ",
+text:"የቤቱ ቁልፍ ከበሩ አጠገብ ተገኘ። በቁልፉ ላይ ከሚካኤል ውጭ ሌላ የጣት አሻራ ተገኘ። አሻራው ከናትናኤል ጋር ይመሳሰላል።"
+},
+
+{
+id:"camera",
+icon:"📹",
+title:"የደህንነት ካሜራ",
+text:"የሕንፃው ካሜራ በ11:24 ላይ አንድ ረጅም ኮት የለበሰ ሰው ከሕንፃው ሲወጣ አሳይቷል። ፊቱ ግን በጨለማ አይታይም።"
+}
+
+],
+
+outside:[
+
+{
+id:"footprints",
+icon:"👣",
+title:"የእግር አሻራ",
+text:"ከሕንፃው ውጭ የእግር አሻራ አለ። አሻራው የተገኘው ከ11:05 በኋላ ከጀመረው ዝናብ በኋላ ነው። የጫማው መጠን 43 ነው።"
+},
+
+{
+id:"taxi",
+icon:"🚕",
+title:"የታክሲ ምስክር",
+text:"አንድ የታክሲ ሹፌር 11:27 አካባቢ አንድ ረጅም ሰው ወደ ታክሲ እንደገባ ይናገራል። ሰውየው ረጅም ኮት ለብሶ ነበር።"
+},
+
+{
+id:"rain",
+icon:"🌧️",
+title:"የዝናብ መረጃ",
+text:"የዝናቡ መረጃ 11:05 ላይ እንደጀመረ ያሳያል። የእግር አሻራው ከዚያ በኋላ ተፈጥሯል።"
+}
 
-    let clues = [];
+]
 
-    let investigationProgress = 0;
+};
 
-    let previousScreen = "home";
 
+const suspectData={
 
-    /* ================= SCREEN SYSTEM ================= */
+dawit:{
+name:"👨 ዳዊት",
+intro:"ዳዊት የሚካኤል የቅርብ ጓደኛ ነው። ሁለቱ በቅርቡ ተጣልተው ነበር።",
+questions:[
 
-    function showScreen(screenId) {
+{
+q:"በዚያ ምሽት የት ነበርክ?",
+a:"ቤት ነበርኩ። ከምሽቱ ጀምሮ ከቤቴ አልወጣሁም።"
+},
 
-        const current = document.querySelector(".screen.active");
+{
+q:"ከሚካኤል ጋር ለምን ተጣላችሁ?",
+a:"ገንዘብ ስለሚመለከት ነገር ነበር። እሱ ከእኔ ገንዘብ ተበድሮ ነበር።"
+},
 
-        if (current && current.id !== screenId) {
-            previousScreen = current.id;
-        }
+{
+q:"ከሳምንት በላይ አልተገናኘሁም ብለህ ነበር።",
+a:"እውነቱን ልንገርህ። ሁለት ቀን በፊት ተገናኝተን ነበር። ስለ ገንዘብ ጉዳይ ብቻ ነበር።"
+}
 
-        document.querySelectorAll(".screen").forEach(screen => {
-            screen.classList.remove("active");
-        });
+]
+},
 
-        document.getElementById(screenId).classList.add("active");
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
+sara:{
+name:"👩 ሳራ",
+intro:"ሳራ የሚካኤል ጎረቤት ናት። በዚያ ምሽት አንድ ድምፅ እንደሰማች ትናገራለች።",
+questions:[
 
+{
+q:"11:30 ላይ ጩኸት ሰማሁ ብለሽ ነበር። ምን ዓይነት ድምፅ?",
+a:"ልክ እንደ አንድ ከባድ ነገር መሬት ላይ ሲወድቅ የሚሰማ ድምፅ ነበር።"
+},
 
-    /* ================= START GAME ================= */
+{
+q:"ሰው ሲወጣ አየሁ ብለሽ ነበር።",
+a:"ፊቱን አላየሁም። ረጅም ኮት ለብሶ ነበር።"
+},
 
-    function startInvestigation() {
+{
+q:"ለምን 11:30 ብለሽ ነገርሽ?",
+a:"ሰዓቴን ተመልክቼ ነበር። አሁን ሳስበው 11:24 ወይም 11:25 ሊሆን ይችላል።"
+}
 
-        clues = [];
-        investigationProgress = 0;
+]
+},
 
-        updateStats();
 
-        document.getElementById("cluesArea").innerHTML = "";
+natnael:{
+name:"👨‍💼 ናትናኤል",
+intro:"ናትናኤል ከሚካኤል ጋር በአንድ ቢሮ ይሰራል። በሥራ ቦታ ላይ ችግር ነበራቸው።",
+questions:[
 
-        showScreen("investigation");
-    }
+{
+q:"በዚያ ምሽት ከሚካኤል ጋር ተገናኘህ?",
+a:"አልተገናኘሁም። በዚያ ምሽት ቤት ነበርኩ።"
+},
 
+{
+q:"በሥራ ቦታ ምን ችግር ነበረ?",
+a:"ሚካኤል አንድ የሥራ ሰነድ እንደጠፋ ይጠረጥር ነበር።"
+},
 
-    /* ================= INVESTIGATION ================= */
+{
+q:"ሚካኤል እንደሚጠረጥርህ ታውቅ ነበር?",
+a:"አዎ። ግን ሰነዱን እኔ አልሰረቅሁትም። እና በዚያ ምሽት ከሚካኤል ጋር አልተገናኘሁም።"
+}
 
-    function investigate(type) {
+]
+}
 
-        if (type === "blood") {
+};
 
-            if (!clues.includes("blood")) {
 
-                clues.push("blood");
+function show(id){
 
-                investigationProgress += 25;
+document.querySelectorAll(".screen").forEach(s=>{
+s.classList.remove("active");
+});
 
-                addClue(
-                    "🩸 የደም ማስረጃ",
-                    "የደም ነጠብጣቡ በመኝታ ክፍሉ በር አጠገብ ነው። ደሙ ከትልቅ ጉዳት የመጣ አይመስልም።"
-                );
+document.getElementById(id).classList.add("active");
 
-                showMessage("አዲስ ማስረጃ አግኝተሃል።");
+if(id==="notes"){
+document.getElementById("noteText").value=notes;
+}
 
-            } else {
+}
 
-                showMessage("ይህንን ማስረጃ አስቀድመህ መርምረኸዋል።");
 
-            }
-        }
+function startCase(){
+show("intro");
+}
 
 
-        if (type === "phone") {
+function openTelegram(){
+window.open(
+"https://t.me/sufo_clown",
+"_blank"
+);
+}
 
-            if (!clues.includes("phone")) {
 
-                clues.push("phone");
+function startInvestigation(){
+show("investigation");
+updateProgress();
+}
 
-                investigationProgress += 25;
 
-                addClue(
-                    "📱 የተሰበረ ስልክ",
-                    "ስልኩ በሶፋው ስር ተገኘ። የመጨረሻው ጥሪ ከሌሊቱ 10:58 ላይ ተደርጓል።"
-                );
+function search(location){
 
-                showMessage("አስፈላጊ ፍንጭ አግኝተሃል።");
+const names={
+bedroom:"🛏️ መኝታ ክፍል",
+living:"🛋️ ሳሎን",
+entrance:"🚪 መግቢያ",
+outside:"🌧️ ከሕንፃው ውጭ"
+};
 
-            } else {
+document.getElementById(
+"locationTitle"
+).innerText=names[location];
 
-                showMessage("ይህንን ስልክ አስቀድመህ መርምረኸዋል።");
+let html="";
 
-            }
-        }
+clues[location].forEach(c=>{
 
+let collected=evidence.includes(c.id);
 
-        if (type === "door") {
+html+=`
 
-            if (!clues.includes("door")) {
+<div class="card ${collected?"locked":""}">
 
-                clues.push("door");
+<div class="clue">
 
-                investigationProgress += 25;
+<div class="emoji">${c.icon}</div>
 
-                addClue(
-                    "🚪 የቤት በር",
-                    "በሩ ከውጭ በግድ አልተከፈተም። ቁልፉ ግን ከቤቱ ውስጥ ተገኝቷል።"
-                );
+<h3>${c.title}</h3>
 
-                showMessage("የቤቱ በር ላይ አስገራሚ ነገር አግኝተሃል።");
+<p>${c.text}</p>
 
-            } else {
+${
+collected
+?
+`<button disabled>✓ ተሰብስቧል</button>`
+:
+`<button class="primary"
+onclick="collect('${c.id}')">
+🔎 ማስረጃውን ሰብስብ
+</button>`
+}
 
-                showMessage("ይህንን በር አስቀድመህ መርምረኸዋል።");
+</div>
 
-            }
-        }
+</div>
 
-        updateStats();
-    }
+`;
 
+});
 
-    /* ================= ADD CLUE ================= */
+show("clues");
 
-    function addClue(title, text) {
+document.getElementById(
+"clueList"
+).innerHTML=html;
 
-        const area = document.getElementById("cluesArea");
+}
 
-        const div = document.createElement("div");
 
-        div.className = "clue";
+function collect(id){
 
-        div.innerHTML = `
-            <div class="clue-title">${title}</div>
-            <div>${text}</div>
-        `;
+if(!evidence.includes(id)){
 
-        area.appendChild(div);
-    }
+evidence.push(id);
 
+localStorage.setItem(
+"detectiveEvidence",
+JSON.stringify(evidence)
+);
 
-    /* ================= STATS ================= */
+toast("ማስረጃው ተሰብስቧል 🔎");
 
-    function updateStats() {
+updateProgress();
 
-        document.getElementById("clueCount").textContent = clues.length;
+}
 
-        document.getElementById("progress").textContent =
-            Math.min(investigationProgress, 100) + "%";
-    }
+}
 
 
-    /* ================= INTERROGATION ================= */
+function updateProgress(){
 
-    function interrogate(person) {
+document.getElementById(
+"count"
+).innerText=evidence.length;
 
-        if (person === "dawit") {
+document.getElementById(
+"progress"
+).style.width=
+(evidence.length/12*100)+"%";
 
-            showMessage(
-                "ዳዊት፦ ሚካኤልን ከሳምንት በላይ አላየሁትም።"
-            );
+}
 
-            if (!clues.includes("dawitTalk")) {
 
-                clues.push("dawitTalk");
+function showEvidence(){
 
-                investigationProgress += 10;
+let html="";
 
-                addClue(
-                    "💬 የዳዊት ቃል",
-                    "ዳዊት ከሚካኤል ጋር ከሳምንት በላይ እንዳልተገናኘ ተናግሯል።"
-                );
-            }
-        }
+const all=[];
 
+Object.values(clues).forEach(arr=>{
+arr.forEach(c=>all.push(c));
+});
 
-        if (person === "sara") {
+const collected=all.filter(
+c=>evidence.includes(c.id)
+);
 
-            showMessage(
-                "ሳራ፦ በዚያ ሌሊት ከቤቱ ውስጥ ጩኸት ሰማሁ።"
-            );
+if(collected.length===0){
 
-            if (!clues.includes("saraTalk")) {
+html=`
 
-                clues.push("saraTalk");
+<div class="card">
 
-                investigationProgress += 10;
+<p>
+እስካሁን ምንም ማስረጃ አልሰበሰብክም።
+ወደ የምርመራ ቦታዎች ተመለስ።
+</p>
 
-                addClue(
-                    "💬 የሳራ ቃል",
-                    "ሳራ በሌሊቱ ጩኸት እንደሰማች ተናግራለች።"
-                );
-            }
-        }
+</div>
 
+`;
 
-        if (person === "natnael") {
+}else{
 
-            showMessage(
-                "ናትናኤል፦ ሚካኤል በራሱ ፈቃድ ሄዶ ይሆናል።"
-            );
+collected.forEach(c=>{
 
-            if (!clues.includes("natnaelTalk")) {
+html+=`
 
-                clues.push("natnaelTalk");
+<div class="card">
 
-                investigationProgress += 10;
+<h3>
+${c.icon} ${c.title}
+</h3>
 
-                addClue(
-                    "💬 የናትናኤል ቃል",
-                    "ናትናኤል ሚካኤል በራሱ ፈቃድ ሄዶ እንደሆነ ተናግሯል።"
-                );
-            }
-        }
+<p>${c.text}</p>
 
-        updateStats();
-    }
+</div>
 
+`;
 
-    /* ================= DECISION ================= */
+});
 
-    function makeDecision(person) {
+}
 
-        const result = document.getElementById("resultArea");
+show("evidence");
 
-        if (person === "natnael" && clues.length >= 4) {
+document.getElementById(
+"evidenceList"
+).innerHTML=html;
 
-            result.innerHTML = `
-                <div class="result">
-                    <div class="result-icon">🔎</div>
-                    <h2>አሁን ግን ተጠንቀቅ...</h2>
-                    <p>
-                        ናትናኤል ተጠያቂ መሆኑን ለመወሰን
-                        በቂ ማስረጃ አለህ ወይ?
-                        ይህ የመጀመሪያው የጨዋታ ስሪት
-                        የምርመራ ስርዓቱን ለመሞከር ነው።
-                    </p>
-                </div>
-            `;
+}
 
-        } else {
 
-            result.innerHTML = `
-                <div class="result">
-                    <div class="result-icon">❌</div>
-                    <h2>ምርመራው አልተጠናቀቀም</h2>
-                    <p>
-                        የመጨረሻ ውሳኔ ከመስጠትህ በፊት
-                        ተጨማሪ ማስረጃ ማግኘት ያስፈልግሃል።
-                    </p>
-                </div>
-            `;
-        }
-    }
+function showSuspects(){
+show("suspects");
+}
 
 
-    /* ================= NOTES ================= */
+function question(id){
 
-    function saveNotes() {
+const s=suspectData[id];
 
-        const text = document.getElementById("notesText").value;
+document.getElementById(
+"suspectName"
+).innerText=s.name;
 
-        localStorage.setItem("detectiveNotes", text);
+document.getElementById(
+"dialogue"
+).innerHTML=`
 
-        showMessage("ማስታወሻህ ተቀምጧል።");
-    }
+<div class="card">
 
+<p>${s.intro}</p>
 
-    function loadNotes() {
+</div>
 
-        const saved =
-            localStorage.getItem("detectiveNotes");
+`;
 
-        if (saved !== null) {
+let qs="";
 
-            document.getElementById("notesText").value = saved;
-        }
-    }
+s.questions.forEach((q,i)=>{
 
+qs+=`
 
-    function goBackFromNotes() {
+<button onclick="answer('${id}',${i})">
+❓ ${q.q}
+</button>
 
-        showScreen(previousScreen || "home");
-    }
+<br>
 
+`;
 
-    /* ================= MESSAGE ================= */
+});
 
-    function showMessage(message) {
+document.getElementById(
+"questions"
+).innerHTML=qs;
 
-        const toast = document.getElementById("toast");
+show("interrogation");
 
-        toast.textContent = message;
+}
 
-        toast.classList.add("show");
 
-        setTimeout(() => {
+function answer(id,index){
 
-            toast.classList.remove("show");
+const q=suspectData[id].questions[index];
 
-        }, 3000);
-    }
+let html=document.getElementById(
+"dialogue"
+).innerHTML;
 
+html+=`
 
-    /* ================= INITIALIZE ================= */
+<div class="dialogue you">
 
-    window.onload = function() {
+<strong>🕵️ ዲቴክቲቭ፦</strong><br>
 
-        loadNotes();
+${q.q}
 
-    };
+</div>
+
+<div class="dialogue">
+
+<strong>
+${suspectData[id].name}፦
+</strong><br>
+
+${q.a}
+
+</div>
+
+`;
+
+document.getElementById(
+"dialogue"
+).innerHTML=html;
+
+}
+
+
+function showNotes(){
+
+show("notes");
+
+document.getElementById(
+"noteText"
+).value=notes;
+
+}
+
+
+function saveNotes(){
+
+notes=document.getElementById(
+"noteText"
+).value;
+
+localStorage.setItem(
+"detectiveNotes",
+notes
+);
+
+toast("ማስታወሻው ተቀምጧል 📓");
+
+}
+
+
+function showDecision(){
+
+if(evidence.length<6){
+
+toast(
+"በመጀመሪያ ቢያንስ 6 ማስረጃዎችን ሰብስብ።"
+);
+
+return;
+
+}
+
+show("decision");
+
+}
+
+
+function decision(choice){
+
+show("result");
+
+const icon=document.getElementById(
+"resultIcon"
+);
+
+const title=document.getElementById(
+"resultTitle"
+);
+
+const text=document.getElementById(
+"resultText"
+);
+
+
+/* TRUE CULPRIT */
+
+if(choice==="natnael"){
+
+icon.innerText="🔴";
+
+title.innerText="ትክክል! ወንጀለኛውን አግኝተሃል";
+
+text.innerHTML=`
+
+<strong>ናትናኤል ወንጀለኛው ነው።</strong>
+
+<br><br>
+
+ናትናኤል ከሚካኤል ጋር በሥራ ቦታ ላይ
+ከባድ ችግር ነበረበት። ሚካኤል የጠፋውን
+የሥራ ሰነድ እንደወሰደ ይጠረጥረው ነበር።
+
+<br><br>
+
+ናትናኤል ሚካኤልን ለመገናኘት ወደ ቤቱ
+ሄደ። ሚካኤል በሩን ራሱ ከፈተለት።
+ስለዚህ በሩ በግድ አልተከፈተም።
+
+<br><br>
+
+በሳሎን የተገኘው ብርጭቆ የናትናኤል
+አሻራ እንዳለበት ተረጋግጧል።
+
+<br><br>
+
+ከዚያ በላይ በቆሻሻ መጣያው ውስጥ
+የተገኘው ወረቀት በናትናኤል የእጅ ጽሁፍ
+ተጽፎ ነበር።
+
+<br><br>
+
+ይህ ብቻ በቂ አልነበረም።
+
+<br><br>
+
+በቁልፉ ላይ የተገኘው አሻራ፣
+የካሜራው 11:24 መረጃ፣
+የታክሲ ሹፌሩ 11:27 ምስክርነት
+እና የዝናብ መረጃ በአንድ ላይ
+ሲገናኙ የጊዜ መስመሩ ግልጽ ሆነ።
+
+<br><br>
+
+ናትናኤል በመጀመሪያ
+<strong>“በዚያ ምሽት ቤት ነበርኩ”</strong>
+ብሎ ዋሽቷል።
+
+<br><br>
+
+ነገር ግን የተገኘው ማስረጃ
+በዚያ ምሽት በሚካኤል ቤት እንደነበረ
+ያሳያል።
+
+<br><br>
+
+<strong>
+ዳዊት እና ሳራ አጠራጣሪ የሚመስሉ
+ነገሮችን ደብቀዋል፣ ግን ወንጀሉን
+እንደፈጸሙ የሚያሳይ ተጨባጭ
+ማስረጃ የለም።
+</strong>
+
+<br><br>
+
+ነገር ግን ጉዳዩ እዚህ አያበቃም።
+
+<br><br>
+
+<strong>ሚካኤል ከዚያ በኋላ የት ሄደ?</strong>
+
+`;
+
+}
+
+
+else if(choice==="dawit"){
+
+icon.innerText="❌";
+
+title.innerText="የተሳሳተ ክስ";
+
+text.innerHTML=`
+
+ዳዊት አጠራጣሪ የሚያደርገው ምክንያት
+አለው። ከሚካኤል ጋር ተጣልቷል፣
+ስለ ገንዘብም ውሸት ተናግሯል።
+
+<br><br>
+
+ግን ይህ በራሱ ወንጀለኛ መሆኑን
+አያረጋግጥም።
+
+<br><br>
+
+በቤቱ ውስጥ የተገኙት አሻራዎች
+እና የጊዜ መስመሩ ዳዊትን
+በቀጥታ አያገናኙትም።
+
+<br><br>
+
+<strong>
+የሚጠራጠር ሰው እና ወንጀለኛ
+ሁልጊዜ አንድ ሰው አይደሉም።
+</strong>
+
+`;
+
+}
+
+
+else if(choice==="sara"){
+
+icon.innerText="❌";
+
+title.innerText="የተሳሳተ ክስ";
+
+text.innerHTML=`
+
+ሳራ የሰማችውን ጊዜ በትክክል
+አላስታወሰችም። ይህም ቃሏን
+አጠራጣሪ ያደርጋል።
+
+<br><br>
+
+ግን እሷ የተመለከተችው ሰው
+እሷ እንዳላወቀችው ተናግራለች።
+
+<br><br>
+
+የእሷ አሻራ ወይም ዕቃ ከዋናው
+ወንጀል ጋር የሚያገናኝ ማስረጃ
+አልተገኘም።
+
+<br><br>
+
+<strong>
+የምስክር ቃል ብቻ ወንጀለኛን
+ለመለየት በቂ አይደለም።
+</strong>
+
+`;
+
+}
+
+
+else{
+
+icon.innerText="❓";
+
+title.innerText="ጉዳዩ አልተፈታም";
+
+text.innerHTML=`
+
+ወንጀለኛውን ለመለየት
+በቂ ማስረጃ አለህ።
+
+<br><br>
+
+እንደገና የሰበሰብከውን ማስረጃ
+ተመልከት።
+
+<br><br>
+
+በተለይም የብርጭቆውን አሻራ፣
+የተቀደደውን ወረቀት፣
+የቁልፉን አሻራ እና
+የካሜራውን ጊዜ አነጻጽር።
+
+`;
+
+}
+
+}
+
+
+function toast(message){
+
+const t=document.getElementById("toast");
+
+t.innerText=message;
+
+t.style.display="block";
+
+setTimeout(()=>{
+t.style.display="none";
+},2200);
+
+}
 
 </script>
 
 </body>
-  </html>
+    </html>
