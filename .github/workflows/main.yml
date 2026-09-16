@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Copy web files
-        run: npx cap copy android
+      - name: Sync Capacitor Android
+        run: npx cap sync android
 
       - name: Set up Java
         uses: actions/setup-java@v4
