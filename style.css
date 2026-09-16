@@ -1,0 +1,686 @@
+/* ================================
+   ምስጢር — የኢትዮጵያ ዲቴክቲቭ
+   Main Game Styles
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, "Noto Sans Ethiopic", sans-serif;
+    background:
+        radial-gradient(circle at top, #202020 0%, #0c0c0c 45%, #050505 100%);
+    color: #eeeeee;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ================================
+   GENERAL
+================================ */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    width: 100%;
+    min-height: 100vh;
+    padding: 25px 16px;
+    animation: fadeIn 0.35s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   HOME SCREEN
+================================ */
+
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.home-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.logo {
+    font-size: 58px;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+}
+
+.game-title {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.game-subtitle {
+    color: #999;
+    font-size: 15px;
+    margin-bottom: 45px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 17px 20px;
+    border-radius: 12px;
+    background: #171717;
+    color: #eeeeee;
+    border: 1px solid #2c2c2c;
+    font-size: 17px;
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    background: #222;
+    border-color: #555;
+    transform: translateY(-2px);
+}
+
+.menu-btn:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   HEADERS
+================================ */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #191919;
+    border: 1px solid #333;
+    color: white;
+    font-size: 20px;
+}
+
+.back-btn:hover {
+    background: #292929;
+}
+
+.page-title {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: 21px;
+    margin: 25px 0 14px;
+}
+
+/* ================================
+   CARDS
+================================ */
+
+.card {
+    background: rgba(22, 22, 22, 0.95);
+    border: 1px solid #303030;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #bdbdbd;
+    line-height: 1.7;
+}
+
+.case-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.case-card::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #777;
+}
+
+.case-number {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.case-name {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.case-location {
+    color: #999;
+    font-size: 14px;
+}
+
+/* ================================
+   CASE INTRO
+================================ */
+
+.case-hero {
+    text-align: center;
+    padding: 35px 20px;
+    background:
+        linear-gradient(
+            rgba(10, 10, 10, 0.75),
+            rgba(10, 10, 10, 0.95)
+        );
+    border: 1px solid #303030;
+    border-radius: 18px;
+    margin-bottom: 20px;
+}
+
+.case-hero-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.case-hero h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.case-hero p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background: #151515;
+    border: 1px solid #2d2d2d;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.info-label {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.info-value {
+    font-size: 16px;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.primary-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    background: #e6e6e6;
+    color: #080808;
+    font-size: 17px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    background: #191919;
+    color: #ddd;
+    border: 1px solid #333;
+    font-size: 16px;
+}
+
+.secondary-btn:hover {
+    background: #242424;
+}
+
+/* ================================
+   INVESTIGATION
+================================ */
+
+.investigation-header {
+    background: #121212;
+    border: 1px solid #2d2d2d;
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.investigation-header h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.progress-text {
+    color: #999;
+    font-size: 14px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 7px;
+    background: #292929;
+    border-radius: 20px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #cfcfcf;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.location-card {
+    min-height: 145px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #151515;
+    border: 1px solid #303030;
+    text-align: left;
+    color: white;
+    transition: 0.25s;
+}
+
+.location-card:hover {
+    background: #222;
+    transform: translateY(-3px);
+    border-color: #555;
+}
+
+.location-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.location-name {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.location-description {
+    color: #888;
+    font-size: 13px;
+}
+
+/* ================================
+   EVIDENCE
+================================ */
+
+.evidence-grid {
+    display: grid;
+    gap: 13px;
+}
+
+.evidence-card {
+    background: #151515;
+    border: 1px solid #303030;
+    border-radius: 14px;
+    padding: 18px;
+    transition: 0.2s;
+}
+
+.evidence-card:hover {
+    border-color: #555;
+}
+
+.evidence-icon {
+    font-size: 30px;
+    float: left;
+    margin-right: 14px;
+}
+
+.evidence-card h3 {
+    margin-bottom: 7px;
+}
+
+.evidence-card p {
+    color: #aaa;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ================================
+   SUSPECTS
+================================ */
+
+.suspect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.suspect-card {
+    background: #151515;
+    border: 1px solid #303030;
+    border-radius: 15px;
+    padding: 20px 15px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.suspect-card:hover {
+    background: #202020;
+    transform: translateY(-3px);
+}
+
+.suspect-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    margin: 0 auto 13px;
+    background: #292929;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.suspect-name {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.suspect-role {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.interrogate-btn {
+    width: 100%;
+    padding: 11px;
+    border-radius: 9px;
+    background: #242424;
+    color: #ddd;
+    border: 1px solid #383838;
+}
+
+.interrogate-btn:hover {
+    background: #303030;
+}
+
+/* ================================
+   DIALOGUE
+================================ */
+
+.dialogue-box {
+    background: #141414;
+    border: 1px solid #343434;
+    border-radius: 16px;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+.dialogue-name {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.dialogue-text {
+    color: #c4c4c4;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+/* ================================
+   NOTES
+================================ */
+
+.notes-area {
+    width: 100%;
+    min-height: 300px;
+    resize: vertical;
+    background: #101010;
+    color: #eee;
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 18px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.7;
+    outline: none;
+}
+
+.notes-area:focus {
+    border-color: #666;
+}
+
+.notes-area::placeholder {
+    color: #666;
+}
+
+/* ================================
+   DECISION
+================================ */
+
+.decision-warning {
+    background: #171717;
+    border: 1px solid #3a3a3a;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.decision-warning h3 {
+    margin-bottom: 8px;
+}
+
+.decision-warning p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+.decision-grid {
+    display: grid;
+    gap: 13px;
+}
+
+.decision-btn {
+    padding: 18px;
+    border-radius: 12px;
+    background: #171717;
+    color: white;
+    border: 1px solid #333;
+    text-align: left;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.decision-btn:hover {
+    background: #242424;
+    border-color: #666;
+}
+
+.decision-btn small {
+    display: block;
+    color: #888;
+    margin-top: 6px;
+}
+
+/* ================================
+   RESULT
+================================ */
+
+.result-card {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.result-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.result-card h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.result-card p {
+    color: #aaa;
+    line-height: 1.8;
+}
+
+/* ================================
+   TOAST
+================================ */
+
+#toast {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%) translateY(100px);
+    background: #eeeeee;
+    color: #111;
+    padding: 13px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 90%;
+    text-align: center;
+}
+
+#toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 650px) {
+
+    .screen {
+        padding: 20px 13px;
+    }
+
+    .game-title {
+        font-size: 29px;
+    }
+
+    .logo {
+        font-size: 48px;
+    }
+
+    .page-title {
+        font-size: 23px;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .suspect-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .case-hero h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .game-title {
+        font-size: 25px;
+    }
+
+    .menu-btn {
+        font-size: 15px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
