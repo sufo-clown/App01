@@ -4,37 +4,579 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ምስጢር - የኢትዮጵያ ዲቴክቲቭ</title>
+    <meta name="theme-color" content="#0b0b0d">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <title>ምስጢር — የኢትዮጵያ ዲቴክቲቭ</title>
 
-        body {
-            font-family: Arial, "Noto Sans Ethiopic", sans-serif;
-            background: #0b0b0d;
-            color: #eee;
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        button {
-            font-family: inherit;
-        }
+<body>
 
-        .screen {
-            display: none;
-            min-height: 100vh;
-            padding: 25px 18px;
-        }
+<!-- =========================
+     HOME
+========================= -->
 
-        .screen.active {
-            display: block;
-        }
+<section id="home" class="screen active">
 
-        /* HOME */
+    <div class="home-content">
+
+        <div class="detective-icon">🕵️</div>
+
+        <h1>ምስጢር</h1>
+
+        <p class="subtitle">
+            የኢትዮጵያ ዲቴክቲቭ
+        </p>
+
+        <div class="menu">
+
+            <button class="menu-button"
+                    onclick="openCase()">
+                ▶ ጉዳይ ጀምር
+            </button>
+
+            <button class="menu-button"
+                    onclick="showScreen('cases')">
+                📁 ጉዳዮች
+            </button>
+
+            <button class="menu-button"
+                    onclick="showScreen('evidence')">
+                📂 ማስረጃዎች
+            </button>
+
+            <button class="menu-button"
+                    onclick="showNotes()">
+                📓 ማስታወሻ
+            </button>
+
+        </div>
+
+        <p class="version">
+            ስሪት 2.0
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CASES
+========================= -->
+
+<section id="cases" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="showScreen('home')">
+                ←
+            </button>
+
+            <h2>📁 ጉዳዮች</h2>
+
+            <span></span>
+
+        </div>
+
+        <div class="case-card">
+
+            <div class="case-icon">
+                🏠
+            </div>
+
+            <div class="case-info">
+
+                <span class="case-label">
+                    ጉዳይ #001
+                </span>
+
+                <h2>
+                    የጠፋው ሰው
+                </h2>
+
+                <p>
+                    አንድ ሰው ከቤቱ በሚስጥር
+                    ጠፍቷል። እውነቱን ማግኘት
+                    የአንተ ስራ ነው።
+                </p>
+
+                <button class="gold-button"
+                        onclick="openCase()">
+                    ምርመራ ጀምር
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="locked-case">
+
+            🔒 ጉዳይ #002
+
+            <small>
+                የመጀመሪያውን ጉዳይ ጨርስ
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CASE INTRO
+========================= -->
+
+<section id="caseIntro" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="showScreen('home')">
+                ←
+            </button>
+
+            <h2>ጉዳይ #001</h2>
+
+            <span></span>
+
+        </div>
+
+        <div class="case-cover">
+
+            <div>🕵️</div>
+
+            <h1>የጠፋው ሰው</h1>
+
+            <p>
+                📍 ቦሌ፣ አዲስ አበባ
+            </p>
+
+        </div>
+
+        <div class="story-card">
+
+            <p>
+                ሌሊት 11:40 ነው።
+            </p>
+
+            <p>
+                የ32 ዓመቱ ሚካኤል ከአፓርታማው
+                በሚስጥር ጠፍቷል።
+            </p>
+
+            <p>
+                የቤቱ በር በግድ አልተከፈተም።
+                ስልኩ ግን አልተገኘም።
+            </p>
+
+            <p>
+                በመኝታ ክፍሉ አጠገብ
+                ትንሽ የደም ነጠብጣብ
+                ተገኝቷል።
+            </p>
+
+            <p class="warning">
+                ⚠️ ይህ ቀላል ጉዳይ አይደለም።
+            </p>
+
+        </div>
+
+        <button class="gold-button large"
+                onclick="startInvestigation()">
+            🔎 ወደ ምርመራው ግባ
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INVESTIGATION
+========================= -->
+
+<section id="investigation" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="showScreen('home')">
+                ←
+            </button>
+
+            <h2>🔎 ምርመራ</h2>
+
+            <span id="progressText">
+                0%
+            </span>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="location-card">
+
+            <span>📍 አሁን ያለኸው ቦታ</span>
+
+            <h2 id="locationName">
+                ሚካኤል ቤት
+            </h2>
+
+        </div>
+
+
+        <!-- INVESTIGATION AREA -->
+
+        <div id="investigationContent">
+
+            <div class="story-card">
+
+                <h2>
+                    የምርመራ ቦታ
+                </h2>
+
+                <p>
+                    የት መጀመሪያ መመርመር
+                    ትፈልጋለህ?
+                </p>
+
+            </div>
+
+
+            <div class="location-grid">
+
+                <button onclick="searchLocation('bedroom')">
+                    🛏️
+                    <span>መኝታ ክፍል</span>
+                </button>
+
+                <button onclick="searchLocation('livingroom')">
+                    🛋️
+                    <span>ሳሎን</span>
+                </button>
+
+                <button onclick="searchLocation('entrance')">
+                    🚪
+                    <span>መግቢያ</span>
+                </button>
+
+                <button onclick="searchLocation('outside')">
+                    🌃
+                    <span>የሕንፃው ውጭ</span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK MENU -->
+
+        <div class="quick-menu">
+
+            <button onclick="showScreen('evidence')">
+                📂 ማስረጃ
+                <b id="evidenceCount">0</b>
+            </button>
+
+            <button onclick="showScreen('suspects')">
+                👥 ተጠርጣሪዎች
+            </button>
+
+            <button onclick="showNotes()">
+                📓 ማስታወሻ
+            </button>
+
+            <button onclick="showScreen('decision')">
+                ⚖️ ውሳኔ
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EVIDENCE
+========================= -->
+
+<section id="evidence" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="goBack()">
+                ←
+            </button>
+
+            <h2>📂 ማስረጃ</h2>
+
+            <span id="evidenceTotal">
+                0
+            </span>
+
+        </div>
+
+        <div id="evidenceList">
+
+            <div class="empty-state">
+
+                🔍
+
+                <h3>
+                    ምንም ማስረጃ የለም
+                </h3>
+
+                <p>
+                    ቦታዎችን በመመርመር
+                    ማስረጃ ሰብስብ።
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SUSPECTS
+========================= -->
+
+<section id="suspects" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="goBack()">
+                ←
+            </button>
+
+            <h2>👥 ተጠርጣሪዎች</h2>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="suspect-card">
+
+            <div class="avatar">
+                👨
+            </div>
+
+            <div>
+
+                <h3>
+                    ዳዊት
+                </h3>
+
+                <small>
+                    የሚካኤል የቅርብ ጓደኛ
+                </small>
+
+            </div>
+
+            <button onclick="interrogate('dawit')">
+                ጠይቅ
+            </button>
+
+        </div>
+
+
+        <div class="suspect-card">
+
+            <div class="avatar">
+                👩
+            </div>
+
+            <div>
+
+                <h3>
+                    ሳራ
+                </h3>
+
+                <small>
+                    የሚካኤል ጎረቤት
+                </small>
+
+            </div>
+
+            <button onclick="interrogate('sara')">
+                ጠይቅ
+            </button>
+
+        </div>
+
+
+        <div class="suspect-card">
+
+            <div class="avatar">
+                👨
+            </div>
+
+            <div>
+
+                <h3>
+                    ናትናኤል
+                </h3>
+
+                <small>
+                    የሚካኤል የስራ ባልደረባ
+                </small>
+
+            </div>
+
+            <button onclick="interrogate('natnael')">
+                ጠይቅ
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     NOTES
+========================= -->
+
+<section id="notes" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="goBack()">
+                ←
+            </button>
+
+            <h2>📓 ማስታወሻ</h2>
+
+            <span></span>
+
+        </div>
+
+        <div class="story-card">
+
+            <p>
+                ያገኘኸውን ፍንጭ፣ ጥርጣሬ
+                ወይም ማንኛውንም ሀሳብ
+                እዚህ ጻፍ።
+            </p>
+
+        </div>
+
+        <textarea
+            id="notesText"
+            placeholder="ማስታወሻህን እዚህ ጻፍ..."
+        ></textarea>
+
+        <button class="gold-button large"
+                onclick="saveNotes()">
+            💾 አስቀምጥ
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DECISION
+========================= -->
+
+<section id="decision" class="screen">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <button class="back"
+                    onclick="goBack()">
+                ←
+            </button>
+
+            <h2>⚖️ የመጨረሻ ውሳኔ</h2>
+
+            <span></span>
+
+        </div>
+
+        <div class="story-card">
+
+            <h2>
+                ምን እንደተፈጠረ ታስባለህ?
+            </h2>
+
+            <p>
+                ማስረጃዎቹን እና የተጠርጣሪዎቹን
+                ቃለ-መጠይቅ ካነጻጸርክ በኋላ
+                ውሳኔህን ስጥ።
+            </p>
+
+        </div>
+
+        <button class="decision"
+                onclick="makeDecision('dawit')">
+            👨 ዳዊት
+        </button>
+
+        <button class="decision"
+                onclick="makeDecision('sara')">
+            👩 ሳራ
+        </button>
+
+        <button class="decision"
+                onclick="makeDecision('natnael')">
+            👨 ናትናኤል
+        </button>
+
+        <button class="decision"
+                onclick="makeDecision('unknown')">
+            ❓ እስካሁን አላወቅሁም
+        </button>
+
+        <div id="resultArea"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div id="toast"></div>
+
+
+<script src="game.js"></script>
+
+</body>
+</html>        /* HOME */
 
         #home {
             text-align: center;
