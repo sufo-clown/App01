@@ -1,164 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="am">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CASE 002 — The Zodiac</title>
+<title>CASE 002 — ዘዲያክት</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
 
 .story-box {
-    background: #111827;
-    border: 1px solid #263244;
-    border-radius: 16px;
-    padding: 22px;
-    margin: 18px 0;
-    line-height: 1.8;
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:16px;
+    padding:22px;
+    margin:18px 0;
+    line-height:2;
 }
 
 .story-box p {
-    margin: 0 0 16px;
+    margin:0 0 17px;
 }
 
 .story-box p:last-child {
-    margin-bottom: 0;
+    margin-bottom:0;
 }
 
 .chapter {
-    color: #ef4444;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    color:#ef4444;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:8px;
 }
 
 .year {
-    color: #94a3b8;
-    font-size: 14px;
-    margin-bottom: 18px;
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:18px;
 }
 
 .big-title {
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:8px;
 }
 
 .quote-box {
-    border-left: 3px solid #ef4444;
-    padding: 12px 16px;
-    margin: 20px 0;
-    background: #0b1220;
-    color: #d1d5db;
-    font-style: italic;
+    border-left:3px solid #ef4444;
+    padding:13px 16px;
+    margin:20px 0;
+    background:#0b1220;
+    color:#d1d5db;
+    font-style:italic;
 }
 
 .investigation-card {
-    background: #0d1524;
-    border: 1px solid #263244;
-    border-radius: 14px;
-    padding: 18px;
-    margin: 14px 0;
+    background:#0d1524;
+    border:1px solid #263244;
+    border-radius:14px;
+    padding:18px;
+    margin:14px 0;
 }
 
 .investigation-card h3 {
-    margin-top: 0;
+    margin-top:0;
 }
 
 .choice-btn {
-    width: 100%;
-    text-align: left;
-    margin-top: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #334155;
-    background: #172033;
-    color: #fff;
-    cursor: pointer;
-}
-
-.choice-btn:hover {
-    background: #202c42;
+    width:100%;
+    text-align:left;
+    margin-top:10px;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#172033;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
 }
 
 .answer {
-    display: none;
-    margin-top: 12px;
-    padding: 14px;
-    border-radius: 10px;
-    background: #0b1220;
-    color: #cbd5e1;
-    line-height: 1.7;
+    display:none;
+    margin-top:12px;
+    padding:14px;
+    border-radius:10px;
+    background:#0b1220;
+    color:#cbd5e1;
+    line-height:1.8;
 }
 
 .answer.show {
-    display: block;
+    display:block;
 }
 
-.locked {
-    opacity: 0.55;
+.investigation-card.locked {
+    opacity:.55;
 }
 
 .timeline-big {
-    border-left: 2px solid #334155;
-    margin-left: 8px;
-    padding-left: 22px;
+    border-left:2px solid #334155;
+    margin-left:8px;
+    padding-left:22px;
 }
 
 .timeline-big .event {
-    margin-bottom: 26px;
-    position: relative;
+    margin-bottom:27px;
+    position:relative;
+    line-height:1.8;
 }
 
 .timeline-big .event:before {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #ef4444;
-    border-radius: 50%;
-    left: -28px;
-    top: 7px;
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:#ef4444;
+    border-radius:50%;
+    left:-28px;
+    top:8px;
 }
 
 .timeline-big .event strong {
-    display: block;
-    color: #f87171;
-    margin-bottom: 5px;
+    display:block;
+    color:#f87171;
+    margin-bottom:5px;
 }
 
 .fact {
-    border: 1px solid #334155;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 10px 0;
-    background: #0d1524;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:15px;
+    margin:10px 0;
+    background:#0d1524;
+    line-height:1.8;
 }
 
 .fact strong {
-    color: #f8fafc;
+    color:#f8fafc;
 }
 
 .note {
-    color: #94a3b8;
-    font-size: 13px;
+    color:#94a3b8;
+    font-size:13px;
 }
 
 .score {
-    text-align: center;
-    padding: 25px;
-    margin-top: 20px;
-    border-radius: 15px;
-    background: #111827;
-    border: 1px solid #334155;
-}
-
-.hidden {
-    display: none;
+    text-align:center;
+    padding:25px;
+    margin-top:20px;
+    border-radius:15px;
+    background:#111827;
+    border:1px solid #334155;
 }
 
 </style>
@@ -166,9 +160,10 @@
 
 <body>
 
-<!-- =========================
-     INTRO
-========================= -->
+
+<!-- =====================================
+     መነሻ
+===================================== -->
 
 <section id="zodiacIntro" class="screen active">
 
@@ -181,58 +176,65 @@
 
 <div class="story-box">
 
-<div class="chapter">Historical Investigation</div>
+<div class="chapter">የእውነተኛ ታሪክ ምርመራ</div>
 
-<div class="big-title">THE ZODIAC</div>
+<div class="big-title">ዘዲያክት</div>
 
-<div class="year">Northern California — 1968–1970</div>
+<div class="year">ካሊፎርኒያ — 1968–1970</div>
 
 <p>
-You are not entering a fictional crime scene.
+ወደዚህ ጉዳይ ስትገባ የምትመረምረው ልብ ወለድ ታሪክ አይደለም።
 </p>
 
 <p>
-This case really happened.
+ይህ ጉዳይ በእውነት ተከስቷል።
 </p>
 
 <p>
-In the late 1960s, a series of murders and mysterious communications
-terrified communities around Northern California.
+በ1960ዎቹ መጨረሻ በሰሜን ካሊፎርኒያ ተከታታይ
+ግድያዎች ተፈጸሙ።
 </p>
 
 <p>
-The killer was never conclusively identified.
+ከዚያም ራሱን ከእነዚህ ወንጀሎች ጋር የሚያገናኝ
+አንድ ሰው ለጋዜጦች ደብዳቤዎችን መላክ ጀመረ።
 </p>
 
 <p>
-He eventually became known by a name he gave himself:
-<strong>the Zodiac.</strong>
+ይህ ሰው ራሱን በአንድ ስም ጠራ፦
+<strong>“Zodiac” — ዘዲያክት።</strong>
 </p>
 
 <div class="quote-box">
-Your task is not to invent the answer.
-Your task is to follow the evidence.
+የአንተ ተግባር የጠፋውን መልስ መፍጠር አይደለም።
+ማስረጃውን መከተል ነው።
 </div>
 
 <p>
-You will move through the case in chronological order.
-At each stage, you will see what investigators knew,
-what they did not know, and what later evidence changed.
+በዚህ ምርመራ ውስጥ ክስተቶቹን በተከሰቱበት
+ቅደም ተከተል ትከተላለህ።
+</p>
+
+<p>
+በእያንዳንዱ ደረጃ መርማሪዎች በዚያን ጊዜ
+ምን እንደሚያውቁ፣ ምን እንደማያውቁ እና
+በኋላ የተገኘው ማስረጃ ጉዳዩን እንዴት
+እንደቀየረው ትመለከታለህ።
 </p>
 
 </div>
 
 <button class="primary" onclick="startCase()">
-BEGIN INVESTIGATION
+ምርመራውን ጀምር
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CASE HOME
-========================= -->
+<!-- =====================================
+     ዋና ገጽ
+===================================== -->
 
 <section id="zodiacHome" class="screen">
 
@@ -240,112 +242,119 @@ BEGIN INVESTIGATION
 
 <div class="header">
     <button class="back" onclick="show('zodiacIntro')">←</button>
-    <h2>THE ZODIAC</h2>
+    <h2>ዘዲያክት</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">Investigation File</div>
+<div class="chapter">የምርመራ ፋይል</div>
 
 <p>
-Imagine you are opening a case file in 1968.
-There is no name for the killer yet.
-There is no famous symbol.
-There is no cipher.
+1968 ላይ የአንድ መርማሪ ፋይል እንደምትከፍት አስብ።
 </p>
 
 <p>
-There are only victims, crime scenes, witnesses,
-and investigators trying to understand what happened.
+በዚያን ጊዜ ማንም “ዘዲያክት” ብሎ የሚጠራውን
+ገዳይ አያውቅም።
 </p>
 
 <p>
-Then the killer begins communicating with newspapers.
+ምንም የምስጢር ምልክት የለም።
+ምንም ምስጢራዊ ኮድ የለም።
 </p>
 
 <p>
-The investigation changes completely.
+ያሉት የወንጀል ቦታዎች፣ ተጎጂዎች፣
+ምስክሮች እና መርማሪዎች ብቻ ናቸው።
+</p>
+
+<p>
+ከዚያ ግን አንድ ሰው ለጋዜጦች መጻፍ ጀመረ።
+</p>
+
+<p>
+ከዚያ በኋላ ጉዳዩ ሙሉ በሙሉ ተለወጠ።
 </p>
 
 </div>
 
 <div class="investigation-card">
-<h3>🔎 Chapter 1 — The First Crime</h3>
-<p>December 20, 1968. Lake Herman Road.</p>
+<h3>🔎 ምዕራፍ 1 — የመጀመሪያው ወንጀል</h3>
+<p>ታህሳስ 20፣ 1968 — Lake Herman Road</p>
 <button class="choice-btn" onclick="openChapter(1)">
-Enter Crime Scene
+ወደ ወንጀል ቦታው ግባ
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>🔎 Chapter 2 — Blue Rock Springs</h3>
-<p>July 4, 1969.</p>
+<h3>🔎 ምዕራፍ 2 — Blue Rock Springs</h3>
+<p>ሐምሌ 4፣ 1969</p>
 <button class="choice-btn" onclick="openChapter(2)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>✉️ Chapter 3 — Someone Writes</h3>
-<p>The killer begins communicating with newspapers.</p>
+<h3>✉️ ምዕራፍ 3 — አንድ ሰው ይጽፋል</h3>
+<p>ገዳዩ ለጋዜጦች መጻፍ ይጀምራል።</p>
 <button class="choice-btn" onclick="openChapter(3)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>🔐 Chapter 4 — The 408 Cipher</h3>
-<p>A strange message arrives in three pieces.</p>
+<h3>🔐 ምዕራፍ 4 — 408 ኮድ</h3>
+<p>እንግዳ የሆነ የምስጢር መልዕክት ይመጣል።</p>
 <button class="choice-btn" onclick="openChapter(4)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>🌲 Chapter 5 — Lake Berryessa</h3>
-<p>A terrifying new attack.</p>
+<h3>🌲 ምዕራፍ 5 — Lake Berryessa</h3>
+<p>ሌላ አስፈሪ ጥቃት።</p>
 <button class="choice-btn" onclick="openChapter(5)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>🚕 Chapter 6 — The Taxi Driver</h3>
-<p>October 11, 1969.</p>
+<h3>🚕 ምዕራፍ 6 — የታክሲ ሹፌሩ</h3>
+<p>ጥቅምት 11፣ 1969</p>
 <button class="choice-btn" onclick="openChapter(6)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>✉️ Chapter 7 — The Zodiac Speaks</h3>
-<p>The killer claims responsibility.</p>
+<h3>✉️ ምዕራፍ 7 — ዘዲያክት ይናገራል</h3>
+<p>ገዳዩ ደብዳቤዎቹን ይቀጥላል።</p>
 <button class="choice-btn" onclick="openChapter(7)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>🔐 Chapter 8 — The 340 Cipher</h3>
-<p>A message that would remain unsolved for 51 years.</p>
+<h3>🔐 ምዕራፍ 8 — 340 ኮድ</h3>
+<p>ለ51 ዓመታት ያልተፈታው ኮድ።</p>
 <button class="choice-btn" onclick="openChapter(8)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>👤 Chapter 9 — Who Was He?</h3>
-<p>Investigators begin looking for a person behind the name.</p>
+<h3>👤 ምዕራፍ 9 — ማን ነበር?</h3>
+<p>መርማሪዎች የሰውየውን ማንነት መፈለግ ይጀምራሉ።</p>
 <button class="choice-btn" onclick="openChapter(9)">
-Continue
+ቀጥል
 </button>
 </div>
 
 <div class="investigation-card locked">
-<h3>🧩 Chapter 10 — The Final File</h3>
-<p>What can actually be proven?</p>
+<h3>🧩 ምዕራፍ 10 — የመጨረሻው ፋይል</h3>
+<p>በእውነት ምን ማረጋገጥ ይቻላል?</p>
 <button class="choice-btn" onclick="openChapter(10)">
-Continue
+የመጨረሻውን ፋይል ክፈት
 </button>
 </div>
 
@@ -353,9 +362,9 @@ Continue
 </section>
 
 
-<!-- =========================
-     CHAPTER 1
-========================= -->
+<!-- =====================================
+     ምዕራፍ 1
+===================================== -->
 
 <section id="chapter1" class="screen">
 
@@ -363,81 +372,82 @@ Continue
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 1</h2>
+<h2>ምዕራፍ 1</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">December 20, 1968</div>
+<div class="chapter">ታህሳስ 20፣ 1968</div>
 
-<div class="big-title">THE FIRST CRIME</div>
+<div class="big-title">የመጀመሪያው ወንጀል</div>
 
-<div class="year">Lake Herman Road — California</div>
+<div class="year">Lake Herman Road — ካሊፎርኒያ</div>
 
 <p>
-It is late at night.
+ሌሊት ነው።
 </p>
 
 <p>
-Seventeen-year-old David Faraday and sixteen-year-old Betty Lou Jensen
-are together near Lake Herman Road.
+17 ዓመቱ ዴቪድ ፋራዴይ እና 16 ዓመቷ ቤቲ ሉ ጄንሰን
+በLake Herman Road አካባቢ አብረው ናቸው።
 </p>
 
 <p>
-The area is quiet and relatively isolated.
+ቦታው ጸጥ ያለ እና ከብዙ ሰዎች የራቀ ነው።
 </p>
 
 <p>
-Then something happens that investigators will spend years trying
-to understand.
+ከዚያ ግን የጥይት ድምጽ ይሰማል።
 </p>
 
 <p>
-Gunfire.
+መርማሪዎች ወደ ቦታው ሲደርሱ ዴቪድ እና
+ቤቲ ሉ ሞተው ያገኛሉ።
 </p>
 
 <p>
-When investigators arrive, David Faraday and Betty Lou Jensen are dead.
+በዚያን ጊዜ ግን ማንም “ዘዲያክት” የሚባል ሰው
+እንዳለ አያውቅም።
 </p>
 
 <p>
-There is no mysterious letter waiting for police.
-There is no killer calling himself Zodiac.
+ምስጢራዊ ደብዳቤ የለም።
+ኮድ የለም።
 </p>
 
 <p>
-At this point, investigators are simply looking at a double homicide.
+የሚታየው የሁለት ወጣቶች ግድያ ብቻ ነው።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>🔎 Your first question</h3>
+<h3>🔎 የመርማሪው የመጀመሪያ ጥያቄ</h3>
 
 <p>
-If you were the investigator arriving that night,
-what would you need to establish first?
+አንተ በዚያ ሌሊት ወደ ወንጀል ቦታው የደረስክ
+መርማሪ ብትሆን መጀመሪያ ምን ማወቅ ትፈልጋለህ?
 </p>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-A. What happened at the scene and how the victims were attacked.
+<button class="choice-btn" onclick="answer(this,'correct')">
+A. ምን እንደተፈጠረ እና ጥቃቱ እንዴት እንደተፈጸመ።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-B. Find the Zodiac symbol.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+B. የዘዲያክትን ምልክት መፈለግ።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-C. Decode a letter from the killer.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+C. የገዳዩን ኮድ መፍታት።
 </button>
 
 <div class="answer">
-<strong>Correct.</strong><br><br>
-There is a problem with the other answers:
-at this point, there is no known Zodiac identity,
-no known Zodiac symbol, and no letter.
-Investigators first have to understand the crime itself.
+<strong>ትክክል።</strong><br><br>
+
+በዚህ ጊዜ የዘዲያክት ስም እንኳን አልተሰጠም።
+ኮድም ሆነ ምስጢራዊ ደብዳቤ የለም።
+መርማሪዎች መጀመሪያ ወንጀሉን መረዳት አለባቸው።
 </div>
 
 </div>
@@ -445,37 +455,36 @@ Investigators first have to understand the crime itself.
 <div class="story-box">
 
 <p>
-This distinction is important.
+ይህንን ነገር ማስታወስ አስፈላጊ ነው።
 </p>
 
 <p>
-When people look backward at the Zodiac case today,
-they already know the entire story.
-Investigators in December 1968 did not.
+ዛሬ የዘዲያክትን ታሪክ ስናውቅ የዛሬውን እውቀት
+ወደ 1968 መመለስ ቀላል ነው።
 </p>
 
 <p>
-They had to work forward from almost nothing.
+ነገር ግን የዚያን ጊዜ መርማሪዎች ወደፊት
+ምን እንደሚፈጠር አያውቁም ነበር።
 </p>
 
 <p>
-And for months, there would be no obvious connection
-between this crime and what came later.
+ለእነሱ ይህ አንድ የሁለት ሰዎች ግድያ ጉዳይ ብቻ ነበር።
 </p>
 
 </div>
 
 <button class="primary" onclick="unlock(2)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 2
-========================= -->
+<!-- =====================================
+     ምዕራፍ 2
+===================================== -->
 
 <section id="chapter2" class="screen">
 
@@ -483,95 +492,97 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 2</h2>
+<h2>ምዕራፍ 2</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">July 4, 1969</div>
+<div class="chapter">ሐምሌ 4፣ 1969</div>
 
 <div class="big-title">BLUE ROCK SPRINGS</div>
 
-<div class="year">Vallejo, California</div>
+<div class="year">Vallejo — ካሊፎርኒያ</div>
 
 <p>
-More than six months have passed since the Lake Herman Road murders.
+ከመጀመሪያው ግድያ ከስድስት ወራት በላይ አልፏል።
 </p>
 
 <p>
-Then, on the night of July 4, another attack occurs.
+ከዚያ ሐምሌ 4፣ 1969 ሌላ ጥቃት ይፈጸማል።
 </p>
 
 <p>
-Darlene Ferrin and Michael Mageau are sitting in a car
-at Blue Rock Springs.
+ዳርሊን ፌሪን እና ማይክል ማጆ በBlue Rock Springs
+በመኪና ውስጥ አሉ።
 </p>
 
 <p>
-Another vehicle approaches.
+ሌላ መኪና ወደ እነሱ ይቀርባል።
 </p>
 
 <p>
-The situation suddenly becomes violent.
+በድንገት ሁኔታው ወደ አስፈሪ ጥቃት ይቀየራል።
 </p>
 
 <p>
-Darlene Ferrin is killed.
-Michael Mageau survives the attack.
+ዳርሊን ፌሪን በጥቃቱ ሞተች።
+ማይክል ማጆ ግን ተርፏል።
 </p>
 
 <p>
-For investigators, the surviving victim becomes extremely important.
+ለመርማሪዎች ይህ በጣም አስፈላጊ ነገር ነው።
 </p>
 
 <p>
-A living witness may be able to describe the attacker.
-</p>
-
-</div>
-
-<div class="investigation-card">
-
-<h3>🧠 Evidence: The Witness</h3>
-
-<p>
-Michael Mageau survived and was able to provide investigators
-with information about the attacker.
-</p>
-
-<p>
-But eyewitness evidence has limitations.
-A witness may remember important details,
-while other details may be uncertain.
+አንድ ሰው ከጥቃቱ ተርፏል።
+ምናልባት ስለ አጥቂው ጠቃሚ መረጃ ሊሰጥ ይችላል።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>Question</h3>
+<h3>🧠 ማስረጃ — ምስክሩ</h3>
 
 <p>
-Why is a surviving witness valuable to an investigation?
+ማይክል ማጆ ከጥቃቱ ተርፎ ስለ አጥቂው
+መረጃ ለመርማሪዎች መስጠት ችሏል።
 </p>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-A. Because the witness may provide information about the attacker.
+<p>
+ነገር ግን የሰው ማስታወስ ሁልጊዜ ፍጹም አይደለም።
+ስለዚህ የምስክር መረጃ ከሌሎች ማስረጃዎች
+ጋር መነጻጸር አለበት።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>ጥያቄ</h3>
+
+<p>
+ተርፎ የሚታይ ምስክር ለምን ጠቃሚ ነው?
+</p>
+
+<button class="choice-btn" onclick="answer(this,'correct')">
+A. ስለ አጥቂው ጠቃሚ መረጃ ሊሰጥ ስለሚችል።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-B. Because a witness automatically knows the attacker's identity.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+B. ምስክሩ የገዳዩን ማንነት ሁልጊዜ ስለሚያውቅ።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-C. Because eyewitness testimony is always perfect.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+C. የምስክር ቃል ሁልጊዜ ፍጹም ስለሆነ።
 </button>
 
 <div class="answer">
-<strong>Correct.</strong><br><br>
-A witness can provide important information,
-but investigators still need to compare that information
-with physical evidence and other witnesses.
+<strong>ትክክል።</strong><br><br>
+
+ምስክሩ ጠቃሚ መረጃ ሊሰጥ ይችላል።
+ነገር ግን መርማሪዎች ያንን መረጃ
+ከሌሎች ማስረጃዎች ጋር ማረጋገጥ አለባቸው።
 </div>
 
 </div>
@@ -579,44 +590,45 @@ with physical evidence and other witnesses.
 <div class="story-box">
 
 <p>
-Then something happens that changes the investigation.
+ከዚያ ግን ሌላ ነገር ይፈጠራል።
 </p>
 
 <p>
-The police receive a telephone call.
+ፖሊስ የሚደውል ሰው ይቀበላል።
 </p>
 
 <p>
-The caller claims responsibility for both the Blue Rock Springs
-attack and the earlier Lake Herman Road murders.
+ደዋዩ የBlue Rock Springs ጥቃትን እና
+ከዚያ በፊት በLake Herman Road የተፈጸመውን
+ግድያ እሱ እንደፈጸመ ይናገራል።
 </p>
 
 <p>
-Now investigators have a possible connection between the two crimes.
+አሁን መርማሪዎች በሁለቱ ጉዳዮች መካከል
+ሊኖር የሚችል ግንኙነት አገኙ።
 </p>
 
 <p>
-But they still don't know who the caller is.
+ግን ደዋዩ ማን እንደሆነ አያውቁም።
 </p>
 
 <p>
-And they have no idea that the case is about to become
-something much larger.
+ይህ የምርመራው መጀመሪያ ብቻ ነው።
 </p>
 
 </div>
 
 <button class="primary" onclick="unlock(3)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 3
-========================= -->
+<!-- =====================================
+     ምዕራፍ 3
+===================================== -->
 
 <section id="chapter3" class="screen">
 
@@ -624,100 +636,94 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 3</h2>
+<h2>ምዕራፍ 3</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">July 31, 1969</div>
+<div class="chapter">ሐምሌ 31፣ 1969</div>
 
-<div class="big-title">SOMEONE WRITES</div>
+<div class="big-title">አንድ ሰው ይጽፋል</div>
 
-<div class="year">Bay Area Newspapers</div>
+<div class="year">የካሊፎርኒያ ጋዜጦች</div>
 
 <p>
-Now the investigation enters unfamiliar territory.
+አሁን ምርመራው ወደ ሙሉ በሙሉ አዲስ አቅጣጫ ይገባል።
 </p>
 
 <p>
-Three newspapers receive letters.
+ሶስት ጋዜጦች ደብዳቤ ይቀበላሉ።
 </p>
 
 <p>
-The writer claims responsibility for the murders
-and demands that the newspapers publish his messages.
+ደብዳቤዎቹን የጻፈው ሰው የቀድሞ ግድያዎችን
+እሱ እንደፈጸመ ይናገራል።
 </p>
 
 <p>
-The letters are accompanied by portions of a strange cipher.
+ከዚያም ጋዜጦቹ መልዕክቱን እንዲያትሙ ይጠይቃል።
 </p>
 
 <p>
-The writer threatens further violence if his demands are ignored.
+ከደብዳቤዎቹ ጋር እንግዳ የሆነ የምስጢር ኮድ ክፍሎች
+ይላካሉ።
 </p>
 
 <p>
-For investigators, this creates a new problem.
-</p>
-
-<p>
-The killer is not simply committing crimes.
-</p>
-
-<p>
-Someone is deliberately communicating with the public.
+ገዳዩ ጋዜጦቹ ፍላጎቱን ካልፈጸሙ ተጨማሪ
+ሰዎችን እንደሚገድል ያስፈራራል።
 </p>
 
 </div>
 
 <div class="quote-box">
-The writer eventually begins using a name:
-<strong>“Zodiac.”</strong>
+ገዳዩ ወንጀል ብቻ አይፈጽምም።
+ሆን ብሎ ከህዝብ ጋር መገናኘት ጀምሯል።
 </div>
 
 <div class="investigation-card">
 
-<h3>✉️ Evidence File A</h3>
+<h3>✉️ ማስረጃ A</h3>
 
 <p>
-Three newspapers receive different portions of the same
-408-character cipher.
+ሶስት ጋዜጦች የ408 ምልክቶች ኮድ የተለያዩ
+ክፍሎችን ይቀበላሉ።
 </p>
 
 <p>
-When the portions are combined, investigators have
-one complete encrypted message.
+ክፍሎቹ ሲጣመሩ አንድ ሙሉ ምስጢራዊ መልዕክት
+ይፈጠራል።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>🧩 Your deduction</h3>
+<h3>🧩 የመርማሪው ጥያቄ</h3>
 
 <p>
-Why would an investigator compare the letters
-with evidence from earlier crimes?
+መርማሪዎች የደብዳቤዎቹን ይዘት ከቀድሞዎቹ
+ወንጀሎች ማስረጃ ጋር ለምን ማነጻጸር ይፈልጋሉ?
 </p>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-A. To determine whether the writer may actually be connected to the crimes.
+<button class="choice-btn" onclick="answer(this,'correct')">
+A. ደብዳቤውን የጻፈው ሰው ከወንጀሎቹ ጋር በእውነት የተገናኘ መሆኑን ለመመርመር።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-B. Because every anonymous letter must be genuine.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+B. ማንኛውም ደብዳቤ እውነት ስለሆነ።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-C. Because the cipher itself proves the writer's identity.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+C. ኮዱ ብቻ የገዳዩን ማንነት ስለሚያረጋግጥ።
 </button>
 
 <div class="answer">
-<strong>Correct.</strong><br><br>
-A claim of responsibility is evidence to examine,
-not automatic proof.
-Investigators need to compare details in the communications
-with known facts from the crimes.
+<strong>ትክክል።</strong><br><br>
+
+አንድ ሰው “እኔ ነኝ” ማለቱ ብቻ
+በቂ ማስረጃ አይደለም።
+መርማሪዎች ከሌሎች ማስረጃዎች ጋር ማነጻጸር አለባቸው።
 </div>
 
 </div>
@@ -725,38 +731,35 @@ with known facts from the crimes.
 <div class="story-box">
 
 <p>
-The newspapers publish the cipher.
+ጋዜጦቹ ኮዱን ለህዝብ ያሳትማሉ።
 </p>
 
 <p>
-Now the public can see it too.
+አሁን ሁሉም ሰው ኮዱን ማየት ይችላል።
 </p>
 
 <p>
-And somewhere in California, people begin trying to solve it.
-</p>
-
-<p>
-The question becomes:
+ከካሊፎርኒያ ውስጥ አንድ ሰው ግን በተለየ መንገድ
+ይህንን ኮድ ለመፍታት መሞከር ይጀምራል።
 </p>
 
 <div class="quote-box">
-What is hidden inside the message?
+በዚህ መልዕክት ውስጥ ምን ተደብቆ ይሆን?
 </div>
 
 </div>
 
 <button class="primary" onclick="unlock(4)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 4
-========================= -->
+<!-- =====================================
+     ምዕራፍ 4
+===================================== -->
 
 <section id="chapter4" class="screen">
 
@@ -764,103 +767,101 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 4</h2>
+<h2>ምዕራፍ 4</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">The 408 Cipher</div>
+<div class="chapter">408 ኮድ</div>
 
-<div class="big-title">BREAKING THE CODE</div>
+<div class="big-title">ኮዱን መፍታት</div>
 
-<div class="year">August 1969</div>
+<div class="year">ነሐሴ 1969</div>
 
 <p>
-The cipher looks almost impossible to read.
+ኮዱ ለመመልከት እጅግ የተወሳሰበ ነው።
 </p>
 
 <p>
-There are strange symbols arranged in rows.
+ተለያዩ ምልክቶች በረድፍ ተደርድረዋል።
 </p>
 
 <p>
-There are no normal words.
+የተለመዱ ቃላት አይታዩም።
 </p>
 
 <p>
-No obvious sentence.
+የተለመደ ዓረፍተ ነገርም አይታይም።
 </p>
 
 <p>
-But two civilians, Donald and Bettye Harden,
-work on the problem.
+ነገር ግን ዶናልድ እና ቤቲ ሃርደን የተባሉ
+ሁለት ሰዎች ኮዱን ለመፍታት ይሞክራሉ።
 </p>
 
 <p>
-They eventually find a solution.
+በመጨረሻም መፍትሄውን ያገኛሉ።
 </p>
 
 <p>
-The message is not a secret confession revealing a name.
-Instead, it contains a disturbing message from the writer.
+ነገር ግን መልዕክቱ የገዳዩን ስም አይገልጥም።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>🔐 What did the first cipher teach investigators?</h3>
+<h3>🔐 የማስረጃ ፋይል</h3>
 
 <p>
-It demonstrated that the writer was capable of creating
-a complicated-looking coded message.
+408 ኮዱ በ1969 በዶናልድ እና ቤቲ ሃርደን
+ተፈቷል።
 </p>
 
 <p>
-But it did <strong>not</strong> provide investigators with
-a confirmed identity.
+ነገር ግን ይህ መፍትሄ የገዳዩን ማንነት
+በቀጥታ አይገልጥም።
 </p>
 
 </div>
 
 <div class="fact">
-<strong>Important:</strong><br>
-The 408 cipher was solved in 1969 by Donald and Bettye Harden.
-The final portion of the original cipher did not decode cleanly.
+<strong>አስፈላጊ፦</strong><br>
+408 ኮድ ተፈትቶ ቢሆንም የገዳዩን ማንነት
+የሚያረጋግጥ መልስ አልሰጠም።
 </div>
 
 <div class="story-box">
 
 <p>
-For the public, the cipher is fascinating.
+ለህዝቡ ኮዱ እጅግ ሚስጥራዊ ነገር ነው።
 </p>
 
 <p>
-For investigators, however, another question matters more:
+ለመርማሪዎች ግን ዋናው ጥያቄ ሌላ ነው።
 </p>
 
 <div class="quote-box">
-Who is the person writing these messages?
+ይህንን መልዕክት የጻፈው ሰው ማን ነው?
 </div>
 
 <p>
-Before investigators can answer that,
-another attack occurs.
+ጥያቄው መልስ ሳያገኝ ሌላ ጥቃት ይፈጸማል።
 </p>
 
 </div>
 
 <button class="primary" onclick="unlock(5)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 5
-========================= -->
+<!-- =====================================
+     ምዕራፍ 5
+===================================== -->
 
 <section id="chapter5" class="screen">
 
@@ -868,66 +869,67 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 5</h2>
+<h2>ምዕራፍ 5</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">September 27, 1969</div>
+<div class="chapter">መስከረም 27፣ 1969</div>
 
 <div class="big-title">LAKE BERRYESSA</div>
 
-<div class="year">Napa County, California</div>
+<div class="year">Napa County — ካሊፎርኒያ</div>
 
 <p>
-Bryan Hartnell and Cecelia Shepard are at Lake Berryessa.
+ብራያን ሃርትኔል እና ሴሲሊያ ሼፓርድ
+በLake Berryessa አካባቢ ናቸው።
 </p>
 
 <p>
-A man approaches them.
+አንድ ሰው ወደ እነሱ ይቀርባል።
 </p>
 
 <p>
-What follows is very different from the earlier shootings.
+የሚከተለው ከቀድሞዎቹ ጥቃቶች የተለየ ነው።
 </p>
 
 <p>
-The attacker is wearing a distinctive hood.
+አጥቂው ልዩ የሆነ መልክ ያለው ኮፍያ ለብሷል።
 </p>
 
 <p>
-Hartnell and Shepard are attacked with a knife.
+ሃርትኔል እና ሼፓርድ በቢላ ይጠቃሉ።
 </p>
 
 <p>
-Hartnell survives.
-Cecelia Shepard later dies from her injuries.
+ብራያን ሃርትኔል ተርፏል።
+ሴሲሊያ ሼፓርድ ግን በኋላ በጉዳቷ ሞተች።
 </p>
 
 <p>
-Before leaving, the attacker writes a message on the side
-of Hartnell's car.
+አጥቂው ከቦታው ከመሄዱ በፊት
+በሃርትኔል መኪና ላይ መልዕክት ጽፎ ይሄዳል።
 </p>
 
 </div>
 
 <div class="quote-box">
-The message includes dates connected with earlier attacks
-and the symbol later associated with the Zodiac.
+መልዕክቱ ከቀድሞ ጥቃቶች ጋር የተያያዙ
+ቀኖችን እና ከዘዲያክት ጋር የተያያዘውን
+ምልክት ይይዛል።
 </div>
 
 <div class="investigation-card">
 
-<h3>🔎 New Evidence</h3>
+<h3>🔎 አዲስ ማስረጃ</h3>
 
 <p>
-Investigators now have something unusual:
-a crime-scene communication directly connected
-to the attacker.
+አሁን መርማሪዎች ከወንጀል ቦታው ጋር በቀጥታ
+የተያያዘ መልዕክት አላቸው።
 </p>
 
 <p>
-This becomes another piece of the growing puzzle.
+ይህ የጉዳዩ ሌላ ጠቃሚ ክፍል ይሆናል።
 </p>
 
 </div>
@@ -935,44 +937,44 @@ This becomes another piece of the growing puzzle.
 <div class="story-box">
 
 <p>
-The case is becoming stranger.
+ጉዳዩ እየተወሳሰበ ነው።
 </p>
 
 <p>
-Different locations.
+የተለያዩ ቦታዎች።
 </p>
 
 <p>
-Different victims.
+የተለያዩ ተጎጂዎች።
 </p>
 
 <p>
-Different methods.
+የተለያዩ የጥቃት መንገዶች።
 </p>
 
 <p>
-But the communications suggest that the same person
-may be claiming responsibility.
+ነገር ግን ደብዳቤዎቹ ሁሉም ከአንድ ሰው
+ሊመጡ እንደሚችሉ ይጠቁማሉ።
 </p>
 
 <p>
-And then, only a few weeks later,
-the case changes again.
+ከዚያ ከጥቂት ሳምንታት በኋላ
+ሌላ አስፈሪ ግድያ ይፈጸማል።
 </p>
 
 </div>
 
 <button class="primary" onclick="unlock(6)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 6
-========================= -->
+<!-- =====================================
+     ምዕራፍ 6
+===================================== -->
 
 <section id="chapter6" class="screen">
 
@@ -980,67 +982,64 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 6</h2>
+<h2>ምዕራፍ 6</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">October 11, 1969</div>
+<div class="chapter">ጥቅምት 11፣ 1969</div>
 
-<div class="big-title">THE TAXI DRIVER</div>
+<div class="big-title">የታክሲ ሹፌሩ</div>
 
 <div class="year">Presidio Heights — San Francisco</div>
 
 <p>
-Paul Stine is working as a taxi driver.
+ፖል ስታይን የታክሲ ሹፌር ነው።
 </p>
 
 <p>
-He picks up a passenger.
+አንድ ተሳፋሪ ይዞ ወደ Presidio Heights
+አካባቢ ይጓዛል።
 </p>
 
 <p>
-The passenger asks to be taken to the Presidio Heights area.
+በጉዞው ወቅት ነገሮች በድንገት ይቀየራሉ።
 </p>
 
 <p>
-At some point during the trip, the situation becomes deadly.
+ፖል ስታይን ይገደላል።
 </p>
 
 <p>
-Paul Stine is killed.
+ከዚያ ገዳዩ ከታክሲው ይወጣል።
 </p>
 
 <p>
-The killer leaves the taxi.
-</p>
-
-<p>
-Police begin searching the area.
+ፖሊስ አካባቢውን መፈተሽ ይጀምራል።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>🚨 A Critical Moment</h3>
+<h3>🚨 አስፈላጊ ጊዜ</h3>
 
 <p>
-Witnesses report seeing a man near the taxi.
+አንዳንድ ምስክሮች በአካባቢው የነበረውን
+ሰው ይመለከታሉ።
 </p>
 
 <p>
-Police receive a description.
+ፖሊስ ስለ ሰውየው መግለጫ ይቀበላል።
 </p>
 
 <p>
-But a communication error contributes to officers initially
-looking for the wrong description.
+ነገር ግን በመግባባት ላይ በተፈጠረ ስህተት
+ፖሊሶች መጀመሪያ የተሳሳተ መግለጫ ይከተላሉ።
 </p>
 
 <p>
-The investigation becomes one of the most important episodes
-in the entire case.
+ይህ በጉዳዩ ላይ እጅግ አስፈላጊ ክስተት ይሆናል።
 </p>
 
 </div>
@@ -1048,40 +1047,38 @@ in the entire case.
 <div class="story-box">
 
 <p>
-Three days later, the San Francisco Chronicle receives a letter.
+ከሶስት ቀናት በኋላ የSan Francisco Chronicle
+ጋዜጣ አንድ ደብዳቤ ይቀበላል።
 </p>
 
 <p>
-Inside is a piece of Paul Stine's bloody shirt.
+በደብዳቤው ውስጥ ከፖል ስታይን ደም የተነካ
+የሸሚዝ ቁራጭ አለ።
 </p>
 
 <p>
-The writer claims responsibility for the murder.
-</p>
-
-<p>
-Now investigators have a communication directly associated
-with the crime.
+ደብዳቤውን የጻፈው ሰው የፖል ስታይንን
+ግድያ እሱ እንደፈጸመ ይናገራል።
 </p>
 
 </div>
 
 <div class="quote-box">
-The killer is no longer simply a name in the newspapers.
-He is deliberately challenging investigators.
+አሁን ገዳዩ በጋዜጦች ላይ የሚታይ ስም ብቻ አይደለም።
+መርማሪዎችን በቀጥታ እየተገዳደረ ነው።
 </div>
 
 <button class="primary" onclick="unlock(7)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 7
-========================= -->
+<!-- =====================================
+     ምዕራፍ 7
+===================================== -->
 
 <section id="chapter7" class="screen">
 
@@ -1089,64 +1086,60 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 7</h2>
+<h2>ምዕራፍ 7</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">October–November 1969</div>
+<div class="chapter">ጥቅምት–ህዳር 1969</div>
 
-<div class="big-title">THE ZODIAC SPEAKS</div>
+<div class="big-title">ዘዲያክት ይናገራል</div>
 
 <p>
-The letters become an important part of the investigation.
+ደብዳቤዎቹ የምርመራው ዋና ክፍል ይሆናሉ።
 </p>
 
 <p>
-The writer uses the name Zodiac.
+ጸሐፊው “Zodiac” የሚለውን ስም ይጠቀማል።
 </p>
 
 <p>
-He sends messages to newspapers.
+ስለቀድሞ ወንጀሎች ይናገራል።
 </p>
 
 <p>
-He talks about previous crimes.
+ተጨማሪ ጥቃቶችን ያስፈራራል።
 </p>
 
 <p>
-He threatens future violence.
-</p>
-
-<p>
-And he continues to challenge police and the public.
+ፖሊስን እና ህዝቡን ሆን ብሎ ይገዳደራል።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>✉️ Evidence Board</h3>
+<h3>✉️ የማስረጃ ሰሌዳ</h3>
 
 <div class="fact">
-<strong>July 31, 1969</strong><br>
-Three newspapers receive portions of the 408 cipher.
+<strong>ሐምሌ 31፣ 1969</strong><br>
+ሶስት ጋዜጦች የ408 ኮድ ክፍሎችን ይቀበላሉ።
 </div>
 
 <div class="fact">
-<strong>August 4, 1969</strong><br>
-A letter includes the name “Zodiac.”
+<strong>ነሐሴ 4፣ 1969</strong><br>
+አንድ ደብዳቤ “Zodiac” የሚለውን ስም ይጠቀማል።
 </div>
 
 <div class="fact">
-<strong>October 13, 1969</strong><br>
-A letter claiming responsibility for Paul Stine's murder
-includes a piece of his shirt.
+<strong>ጥቅምት 13፣ 1969</strong><br>
+የፖል ስታይንን ግድያ እንደፈጸመ የሚናገር
+ደብዳቤ ይላካል።
 </div>
 
 <div class="fact">
-<strong>November 8, 1969</strong><br>
-The Zodiac sends the 340-character cipher.
+<strong>ህዳር 8፣ 1969</strong><br>
+340 ምልክቶች ያሉት አዲስ ኮድ ይላካል።
 </div>
 
 </div>
@@ -1154,60 +1147,61 @@ The Zodiac sends the 340-character cipher.
 <div class="story-box">
 
 <p>
-At this point, investigators have a huge amount of information.
+በዚህ ጊዜ መርማሪዎች ብዙ መረጃ አላቸው።
 </p>
 
 <p>
-But information is not the same thing as an identity.
+ነገር ግን ብዙ መረጃ መኖሩ የሰውየውን
+ማንነት ማረጋገጥ አይደለም።
 </p>
 
 <p>
-A person can claim to be responsible for crimes.
-A person can provide details.
-A person can write letters.
+አንድ ሰው ወንጀል እንደፈጸመ ሊጽፍ ይችላል።
 </p>
 
 <p>
-The challenge is proving who is actually behind them.
+ግን መርማሪዎች እውነት መሆኑን በሌሎች
+ማስረጃዎች ማረጋገጥ አለባቸው።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>🧠 Think like an investigator</h3>
+<h3>🧠 እንደ መርማሪ አስብ</h3>
 
 <p>
-Which is stronger evidence?
+ከሚከተሉት የትኛው የበለጠ ጠንካራ ማስረጃ ነው?
 </p>
 
-<button class="choice-btn" onclick="answer(this, 'wrong')">
-A. Someone claiming in a letter that they committed a crime.
+<button class="choice-btn" onclick="answer(this,'wrong')">
+A. አንድ ሰው በደብዳቤ ወንጀል እንደፈጸመ መናገሩ።
 </button>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-B. Independent physical or witness evidence connecting a person to the crime.
+<button class="choice-btn" onclick="answer(this,'correct')">
+B. አንድን ሰው ከወንጀሉ ጋር የሚያገናኝ ገለልተኛ አካላዊ ወይም የምስክር ማስረጃ።
 </button>
 
 <div class="answer">
-<strong>Correct.</strong><br><br>
-A claim can be important, especially if it contains information
-not publicly known, but investigators still need corroboration.
+<strong>ትክክል።</strong><br><br>
+
+የአንድ ሰው የራሱ አባባል ጠቃሚ ሊሆን ይችላል።
+ነገር ግን ከሌሎች ማስረጃዎች ጋር መረጋገጥ አለበት።
 </div>
 
 </div>
 
 <button class="primary" onclick="unlock(8)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 8
-========================= -->
+<!-- =====================================
+     ምዕራፍ 8
+===================================== -->
 
 <section id="chapter8" class="screen">
 
@@ -1215,72 +1209,73 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 8</h2>
+<h2>ምዕራፍ 8</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">November 8, 1969</div>
+<div class="chapter">ህዳር 8፣ 1969</div>
 
-<div class="big-title">THE 340 CIPHER</div>
+<div class="big-title">340 ኮድ</div>
 
 <p>
-The San Francisco Chronicle receives another strange communication.
+San Francisco Chronicle ሌላ ሚስጥራዊ መልዕክት ይቀበላል።
 </p>
 
 <p>
-This time, the cipher contains 340 characters.
+በዚህ ጊዜ ኮዱ 340 ምልክቶች አሉት።
 </p>
 
 <p>
-For decades, people will try to understand it.
+ለብዙ ዓመታት ሰዎች ይህንን ኮድ ለመፍታት ይሞክራሉ።
 </p>
 
 <p>
-Professional cryptographers, amateur investigators,
-and computer-assisted researchers all attempt to solve it.
+ባለሙያዎች፣ ኮድ ፈቺዎች እና በጉዳዩ ላይ
+የሚመራመሩ ሰዎች ሁሉ ይሞክራሉ።
 </p>
 
 <p>
-But the message remains unread.
+ግን መልዕክቱ አይፈታም።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>🔐 Evidence File</h3>
+<h3>🔐 የማስረጃ ፋይል</h3>
 
 <p>
-The cipher becomes known as the <strong>Z340</strong>.
+ኮዱ በኋላ <strong>Z340</strong> ተብሎ ይጠራል።
 </p>
 
 <p>
-Unlike the first cipher, it refuses to give up its meaning.
+ከ1969 ጀምሮ ለአስርተ ዓመታት ያህል
+መፍትሄ ሳያገኝ ይቆያል።
 </p>
 
 <p>
-Years become decades.
+1969...
 </p>
 
 <p>
-1969 becomes 1970.
+1970...
 </p>
 
 <p>
-Then 1980.
+1980...
 </p>
 
 <p>
-1990.
+1990...
 </p>
 
 <p>
-2000.
+2000...
 </p>
 
 <p>
-Still unsolved.
+ኮዱ አሁንም አልተፈታም።
 </p>
 
 </div>
@@ -1290,58 +1285,58 @@ Still unsolved.
 <div class="chapter">2020</div>
 
 <p>
-More than fifty years after the cipher was sent,
-David Oranchak, Sam Blake and Jarl Van Eycke
-solve the Z340.
+ከኮዱ መላክ ከ51 ዓመታት በኋላ
+ዴቪድ ኦራንቻክ፣ ሳም ብሌክ እና ጃርል ቫን ኢክ
+Z340ን መፍታት ቻሉ።
 </p>
 
 <p>
-The solution is confirmed as a genuine solution,
-but there is a disappointment.
+መፍትሄው እውነተኛ መሆኑ ተረጋገጠ።
 </p>
 
 <p>
-The message does not reveal the killer's name.
+ነገር ግን አንድ ትልቅ ጥያቄ እንደነበረ
+ቀጥሏል።
 </p>
 
 <p>
-Instead, it contains another strange message from the Zodiac.
+ኮዱ የገዳዩን ስም አልገለጠም።
 </p>
 
 </div>
 
 <div class="quote-box">
-The code was solved.
-The identity was not.
+ኮዱ ተፈታ።
+ግን ገዳዩ አልታወቀም።
 </div>
 
 <div class="investigation-card">
 
-<h3>🔎 What does this mean?</h3>
+<h3>🔎 ይህ ምን ማለት ነው?</h3>
 
 <p>
-Solving a cipher is not the same as solving a murder case.
+አንድ ኮድ መፍታት ማለት የግድያ ጉዳዩን
+ሙሉ በሙሉ መፍታት ማለት አይደለም።
 </p>
 
 <p>
-The Z340 gives investigators and researchers another piece
-of the historical record, but it does not provide a confirmed
-identity for the Zodiac.
+Z340 ተጨማሪ መረጃ ሰጥቷል።
+ነገር ግን የዘዲያክትን ማንነት አላረጋገጠም።
 </p>
 
 </div>
 
 <button class="primary" onclick="unlock(9)">
-CONTINUE
+ቀጣዩን ምዕራፍ ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 9
-========================= -->
+<!-- =====================================
+     ምዕራፍ 9
+===================================== -->
 
 <section id="chapter9" class="screen">
 
@@ -1349,96 +1344,80 @@ CONTINUE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>CHAPTER 9</h2>
+<h2>ምዕራፍ 9</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">The Search for a Name</div>
+<div class="chapter">የማንነት ፍለጋ</div>
 
-<div class="big-title">WHO WAS THE ZODIAC?</div>
+<div class="big-title">ዘዲያክት ማን ነበር?</div>
 
 <p>
-Now we reach one of the most difficult parts of the case.
+አሁን ወደ ምርመራው ከባድ ክፍል ደርሰናል።
 </p>
 
 <p>
-Investigators had to move from:
+መርማሪዎች ከወንጀል ቦታዎች የተገኙ ማስረጃዎችን፣
+የምስክሮችን መረጃ፣ ደብዳቤዎችን፣ ኮዶችን
+እና ሌሎች መረጃዎችን አንድ ላይ ማየት አለባቸው።
 </p>
 
-<div class="fact">
-Crime scenes
-</div>
-
-<div class="fact">
-Witness descriptions
-</div>
-
-<div class="fact">
-Letters
-</div>
-
-<div class="fact">
-Ciphers
-</div>
-
-<div class="fact">
-Fingerprints and other physical evidence
-</div>
-
-<div class="fact">
-Possible suspects
-</div>
-
 <p>
-and try to determine whether all of it pointed
-to the same person.
+ከዚያም እነዚህ ሁሉ ወደ አንድ ሰው
+ይመራሉን? የሚለውን ጥያቄ መመለስ አለባቸው።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>👤 Persons of Interest</h3>
+<h3>👤 የተጠረጠሩ ሰዎች</h3>
 
 <p>
-Over the decades, numerous people have been proposed
-as possible suspects.
+በአመታት ውስጥ ብዙ ሰዎች ከዘዲያክት ጋር
+ሊገናኙ እንደሚችሉ ተጠቁመዋል።
 </p>
 
 <p>
-One of the best-known was Arthur Leigh Allen.
+ከታወቁት ሰዎች አንዱ Arthur Leigh Allen ነበር።
 </p>
 
 <p>
-However, being a person of interest is not the same thing
-as being proven to be the Zodiac.
+ነገር ግን አንድ ሰው በምርመራ ውስጥ
+መጠራጠሩ ወይም የፍላጎት ሰው መሆኑ
+እሱ ገዳዩ መሆኑን አያረጋግጥም።
 </p>
 
 <p>
-Allen was never conclusively established as the killer.
+Allen የዘዲያክት ገዳይ መሆኑ በማስረጃ
+በመጨረሻ አልተረጋገጠም።
 </p>
 
 </div>
 
 <div class="investigation-card">
 
-<h3>⚠️ Investigator's Rule</h3>
+<h3>⚠️ የመርማሪው ህግ</h3>
 
 <p>
-Never turn:
+<strong>
+“ይህ ሰው ተመርምሯል”
+</strong>
 </p>
 
 <p>
-<strong>"This person was investigated"</strong>
+ማለት፦
 </p>
 
 <p>
-into:
+<strong>
+“ይህ ሰው ገዳዩ መሆኑ ተረጋግጧል”
+</strong>
 </p>
 
 <p>
-<strong>"This person was proven guilty."</strong>
+ማለት አይደለም።
 </p>
 
 </div>
@@ -1446,37 +1425,41 @@ into:
 <div class="story-box">
 
 <p>
-This is where many Zodiac theories become complicated.
+ይህ በዘዲያክት ጉዳይ ላይ ብዙ ግራ መጋባት
+የሚፈጠርበት ቦታ ነው።
 </p>
 
 <p>
-Researchers have proposed different suspects,
-different interpretations of letters,
-different connections between crimes,
-and different readings of the ciphers.
+በአመታት ውስጥ የተለያዩ ሰዎች ተጠቁመዋል።
 </p>
 
 <p>
-Some theories are interesting.
+የተለያዩ ሰዎች ደብዳቤዎቹን በተለያየ መንገድ
+ተርጉመዋል።
 </p>
 
 <p>
-But an interesting theory is not automatically established fact.
+የተለያዩ ንድፈ ሐሳቦችም ተቀርበዋል።
+</p>
+
+<p>
+ነገር ግን ንድፈ ሐሳብ መሆን እና በማስረጃ
+መረጋገጥ ሁለት የተለያዩ ነገሮች ናቸው።
 </p>
 
 </div>
 
 <button class="primary" onclick="unlock(10)">
-OPEN FINAL FILE
+የመጨረሻውን ፋይል ክፈት
 </button>
 
 </div>
 </section>
 
 
-<!-- =========================
-     CHAPTER 10
-========================= -->
+<!-- =====================================
+     ምዕራፍ 10
+===================================== -->
 
 <section id="chapter10" class="screen">
 
@@ -1484,26 +1467,26 @@ OPEN FINAL FILE
 
 <div class="header">
 <button class="back" onclick="show('zodiacHome')">←</button>
-<h2>FINAL FILE</h2>
+<h2>የመጨረሻ ፋይል</h2>
 </div>
 
 <div class="story-box">
 
-<div class="chapter">Final Investigation</div>
+<div class="chapter">የመጨረሻ ምርመራ</div>
 
-<div class="big-title">WHAT CAN WE ACTUALLY PROVE?</div>
+<div class="big-title">በእውነት ምን ማረጋገጥ ይቻላል?</div>
 
 <p>
-You have followed the case from the first known attack
-through the letters and ciphers.
+ከመጀመሪያው ግድያ ጀምረህ የደብዳቤዎቹን፣
+የኮዶቹን እና የተለያዩ ጥቃቶችን ተከትለሃል።
 </p>
 
 <p>
-Now remove the theories.
+አሁን የተለያዩ ንድፈ ሐሳቦችን ለጊዜው አስወግድ።
 </p>
 
 <p>
-Look only at what the historical evidence can establish.
+በተረጋገጠው ማስረጃ ላይ ብቻ ተመስርተህ አስብ።
 </p>
 
 </div>
@@ -1511,54 +1494,53 @@ Look only at what the historical evidence can establish.
 <div class="timeline-big">
 
 <div class="event">
-<strong>December 20, 1968</strong>
-David Faraday and Betty Lou Jensen are murdered
-near Lake Herman Road.
+<strong>ታህሳስ 20፣ 1968</strong>
+ዴቪድ ፋራዴይ እና ቤቲ ሉ ጄንሰን
+በLake Herman Road አካባቢ ተገደሉ።
 </div>
 
 <div class="event">
-<strong>July 4, 1969</strong>
-Darlene Ferrin is killed at Blue Rock Springs.
-Michael Mageau survives.
+<strong>ሐምሌ 4፣ 1969</strong>
+ዳርሊን ፌሪን በBlue Rock Springs ተገደለች።
+ማይክል ማጆ ተረፈ።
 </div>
 
 <div class="event">
-<strong>July 31, 1969</strong>
-Three newspapers receive letters and portions
-of the 408 cipher.
+<strong>ሐምሌ 31፣ 1969</strong>
+ሶስት ጋዜጦች ደብዳቤዎችን እና የ408 ኮድ
+ክፍሎችን ተቀበሉ።
 </div>
 
 <div class="event">
-<strong>August 1969</strong>
-The 408 cipher is solved by Donald and Bettye Harden.
+<strong>ነሐሴ 1969</strong>
+408 ኮድ በዶናልድ እና ቤቲ ሃርደን ተፈታ።
 </div>
 
 <div class="event">
-<strong>September 27, 1969</strong>
-Bryan Hartnell and Cecelia Shepard are attacked
-at Lake Berryessa.
+<strong>መስከረም 27፣ 1969</strong>
+ብራያን ሃርትኔል እና ሴሲሊያ ሼፓርድ
+በLake Berryessa ተጠቁ።
 </div>
 
 <div class="event">
-<strong>October 11, 1969</strong>
-Taxi driver Paul Stine is murdered in San Francisco.
+<strong>ጥቅምት 11፣ 1969</strong>
+የታክሲ ሹፌሩ ፖል ስታይን በSan Francisco ተገደለ።
 </div>
 
 <div class="event">
-<strong>October 13, 1969</strong>
-A letter claiming responsibility for Stine's murder
-is sent to the San Francisco Chronicle with a piece
-of his shirt.
+<strong>ጥቅምት 13፣ 1969</strong>
+የፖል ስታይን ግድያን እንደፈጸመ የሚናገር
+ደብዳቤ እና የሸሚዝ ቁራጭ ተላከ።
 </div>
 
 <div class="event">
-<strong>November 8, 1969</strong>
-The 340-character cipher is mailed to the Chronicle.
+<strong>ህዳር 8፣ 1969</strong>
+340 ምልክቶች ያሉት ኮድ ተላከ።
 </div>
 
 <div class="event">
 <strong>2020</strong>
-The 340 cipher is solved after 51 years.
+340 ኮድ ከ51 ዓመታት በኋላ ተፈታ።
 </div>
 
 </div>
@@ -1566,48 +1548,55 @@ The 340 cipher is solved after 51 years.
 
 <div class="investigation-card">
 
-<h3>🧠 FINAL DEDUCTION</h3>
+<h3>🧠 የመጨረሻ ግምገማ</h3>
 
 <p>
-Before seeing the final case report,
-answer these questions.
+አሁን እውነተኛ መርማሪ እንደሆንክ አስብ።
 </p>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-1. Was the Zodiac's identity conclusively established?
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+1. የዘዲያክት ማንነት በእርግጠኝነት ተረጋግጧል?
 </button>
 
 <div class="answer">
-No.
-The identity of the Zodiac remains unconfirmed.
+<strong>አይ።</strong><br><br>
+የዘዲያክት ማንነት በእርግጠኝነት አልተረጋገጠም።
 </div>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-2. Was the 340 cipher solved?
+
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+2. 340 ኮድ ተፈቷል?
 </button>
 
 <div class="answer">
-Yes.
-It was solved in 2020 after remaining unsolved for 51 years.
+<strong>አዎ።</strong><br><br>
+ኮዱ በ2020 ከ51 ዓመታት በኋላ ተፈቷል።
 </div>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-3. Did solving the 340 cipher reveal the killer's name?
+
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+3. 340 ኮድ የገዳዩን ስም አጋልጧል?
 </button>
 
 <div class="answer">
-No.
-The solution did not reveal a confirmed identity.
+<strong>አይ።</strong><br><br>
+ኮዱ የገዳዩን ማንነት አላሳየም።
 </div>
 
-<button class="choice-btn" onclick="answer(this, 'correct')">
-4. Were people investigated as possible suspects?
+
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+4. የተለያዩ ሰዎች ተመርምረዋል?
 </button>
 
 <div class="answer">
-Yes.
-Several people have been investigated or proposed over the decades,
-but investigation or suspicion is not proof of guilt.
+<strong>አዎ።</strong><br><br>
+ብዙ ሰዎች ተመርምረዋል ወይም ተጠርጥረዋል።
+ነገር ግን መጠርጠር ወይም መመርመር
+የጥፋተኝነት ማረጋገጫ አይደለም።
 </div>
 
 </div>
@@ -1615,56 +1604,57 @@ but investigation or suspicion is not proof of guilt.
 
 <div class="story-box">
 
-<div class="chapter">Case Report</div>
+<div class="chapter">የጉዳዩ ሪፖርት</div>
 
-<div class="big-title">THE TRUTH</div>
+<div class="big-title">እውነቱ</div>
 
 <p>
-The Zodiac case is unusual because part of the mystery
-has actually been solved.
+የዘዲያክት ጉዳይ ልዩ የሚያደርገው
+ከጉዳዩ አንዳንድ ምስጢሮች መፈታታቸው ነው።
 </p>
 
 <p>
-Investigators established a series of murders and attacks.
-The killer communicated with newspapers.
-Some of those communications were authenticated.
-The 408 cipher was solved shortly after it was sent.
-The 340 cipher was finally solved in 2020.
+በተለያዩ ወንጀሎች ሰዎች ተገድለዋል።
 </p>
 
 <p>
-But one of the biggest questions remains.
+ገዳዩ ለጋዜጦች ደብዳቤዎችን ልኳል።
+</p>
+
+<p>
+አንዳንድ የላካቸው መልዕክቶች ከወንጀሎቹ
+ጋር የተያያዙ ነበሩ።
+</p>
+
+<p>
+408 ኮድ በ1969 ተፈቷል።
+</p>
+
+<p>
+340 ኮድ ደግሞ በ2020 ተፈቷል።
+</p>
+
+<p>
+ነገር ግን አንድ ትልቅ ጥያቄ እስከዛሬ
+የተረጋገጠ መልስ አላገኘም።
 </p>
 
 <div class="quote-box">
-Who was the person behind the Zodiac name?
+የዘዲያክት ስም ማን ነበር?
 </div>
 
 <p>
-There have been suspects and theories.
-There have been proposed solutions to other cryptograms.
-There have been decades of investigation.
+በአመታት ውስጥ ተጠርጣሪዎች እና ብዙ ንድፈ ሐሳቦች
+ተቀርበዋል።
 </p>
 
 <p>
-But there is no universally accepted identification
-that establishes the Zodiac's identity beyond reasonable dispute.
-</p>
-
-<p>
-That means the correct conclusion is not:
+ነገር ግን ከሁሉም ማስረጃዎች በኋላም
+የዘዲያክት ማንነት በእርግጠኝነት አልተረጋገጠም።
 </p>
 
 <div class="quote-box">
-"I know who the Zodiac was."
-</div>
-
-<p>
-The historically responsible conclusion is:
-</p>
-
-<div class="quote-box">
-<strong>The identity remains unconfirmed.</strong>
+<strong>የመጨረሻ ውሳኔ፦ የዘዲያክት ማንነት አሁንም ያልተረጋገጠ ነው።</strong>
 </div>
 
 </div>
@@ -1675,12 +1665,18 @@ The historically responsible conclusion is:
 <div class="big-number">CASE COMPLETE</div>
 
 <p>
-You didn't solve the Zodiac's identity.
+የዘዲያክትን ማንነት አልፈታኸውም።
 </p>
 
 <p>
-You did something more important for a detective:
-you learned to separate evidence from theory.
+ነገር ግን እውነተኛ መርማሪ ማድረግ ያለበትን
+ነገር አድርገሃል፦
+</p>
+
+<p>
+<strong>
+ማስረጃን ከግምት መለየት።
+</strong>
 </p>
 
 </div>
@@ -1688,22 +1684,23 @@ you learned to separate evidence from theory.
 
 <div class="story-box">
 
-<h3>📚 SOURCES & FURTHER READING</h3>
+<h3>📚 ምንጮች</h3>
 
 <p class="note">
-This chapter is a historical reconstruction for educational/game purposes.
-It does not claim to solve the Zodiac case.
+ይህ ክፍል የእውነተኛውን የዘዲያክት ጉዳይ
+በጨዋታ መልክ ለማቅረብ የተዘጋጀ ነው።
 </p>
 
 <p class="note">
-Key historical information includes the documented murders,
-letters, ciphers and later solving of the 340 cipher.
+የዘዲያክት ማንነት እንደተፈታ ወይም
+አንድ ተጠርጣሪ በእርግጥ ገዳዩ እንደሆነ
+የሚያስመስል የተፈጠረ መልስ አይሰጥም።
 </p>
 
 </div>
 
 <button class="primary" onclick="goHome()">
-RETURN HOME
+ወደ ዋናው ገጽ ተመለስ
 </button>
 
 </div>
@@ -1713,7 +1710,7 @@ RETURN HOME
 <script>
 
 /* =========================
-   BASIC NAVIGATION
+   NAVIGATION
 ========================= */
 
 function show(id) {
@@ -1726,13 +1723,13 @@ function show(id) {
 
     if (target) {
         target.classList.add("active");
-        window.scrollTo(0, 0);
+        window.scrollTo(0,0);
     }
 }
 
 
 /* =========================
-   START CASE
+   START
 ========================= */
 
 function startCase() {
@@ -1750,7 +1747,7 @@ function goHome() {
 
 
 /* =========================
-   CHAPTER UNLOCK SYSTEM
+   CHAPTER SYSTEM
 ========================= */
 
 let unlocked = 1;
@@ -1758,7 +1755,7 @@ let unlocked = 1;
 function openChapter(number) {
 
     if (number > unlocked) {
-        alert("Complete the previous chapter first.");
+        alert("መጀመሪያ ያለፈውን ምዕራፍ ጨርስ።");
         return;
     }
 
@@ -1767,7 +1764,7 @@ function openChapter(number) {
 
 
 /* =========================
-   UNLOCK NEXT CHAPTER
+   UNLOCK NEXT
 ========================= */
 
 function unlock(number) {
@@ -1784,7 +1781,7 @@ function unlock(number) {
    ANSWERS
 ========================= */
 
-function answer(button, type) {
+function answer(button,type) {
 
     const card = button.parentElement;
 
@@ -1801,29 +1798,7 @@ function answer(button, type) {
     }
 }
 
-
-/* =========================
-   PREVENT LOCKED BUTTONS
-========================= */
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    document.querySelectorAll(".investigation-card.locked button")
-    .forEach(function(button) {
-
-        button.addEventListener("click", function() {
-
-            if (button.closest(".investigation-card").classList.contains("locked")) {
-                alert("Complete the previous chapter first.");
-            }
-
-        });
-
-    });
-
-});
-
 </script>
 
 </body>
-  </html>
+    </html>
