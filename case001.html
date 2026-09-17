@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CASE 001 — የጠፋው ሰው</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- CASE INTRO -->
+<div id="case1intro" class="screen active">
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="goHome()">←</button>
+      <h2>CASE 001</h2>
+    </div>
+
+    <div class="card">
+
+      <span class="badge">CASE 001</span>
+
+      <h1>🔎 የጠፋው ሰው</h1>
+
+      <p>
+        አንድ ሰው በሚስጥራዊ ሁኔታ ጠፍቷል።
+        በቤቱ ውስጥ የተገኙትን ፍንጮች በመመርመር
+        ምን እንደተፈጠረ ማወቅ አለብህ።
+      </p>
+
+      <div class="warning">
+        ⚠️ ይህ ጉዳይ ልብ ወለድ የወንጀል ምርመራ ነው።
+      </div>
+
+      <button class="primary" onclick="startInvestigation()">
+        🔎 ምርመራ ጀምር
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- INVESTIGATION -->
+<div id="investigation" class="screen">
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="goHome()">←</button>
+      <h2>🔎 ምርመራ</h2>
+    </div>
+
+    <div class="card">
+
+      <h3>CASE 001 — የጠፋው ሰው</h3>
+
+      <p>
+        ቦታዎቹን መርምር እና የተደበቁ ፍንጮችን ሰብስብ።
+      </p>
+
+      <div class="stat">
+        <div class="big-number" id="clueCount">0</div>
+        <div class="small">የተሰበሰቡ ፍንጮች</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress" id="progress"></div>
+      </div>
+
+    </div>
+
+
+    <h3 class="section-title">📍 ቦታዎች</h3>
+
+    <div class="grid">
+
+      <div class="location" onclick="search('bedroom')">
+        <span class="icon">🛏️</span>
+        <strong>መኝታ ክፍል</strong>
+      </div>
+
+      <div class="location" onclick="search('living')">
+        <span class="icon">🛋️</span>
+        <strong>ሳሎን</strong>
+      </div>
+
+      <div class="location" onclick="search('entrance')">
+        <span class="icon">🚪</span>
+        <strong>መግቢያ</strong>
+      </div>
+
+      <div class="location" onclick="search('outside')">
+        <span class="icon">🌧️</span>
+        <strong>ውጭ</strong>
+      </div>
+
+    </div>
+
+
+    <h3 class="section-title">📂 ሌሎች</h3>
+
+    <div class="menu">
+
+      <button class="secondary" onclick="showEvidence()">
+        🧪 ማስረጃዎች
+      </button>
+
+      <button class="secondary" onclick="showSuspects()">
+        👤 ተጠርጣሪዎች
+      </button>
+
+      <button class="secondary" onclick="showNotes()">
+        📝 ማስታወሻ
+      </button>
+
+      <button class="primary" onclick="showDecision()">
+        ⚖️ ውሳኔ ስጥ
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- CLUES -->
+<div id="clues" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="show('investigation')">←</button>
+      <h2>🔎 ፍንጮች</h2>
+    </div>
+
+    <div id="clueList"></div>
+
+  </div>
+
+</div>
+
+
+<!-- EVIDENCE -->
+<div id="evidence" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="show('investigation')">←</button>
+      <h2>🧪 ማስረጃዎች</h2>
+    </div>
+
+    <div id="evidenceList"></div>
+
+  </div>
+
+</div>
+
+
+<!-- SUSPECTS -->
+<div id="suspects" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="show('investigation')">←</button>
+      <h2>👤 ተጠርጣሪዎች</h2>
+    </div>
+
+    <div class="card">
+      <h3>👨 Dawit</h3>
+      <p>
+        የጠፋውን ሰው የሚያውቅ ጓደኛ።
+      </p>
+      <button class="secondary" onclick="question('dawit')">
+        ጠይቅ
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>👩 Sara</h3>
+      <p>
+        ከጠፋው ሰው ጋር የቀረበ ግንኙነት ያላት።
+      </p>
+      <button class="secondary" onclick="question('sara')">
+        ጠይቅ
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>👨 Natnael</h3>
+      <p>
+        በጉዳዩ ላይ አስፈላጊ መረጃ ሊኖረው የሚችል ሰው።
+      </p>
+      <button class="secondary" onclick="question('natnael')">
+        ጠይቅ
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- INTERROGATION -->
+<div id="interrogation" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="show('suspects')">←</button>
+      <h2>🗣️ ጥያቄ</h2>
+    </div>
+
+    <div id="interrogationContent"></div>
+
+  </div>
+
+</div>
+
+
+<!-- NOTES -->
+<div id="notes" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="goBackFromNotes()">←</button>
+      <h2>📝 ማስታወሻ</h2>
+    </div>
+
+    <div class="card">
+
+      <p>
+        ያገኘኸውን መረጃ እዚህ ጻፍ።
+      </p>
+
+      <textarea id="notesText"
+        placeholder="ማስታወሻህን እዚህ ጻፍ..."></textarea>
+
+      <br><br>
+
+      <button class="primary" onclick="saveNotes()">
+        💾 አስቀምጥ
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- DECISION -->
+<div id="decision" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="show('investigation')">←</button>
+      <h2>⚖️ ውሳኔ</h2>
+    </div>
+
+    <div class="card">
+
+      <h3>ተጠያቂው ማን ነው?</h3>
+
+      <p>
+        ከሰበሰብካቸው ፍንጮች በመነሳት
+        የራስህን ውሳኔ ስጥ።
+      </p>
+
+      <div class="choice" onclick="decision('dawit')">
+        👨 Dawit
+      </div>
+
+      <div class="choice" onclick="decision('sara')">
+        👩 Sara
+      </div>
+
+      <div class="choice" onclick="decision('natnael')">
+        👨 Natnael
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- RESULT -->
+<div id="result" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+      <button class="back" onclick="show('decision')">←</button>
+      <h2>📋 የምርመራ ውጤት</h2>
+    </div>
+
+    <div id="resultContent"></div>
+
+    <button class="primary" onclick="goHome()">
+      🏠 ወደ መነሻ
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+
+<script>
+
+/* =========================
+   BASIC NAVIGATION
+========================= */
+
+function show(id) {
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  const target = document.getElementById(id);
+
+  if (target) {
+    target.classList.add("active");
+  }
+
+  window.scrollTo(0, 0);
+}
+
+
+function goHome() {
+  window.location.href = "index.html";
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message) {
+
+  const box = document.getElementById("toast");
+
+  box.textContent = message;
+  box.style.display = "block";
+
+  setTimeout(() => {
+    box.style.display = "none";
+  }, 2200);
+}
+
+
+/* =========================
+   CASE DATA
+========================= */
+
+const clues = {
+
+  bedroom: [
+    {
+      id: "blood",
+      title: "🩸 የደም ምልክት",
+      text: "በአልጋው አጠገብ ትንሽ የደም ምልክት ተገኘ።"
+    },
+    {
+      id: "drawer",
+      title: "🗄️ የተከፈተ መሳቢያ",
+      text: "አንድ መሳቢያ ተከፍቶ ነበር። ውስጡም እንደተፈለገ ይመስላል።"
+    },
+    {
+      id: "watch",
+      title: "⌚ የእጅ ሰዓት",
+      text: "የጠፋው ሰው የእጅ ሰዓት በመሬት ላይ ተገኘ።"
+    }
+  ],
+
+  living: [
+    {
+      id: "glass",
+      title: "🥃 የተሰበረ ብርጭቆ",
+      text: "በሳሎን ውስጥ የተሰበረ ብርጭቆ ተገኘ።"
+    },
+    {
+      id: "chair",
+      title: "🪑 የተገለበጠ ወንበር",
+      text: "አንድ ወንበር ተገልብጦ ነበር።"
+    },
+    {
+      id: "paper",
+      title: "📄 የወረቀት ቁራጭ",
+      text: "በወረቀቱ ላይ ያልተሟላ መልዕክት ተጽፎ ነበር።"
+    }
+  ],
+
+  entrance: [
+    {
+      id: "door",
+      title: "🚪 የበሩ ምልክት",
+      text: "በበሩ ላይ የግፊት ምልክት ተገኘ።"
+    },
+    {
+      id: "key",
+      title: "🔑 ቁልፍ",
+      text: "በመግቢያው አጠገብ ቁልፍ ተገኘ።"
+    },
+    {
+      id: "camera",
+      title: "📹 የካሜራ መረጃ",
+      text: "የደህንነት ካሜራው በአንድ ጊዜ ላይ ተቋርጦ ነበር።"
+    }
+  ],
+
+  outside: [
+    {
+      id: "footprints",
+      title: "👣 የእግር አሻራ",
+      text: "ከቤቱ ወጥቶ የሚሄድ የእግር አሻራ ተገኘ።"
+    },
+    {
+      id: "taxi",
+      title: "🚕 ታክሲ",
+      text: "አንድ ታክሲ በአካባቢው እንደታየ ምስክር ተናግሯል።"
+    },
+    {
+      id: "rain",
+      title: "🌧️ ዝናብ",
+      text: "በዚያ ምሽት ዝናብ ነበር፣ ይህም አዲስ አሻራዎችን ሊያጠፋ ይችላል።"
+    }
+  ]
+
+};
+
+
+/* =========================
+   LOCAL STORAGE
+========================= */
+
+let collected =
+  JSON.parse(
+    localStorage.getItem("detectiveEvidence_001") || "[]"
+  );
+
+
+/* =========================
+   START INVESTIGATION
+========================= */
+
+function startInvestigation() {
+
+  show("investigation");
+
+  updateProgress();
+
+}
+
+
+/* =========================
+   SEARCH LOCATION
+========================= */
+
+function search(location) {
+
+  const list = clues[location];
+
+  if (!list) return;
+
+  show("clues");
+
+  const container = document.getElementById("clueList");
+
+  container.innerHTML = "";
+
+  list.forEach(clue => {
+
+    const alreadyCollected =
+      collected.includes(clue.id);
+
+    const div = document.createElement("div");
+
+    div.className =
+      "evidence" +
+      (alreadyCollected ? " collected" : "");
+
+    div.innerHTML = `
+      <h4>${clue.title}</h4>
+      <p>${clue.text}</p>
+
+      ${
+        alreadyCollected
+        ? `<button class="success">
+             ✓ ተሰብስቧል
+           </button>`
+        : `<button class="primary"
+             onclick="collect('${clue.id}')">
+             🔎 ፍንጩን ሰብስብ
+           </button>`
+      }
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+/* =========================
+   COLLECT CLUE
+========================= */
+
+function collect(id) {
+
+  if (collected.includes(id)) {
+    toast("ይህ ፍንጭ አስቀድሞ ተሰብስቧል።");
+    return;
+  }
+
+  collected.push(id);
+
+  localStorage.setItem(
+    "detectiveEvidence_001",
+    JSON.stringify(collected)
+  );
+
+  toast("🔎 አዲስ ፍንጭ ተገኘ!");
+
+  updateProgress();
+
+  showCollectedClue(id);
+
+}
+
+
+/* =========================
+   SHOW COLLECTED CLUE
+========================= */
+
+function showCollectedClue(id) {
+
+  let found = null;
+
+  Object.values(clues).forEach(location => {
+
+    location.forEach(clue => {
+
+      if (clue.id === id) {
+        found = clue;
+      }
+
+    });
+
+  });
+
+  if (!found) return;
+
+  const container =
+    document.getElementById("clueList");
+
+  container.innerHTML = `
+    <div class="success">
+
+      <h3>🔎 ፍንጭ ተሰብስቧል</h3>
+
+      <h4>${found.title}</h4>
+
+      <p>${found.text}</p>
+
+    </div>
+
+    <button class="secondary"
+      onclick="show('investigation')">
+      ← ወደ ምርመራ
+    </button>
+  `;
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress() {
+
+  const total = 12;
+
+  const count = collected.length;
+
+  const percent =
+    Math.min((count / total) * 100, 100);
+
+  const progress =
+    document.getElementById("progress");
+
+  const clueCount =
+    document.getElementById("clueCount");
+
+  if (progress) {
+    progress.style.width = percent + "%";
+  }
+
+  if (clueCount) {
+    clueCount.textContent = count;
+  }
+
+}
+
+
+/* =========================
+   EVIDENCE PAGE
+========================= */
+
+function showEvidence() {
+
+  show("evidence");
+
+  const container =
+    document.getElementById("evidenceList");
+
+  container.innerHTML = "";
+
+  Object.values(clues).flat().forEach(clue => {
+
+    const isCollected =
+      collected.includes(clue.id);
+
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "evidence" +
+      (isCollected ? " collected" : "");
+
+    div.innerHTML = `
+
+      <h4>
+        ${isCollected ? "✓ " : "🔒 "}
+        ${clue.title}
+      </h4>
+
+      <p>
+        ${
+          isCollected
+          ? clue.text
+          : "ይህን ማስረጃ ለማየት መጀመሪያ መሰብሰብ አለብህ።"
+        }
+      </p>
+
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+
+/* =========================
+   SUSPECTS
+========================= */
+
+function showSuspects() {
+  show("suspects");
+}
+
+
+const suspects = {
+
+  dawit: {
+    name: "Dawit",
+    text:
+      "እኔ ከእሱ ጋር ጓደኛ ነበርኩ። በዚያ ምሽት ግን እቤቴ ነበርኩ።",
+    answers: [
+      "በዚያ ምሽት የት ነበርክ?",
+      "ከጠፋው ሰው ጋር ግንኙነትህ ምን ነበር?"
+    ]
+  },
+
+  sara: {
+    name: "Sara",
+    text:
+      "በዚያ ቀን ከእሱ ጋር ተነጋግሬ ነበር። ከዚያ ግን ወደ ቤቴ ሄድኩ።",
+    answers: [
+      "ለምን ተከራከራችሁ?",
+      "መቼ ነበር የመጨረሻ ጊዜ ያየሽው?"
+    ]
+  },
+
+  natnael: {
+    name: "Natnael",
+    text:
+      "እኔ ምንም ነገር አላውቅም። ያን ምሽት ሥራ ላይ ነበርኩ።",
+    answers: [
+      "የት ሥራ ላይ ነበርክ?",
+      "ማን ሊያረጋግጥልህ ይችላል?"
+    ]
+  }
+
+};
+
+
+/* =========================
+   QUESTION SUSPECT
+========================= */
+
+function question(id) {
+
+  const suspect =
+    suspects[id];
+
+  if (!suspect) return;
+
+  show("interrogation");
+
+  const container =
+    document.getElementById("interrogationContent");
+
+  container.innerHTML = `
+
+    <div class="card">
+
+      <h3>👤 ${suspect.name}</h3>
+
+      <div class="dialogue">
+
+        <div class="name">
+          ${suspect.name}
+        </div>
+
+        ${suspect.text}
+
+      </div>
+
+      <h3 class="section-title">
+        ጥያቄ ምረጥ
+      </h3>
+
+      ${suspect.answers.map((answer, index) => `
+
+        <div class="choice"
+          onclick="answer('${id}', ${index})">
+
+          ${answer}
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+function answer(id, index) {
+
+  const responses = {
+
+    dawit: [
+      "እቤቴ ነበርኩ። ማንም ሰው አልመጣም።",
+      "ጓደኞች ነበርን። ምንም ችግር አልነበረንም።"
+    ],
+
+    sara: [
+      "ትንሽ ነገር ላይ ተከራከርን። ግን ትልቅ ነገር አልነበረም።",
+      "ምሽቱ ላይ ነበር። ከዚያ ተለያየን።"
+    ],
+
+    natnael: [
+      "በአንድ መደብር አጠገብ ነበርኩ።",
+      "የሥራ ጓደኛዬ ሊያረጋግጥ ይችላል።"
+    ]
+
+  };
+
+  const response =
+    responses[id][index];
+
+  const container =
+    document.getElementById("interrogationContent");
+
+  container.innerHTML += `
+
+    <div class="dialogue">
+
+      <div class="name">
+        ${suspects[id].name}
+      </div>
+
+      ${response}
+
+    </div>
+
+    <button class="secondary"
+      onclick="show('suspects')">
+
+      ← ወደ ተጠርጣሪዎች
+
+    </button>
+
+  `;
+
+}
+
+
+/* =========================
+   NOTES
+========================= */
+
+function showNotes() {
+
+  show("notes");
+
+  const saved =
+    localStorage.getItem("detectiveNotes_001") || "";
+
+  document.getElementById("notesText").value =
+    saved;
+
+}
+
+
+function saveNotes() {
+
+  const text =
+    document.getElementById("notesText").value;
+
+  localStorage.setItem(
+    "detectiveNotes_001",
+    text
+  );
+
+  toast("📝 ማስታወሻ ተቀምጧል!");
+
+}
+
+
+function goBackFromNotes() {
+  show("investigation");
+}
+
+
+/* =========================
+   DECISION
+========================= */
+
+function showDecision() {
+  show("decision");
+}
+
+
+function decision(choice) {
+
+  show("result");
+
+  const result =
+    document.getElementById("resultContent");
+
+  if (choice === "natnael") {
+
+    result.innerHTML = `
+
+      <div class="success">
+
+        <h2>🎯 ትክክለኛ ውሳኔ!</h2>
+
+        <p>
+          Natnael የዚህ ጉዳይ ተጠያቂ ነው።
+        </p>
+
+        <p>
+          የሰበሰብካቸው ፍንጮችን እና
+          የጥያቄ መልሶችን በማገናኘት
+          ወደ ትክክለኛው ውሳኔ ደርሰሃል።
+        </p>
+
+        <div class="big-number">
+          ✓
+        </div>
+
+      </div>
+
+    `;
+
+  } else {
+
+    result.innerHTML = `
+
+      <div class="warning">
+
+        <h2>❌ የተሳሳተ ውሳኔ</h2>
+
+        <p>
+          ይህ ሰው ተጠያቂው አይደለም።
+        </p>
+
+        <p>
+          ፍንጮቹን እንደገና መርምር።
+        </p>
+
+      </div>
+
+      <button class="secondary"
+        onclick="show('investigation')">
+
+        🔎 ምርመራውን ቀጥል
+
+      </button>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+updateProgress();
+
+</script>
+
+</body>
+  </html>
