@@ -3,294 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ምስጢር — የኢትዮጵያ ዲቴክቲቭ</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,"Noto Sans Ethiopic",sans-serif;
+}
 
 body{
-margin:0;
-font-family:Arial,"Noto Sans Ethiopic",sans-serif;
-background:#07090d;
-color:#eee;
-min-height:100vh;
-}
-
-.screen{
-display:none;
-min-height:100vh;
-padding:22px;
-animation:fade .35s ease;
-}
-
-.active{display:block}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(8px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-.container{
-max-width:850px;
-margin:auto;
-}
-
-.logo{
-text-align:center;
-padding-top:55px;
-}
-
-.logo .icon{
-font-size:75px;
-filter:drop-shadow(0 0 20px #777);
-}
-
-.logo h1{
-font-size:35px;
-margin:15px 0 5px;
-letter-spacing:2px;
-}
-
-.logo p{color:#999}
-
-.menu{
-margin-top:45px;
-display:grid;
-gap:14px;
+    background:#080b10;
+    color:#eee;
+    min-height:100vh;
 }
 
 button{
-width:100%;
-padding:17px;
-border:none;
-border-radius:10px;
-background:#151922;
-color:#fff;
-font-size:17px;
-cursor:pointer;
-border:1px solid #292e39;
-transition:.2s;
+    border:0;
+    cursor:pointer;
 }
 
-button:hover{
-background:#202632;
-transform:translateY(-2px);
+.screen{
+    display:none;
+    min-height:100vh;
+    padding:22px;
+}
+
+.screen.active{
+    display:block;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.logo{
+    text-align:center;
+    font-size:70px;
+    margin-top:25px;
+}
+
+.title{
+    text-align:center;
+    font-size:38px;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#999;
+    margin-top:8px;
+    margin-bottom:35px;
+}
+
+.menu{
+    display:grid;
+    gap:14px;
+}
+
+button.primary,
+button.secondary,
+button.danger,
+button.dark{
+    width:100%;
+    padding:17px;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:bold;
+    color:white;
 }
 
 .primary{
-background:#b51e2a;
-border-color:#d3313c;
+    background:#b21f2d;
 }
 
-.primary:hover{
-background:#d12834;
+.secondary{
+    background:#252b35;
+}
+
+.dark{
+    background:#151a22;
+}
+
+.danger{
+    background:#65151d;
+}
+
+button:hover{
+    opacity:.85;
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:22px;
 }
 
 .back{
-margin-bottom:20px;
-width:auto;
-padding:10px 16px;
-font-size:14px;
+    background:#20252e;
+    color:white;
+    padding:10px 15px;
+    border-radius:9px;
 }
 
-h2{
-font-size:27px;
-margin-top:5px;
+.header h2{
+    font-size:24px;
 }
-
-h3{margin-top:5px}
 
 .card{
-background:#10131a;
-border:1px solid #292e39;
-border-radius:14px;
-padding:20px;
-margin:15px 0;
-box-shadow:0 8px 25px rgba(0,0,0,.25);
+    background:#121720;
+    border:1px solid #272e39;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:16px;
+}
+
+.card h3{
+    margin-bottom:10px;
 }
 
 .card p{
-line-height:1.8;
-color:#d1d1d1;
+    line-height:1.8;
+    color:#c8ccd2;
 }
 
-.case-header{
-border-left:4px solid #b51e2a;
-padding-left:15px;
+.case-card{
+    border-left:4px solid #b21f2d;
 }
 
-.meta{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin:20px 0;
+.case-card.zodiac{
+    border-left-color:#777;
 }
 
-.meta div{
-background:#11151d;
-padding:14px;
-border-radius:10px;
-text-align:center;
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    background:#242b35;
+    border-radius:7px;
+    font-size:12px;
+    color:#bbb;
+    margin-bottom:10px;
 }
 
-.meta small{
-display:block;
-color:#777;
-margin-bottom:5px;
-}
-
-.location-grid,
-.clue-grid,
-.suspect-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:13px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
 }
 
 .location{
-min-height:130px;
-text-align:left;
-padding:18px;
+    background:#171d26;
+    padding:20px;
+    border-radius:13px;
+    text-align:center;
+    border:1px solid #2b323d;
 }
 
-.location span{
-font-size:35px;
-display:block;
-margin-bottom:10px;
+.location .icon{
+    font-size:35px;
+    margin-bottom:8px;
 }
 
-.location small{color:#888}
-
-.clue{
-text-align:left;
-min-height:130px;
-}
-
-.clue .emoji{font-size:30px}
-
-.locked{opacity:.45}
-
-.evidence-count{
-background:#171b23;
-padding:12px;
-border-radius:8px;
-margin-bottom:15px;
-color:#bbb;
+.progress-wrap{
+    background:#191f28;
+    border-radius:20px;
+    height:12px;
+    overflow:hidden;
+    margin:15px 0 25px;
 }
 
 .progress{
-height:7px;
-background:#1a1d24;
-border-radius:20px;
-overflow:hidden;
-margin:10px 0 20px;
+    height:100%;
+    width:0%;
+    background:#b21f2d;
+    transition:.3s;
 }
 
-.progress div{
-height:100%;
-background:#b51e2a;
-width:0%;
-transition:.4s;
+.stat{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    color:#aaa;
+}
+
+.evidence{
+    padding:16px;
+    background:#181e27;
+    border-radius:12px;
+    margin-bottom:10px;
+    border-left:3px solid #777;
+}
+
+.evidence.collected{
+    border-left-color:#3fa66b;
+}
+
+.evidence h4{
+    margin-bottom:6px;
+}
+
+.evidence p{
+    color:#aaa;
+    line-height:1.7;
+}
+
+.timeline{
+    border-left:2px solid #555;
+    margin-left:10px;
+    padding-left:20px;
+}
+
+.timeline-item{
+    position:relative;
+    margin-bottom:25px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:-27px;
+    top:5px;
+    width:11px;
+    height:11px;
+    background:#aaa;
+    border-radius:50%;
+}
+
+.date{
+    color:#d34b57;
+    font-weight:bold;
+    margin-bottom:5px;
 }
 
 .dialogue{
-background:#0c0f15;
-border-left:3px solid #777;
-padding:16px;
-margin:12px 0;
-line-height:1.8;
+    background:#171d25;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:15px;
 }
 
-.you{border-left-color:#b51e2a}
+.dialogue .name{
+    color:#d34b57;
+    font-weight:bold;
+    margin-bottom:10px;
+}
 
-.secret{border-left-color:#d39b27}
-
-.danger{color:#ff626c}
-
-.good{color:#67d58a}
-
-.warning{color:#e5b95b}
+.choice{
+    background:#242b35;
+    color:white;
+    padding:15px;
+    width:100%;
+    border-radius:10px;
+    margin-top:9px;
+    text-align:left;
+}
 
 textarea{
-width:100%;
-min-height:180px;
-resize:vertical;
-background:#0b0e13;
-color:#eee;
-border:1px solid #303642;
-border-radius:10px;
-padding:15px;
-font-size:16px;
+    width:100%;
+    min-height:220px;
+    background:#10151c;
+    color:white;
+    border:1px solid #333b47;
+    border-radius:12px;
+    padding:15px;
+    font-size:16px;
+    resize:vertical;
 }
 
-.result{
-text-align:center;
-padding:30px 15px;
+.warning{
+    background:#211b16;
+    border:1px solid #5d4730;
+    color:#d8c3a4;
+    padding:16px;
+    border-radius:12px;
+    line-height:1.8;
+    margin-bottom:15px;
 }
 
-.result .big{font-size:70px}
+.success{
+    background:#13231b;
+    border:1px solid #28573c;
+    padding:16px;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.unknown{
+    background:#171c25;
+    border:1px solid #444b57;
+    padding:18px;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.big-number{
+    font-size:45px;
+    font-weight:bold;
+    text-align:center;
+    margin:10px;
+}
+
+.small{
+    font-size:13px;
+    color:#888;
+}
 
 .toast{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-background:#eee;
-color:#111;
-padding:12px 20px;
-border-radius:30px;
-display:none;
-z-index:999;
-max-width:90%;
-text-align:center;
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#eee;
+    color:#111;
+    padding:13px 20px;
+    border-radius:10px;
+    display:none;
+    z-index:100;
+    max-width:90%;
+    text-align:center;
 }
 
-@media(max-width:600px){
-.screen{padding:15px}
-.logo{padding-top:35px}
-.logo h1{font-size:28px}
-.location-grid,
-.clue-grid,
-.suspect-grid{
-grid-template-columns:1fr;
+.section-title{
+    margin:25px 0 12px;
+    color:#ddd;
 }
-.meta{grid-template-columns:1fr}
+
+hr{
+    border:0;
+    border-top:1px solid #292f38;
+    margin:20px 0;
+}
+
+.source{
+    font-size:12px;
+    color:#777;
+    margin-top:12px;
+}
+
+@media(max-width:500px){
+    .title{
+        font-size:32px;
+    }
+
+    .logo{
+        font-size:55px;
+    }
+
+    .screen{
+        padding:16px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HOME -->
+<!-- ================= HOME ================= -->
+
 <section id="home" class="screen active">
 <div class="container">
 
-<div class="logo">
-<div class="icon">🕵️</div>
-<h1>ምስጢር</h1>
-<p>የኢትዮጵያ ዲቴክቲቭ</p>
-</div>
+<div class="logo">🕵️</div>
+<div class="title">ምስጢር</div>
+<div class="subtitle">የኢትዮጵያ ዲቴክቲቭ</div>
 
 <div class="menu">
 
-<button class="primary" onclick="startCase()">
-▶ ጉዳይ ጀምር
+<button class="primary" onclick="startCase(1)">
+🔎 CASE 001 — የጠፋው ሰው
 </button>
 
-<button onclick="show('cases')">
-📁 ጉዳዮች
+<button class="primary" onclick="startCase(2)">
+☠️ CASE 002 — ZODIAC
 </button>
 
-<button onclick="showEvidence()">
-🔎 ማስረጃዎች
+<button class="secondary" onclick="show('cases')">
+📁 ሁሉንም ጉዳዮች እይ
 </button>
 
-<button onclick="showNotes()">
-📓 ማስታወሻ
+<button class="secondary" onclick="showEvidence()">
+🔍 ማስረጃዎች
 </button>
 
-<button onclick="openTelegram()">
-💬 እርዳታ / አስተያየት
+<button class="secondary" onclick="showNotes()">
+📝 ማስታወሻ
 </button>
 
 </div>
@@ -299,28 +400,57 @@ grid-template-columns:1fr;
 </section>
 
 
-<!-- CASES -->
+<!-- ================= CASES ================= -->
+
 <section id="cases" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('home')">← ተመለስ</button>
-
+<div class="header">
+<button class="back" onclick="show('home')">←</button>
 <h2>📁 ጉዳዮች</h2>
+</div>
 
-<div class="card">
+<div class="card case-card">
+<span class="badge">CASE 001 • FICTIONAL</span>
 
-<h3>ጉዳይ #001 — የጠፋው ሰው</h3>
+<h3>🔎 የጠፋው ሰው</h3>
 
 <p>
-ቦሌ፣ አዲስ አበባ። 32 ዓመቱ ሚካኤል ከቤቱ በሚያስገርም
-ሁኔታ ጠፍቷል።
-በቤቱ ውስጥ ትንሽ የደም ነጠብጣብ ተገኝቷል።
-የቤቱ በር በግድ አልተከፈተም።
-ስልኩም የለም።
+በአዲስ አበባ ቦሌ የተከሰተ የጠፋ ሰው ጉዳይ።
+በቤት፣ በመንገድ እና በምስክሮች የተደበቁ
+ማስረጃዎችን ፈልግ።
 </p>
 
-<button class="primary" onclick="startCase()">
-ጉዳዩን ክፈት
+<br>
+
+<button class="primary" onclick="startCase(1)">
+ጉዳዩን ጀምር
+</button>
+</div>
+
+
+<div class="card case-card zodiac">
+
+<span class="badge">CASE 002 • HISTORICAL</span>
+
+<h3>☠️ ZODIAC</h3>
+
+<p>
+1968–1969፣ ሰሜን ካሊፎርኒያ።
+ራሱን “Zodiac” ብሎ የጠራ ያልታወቀ ሰው
+ለጋዜጦች ደብዳቤዎችና ኮዶች ላከ።
+</p>
+
+<br>
+
+<div class="warning">
+⚠️ ይህ ጉዳይ በታሪካዊ ሪከርዶች ላይ
+የተመሰረተ ነው።
+የተረጋገጠ እውነታን ከግምት እንለያለን።
+</div>
+
+<button class="primary" onclick="startCase(2)">
+☠️ የZODIAC ፋይል ክፈት
 </button>
 
 </div>
@@ -329,360 +459,404 @@ grid-template-columns:1fr;
 </section>
 
 
-<!-- INTRO -->
-<section id="intro" class="screen">
+<!-- ================= CASE 001 INTRO ================= -->
+
+<section id="case1intro" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('home')">
-← ተመለስ
-</button>
-
-<div class="case-header">
-
-<h2>ጉዳይ #001</h2>
-
-<p>የጠፋው ሰው</p>
-
+<div class="header">
+<button class="back" onclick="show('cases')">←</button>
+<h2>CASE 001</h2>
 </div>
-
-<div class="meta">
-
-<div>
-<small>ቦታ</small>
-ቦሌ
-</div>
-
-<div>
-<small>ሰዓት</small>
-11:40 PM
-</div>
-
-<div>
-<small>ሰው</small>
-ሚካኤል
-</div>
-
-</div>
-
 
 <div class="card">
+<div class="big-number">🔎</div>
 
-<h3>🌧️ የምሽቱ ታሪክ</h3>
-
-<p>
-ሌሊቱ 11፡40 ነበር። ቦሌ አካባቢ ዝናብ እየዘነበ ነበር።
-የመንገዱ መብራቶች በእርጥብ አስፋልት ላይ ይንጸባረቁ ነበር።
-</p>
+<h3>የጠፋው ሰው</h3>
 
 <p>
-በአንድ የመኖሪያ ሕንፃ ሶስተኛ ፎቅ ላይ የሚኖረው ሚካኤል
-በዚያ ምሽት በቤቱ እንደነበር ይታመናል።
-ነገር ግን ጠዋት ላይ ቤቱ ተከፍቶ ሲገኝ ሚካኤል አልነበረም።
+አንድ ሰው በአዲስ አበባ ቦሌ ከቤቱ ጠፍቷል።
+ፖሊስ ወደ ቤቱ ሲደርስ በቤቱ ውስጥ
+ብዙ የሚያስጠራጥሩ ማስረጃዎችን አገኘ።
 </p>
+
+<br>
 
 <p>
-በመኝታ ክፍሉ ውስጥ በምንጣፉ ላይ ትንሽ የደም ነጠብጣብ
-ነበር። በጠረጴዛው ላይ ግማሽ የተጠጣ ውሃ ነበር።
-አንድ መሳቢያ ተከፍቶ ነበር።
+አሁን የመርማሪው ስራ የአንተ ነው።
 </p>
 
-<p>
-የሚያስገርመው ግን በሩ በግድ እንደተከፈተ ምንም ምልክት
-አልነበረም። ሚካኤል የሚያውቀውን ሰው በሩን ከፍቶለት
-ሊሆን ይችላል።
-</p>
-
-<p>
-አንተ የምትፈታው ጥያቄ አንድ ብቻ አይደለም።
-“ሚካኤልን ማን ወሰደው?” ብቻ ሳይሆን፣
-<strong>“ሚካኤል በእርግጥ ተወስዷል?”</strong>
-የሚለውንም መመርመር አለብህ።
-</p>
-
-</div>
+<br>
 
 <button class="primary" onclick="startInvestigation()">
-🔦 ምርመራ ጀምር
+🔍 ምርመራ ጀምር
 </button>
+
+</div>
 
 </div>
 </section>
 
 
-<!-- INVESTIGATION -->
+<!-- ================= CASE 001 INVESTIGATION ================= -->
+
 <section id="investigation" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('home')">
-← ዋና ገጽ
-</button>
-
-<h2>🔦 የምርመራ ቦታ</h2>
-
-<div class="evidence-count">
-የተሰበሰበ ማስረጃ፦
-<strong id="count">0</strong> / 12
+<div class="header">
+<button class="back" onclick="show('home')">←</button>
+<h2>🔎 ምርመራ</h2>
 </div>
 
-<div class="progress">
-<div id="progress"></div>
+<div class="card">
+
+<div class="stat">
+<span>የተሰበሰበ ማስረጃ</span>
+<span id="evidenceCount">0 / 12</span>
 </div>
 
-<p style="color:#999">
-እያንዳንዱን ቦታ በጥንቃቄ መመርመር።
-አንዳንድ ማስረጃዎች በሌሎች ማስረጃዎች ትርጉም ያገኛሉ።
-</p>
+<div class="progress-wrap">
+<div id="progress" class="progress"></div>
+</div>
 
-<div class="location-grid">
+</div>
 
-<button class="location" onclick="search('bedroom')">
-<span>🛏️</span>
+<div class="grid">
+
+<div class="location" onclick="search('bedroom')">
+<div class="icon">🛏️</div>
 <strong>መኝታ ክፍል</strong>
-<small>ደም፣ መሳቢያ፣ ሰዓት</small>
-</button>
+</div>
 
-<button class="location" onclick="search('living')">
-<span>🛋️</span>
+<div class="location" onclick="search('living')">
+<div class="icon">🛋️</div>
 <strong>ሳሎን</strong>
-<small>ብርጭቆ፣ ወንበር፣ ወረቀት</small>
-</button>
+</div>
 
-<button class="location" onclick="search('entrance')">
-<span>🚪</span>
+<div class="location" onclick="search('entrance')">
+<div class="icon">🚪</div>
 <strong>መግቢያ</strong>
-<small>በር፣ ቁልፍ፣ ካሜራ</small>
-</button>
+</div>
 
-<button class="location" onclick="search('outside')">
-<span>🌧️</span>
-<strong>ከሕንፃው ውጭ</strong>
-<small>አሻራ፣ ታክሲ፣ ዝናብ</small>
-</button>
+<div class="location" onclick="search('outside')">
+<div class="icon">🌧️</div>
+<strong>ውጭ</strong>
+</div>
 
 </div>
 
 <br>
 
-<button onclick="showSuspects()">
-👥 ተጠርጣሪዎችን መጠይቅ
+<button class="secondary" onclick="showSuspects()">
+👤 ተጠርጣሪዎች
 </button>
 
-<button onclick="showEvidence()">
-🔎 የተሰበሰበውን ማስረጃ ይመልከቱ
+<br>
+
+<button class="secondary" onclick="showEvidence()">
+🧾 የተሰበሰቡ ማስረጃዎች
 </button>
 
-<button onclick="showNotes()">
-📓 ማስታወሻ
+<br>
+
+<button class="secondary" onclick="showNotes()">
+📝 ማስታወሻ
 </button>
 
-<!-- ACCUSATION BUTTON -->
+<br>
+
 <button class="primary" onclick="showDecision()">
-⚖️ ተጠርጣሪ ክሰስ
+⚖️ ውሳኔ ስጥ
 </button>
 
 </div>
 </section>
 
 
-<!-- CLUES -->
+<!-- ================= CASE 001 CLUES ================= -->
+
 <section id="clues" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('investigation')">
-← ወደ ምርመራ
-</button>
+<div class="header">
+<button class="back" onclick="show('investigation')">←</button>
+<h2>🔍 ማስረጃ</h2>
+</div>
 
-<h2 id="locationTitle">🔎 ፍንጭ</h2>
-
-<div id="clueList"></div>
+<div id="clueContent"></div>
 
 </div>
 </section>
 
 
-<!-- EVIDENCE -->
+<!-- ================= CASE 001 EVIDENCE ================= -->
+
 <section id="evidence" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('investigation')">
-← ወደ ምርመራ
-</button>
+<div class="header">
+<button class="back" onclick="show('investigation')">←</button>
+<h2>🧾 ማስረጃዎች</h2>
+</div>
 
-<h2>🔎 የማስረጃ ፋይል</h2>
-
-<div id="evidenceList"></div>
+<div id="evidenceContent"></div>
 
 </div>
 </section>
 
 
-<!-- SUSPECTS -->
+<!-- ================= CASE 001 SUSPECTS ================= -->
+
 <section id="suspects" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('investigation')">
-← ወደ ምርመራ
-</button>
-
-<h2>👥 ተጠርጣሪዎች</h2>
-
-<div class="card">
-
-<h3>⚠️ የዲቴክቲቭ ማስታወሻ</h3>
-
-<p>
-አንድ ሰው ሊዋሽ ይችላል።
-ይህ ግን በራሱ ወንጀለኛ ነው ማለት አይደለም።
-ቃላቸውን ከማስረጃው ጋር አነጻጽር።
-</p>
-
+<div class="header">
+<button class="back" onclick="show('investigation')">←</button>
+<h2>👤 ተጠርጣሪዎች</h2>
 </div>
 
-<div class="suspect-grid">
-
-<button class="location" onclick="question('dawit')">
-<span>👨</span>
-<strong>ዳዊት</strong>
-<small>የሚካኤል የቅርብ ጓደኛ</small>
-</button>
-
-<button class="location" onclick="question('sara')">
-<span>👩</span>
-<strong>ሳራ</strong>
-<small>ጎረቤት</small>
-</button>
-
-<button class="location" onclick="question('natnael')">
-<span>👨‍💼</span>
-<strong>ናትናኤል</strong>
-<small>የሥራ ባልደረባ</small>
-</button>
-
-</div>
+<div id="suspectContent"></div>
 
 </div>
 </section>
 
 
-<!-- INTERROGATION -->
+<!-- ================= CASE 001 INTERROGATION ================= -->
+
 <section id="interrogation" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('suspects')">
-← ወደ ተጠርጣሪዎች
-</button>
+<div class="header">
+<button class="back" onclick="show('suspects')">←</button>
+<h2>🗣️ ጥያቄ</h2>
+</div>
 
-<h2 id="suspectName"></h2>
-
-<div id="dialogue"></div>
-
-<div id="questions"></div>
+<div id="interrogationContent"></div>
 
 </div>
 </section>
 
 
-<!-- NOTES -->
+<!-- ================= NOTES ================= -->
+
 <section id="notes" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('investigation')">
-← ተመለስ
-</button>
-
-<h2>📓 የዲቴክቲቭ ማስታወሻ</h2>
+<div class="header">
+<button class="back" onclick="goBackFromNotes()">←</button>
+<h2>📝 ማስታወሻ</h2>
+</div>
 
 <div class="card">
-
 <p>
-ያስተዋልከውን ነገር ጻፍ።
-የተጠርጣሪዎችን ቃል፣ የማስረጃ ግንኙነት እና
-የራስህን ግምት መመዝገብ ትችላለህ።
+ያገኘኸውን ነገር እዚህ ጻፍ።
 </p>
 
-<textarea id="noteText"
-placeholder="ማስታወሻህን እዚህ ጻፍ..."></textarea>
+<br>
+
+<textarea id="notesArea" placeholder="ማስታወሻህን እዚህ ጻፍ..."></textarea>
 
 <br><br>
 
 <button class="primary" onclick="saveNotes()">
 💾 አስቀምጥ
 </button>
-
 </div>
 
 </div>
 </section>
 
 
-<!-- DECISION -->
+<!-- ================= CASE 001 DECISION ================= -->
+
 <section id="decision" class="screen">
 <div class="container">
 
-<button class="back" onclick="show('investigation')">
-← ወደ ምርመራ
-</button>
-
-<h2>⚖️ የመጨረሻ ውሳኔ</h2>
+<div class="header">
+<button class="back" onclick="show('investigation')">←</button>
+<h2>⚖️ ውሳኔ</h2>
+</div>
 
 <div class="card">
 
-<h3>የምትከሰው ማንን ነው?</h3>
+<h3>ማንን ትጠረጥራለህ?</h3>
 
-<p>
-የሰበሰብከውን ማስረጃ እና ከተጠርጣሪዎቹ
-የሰማኸውን ቃል በሙሉ አስብ።
-</p>
+<br>
 
-<p class="warning">
-⚠️ አንድ ተጠርጣሪ በእርግጥ ወንጀለኛ ነው።
-</p>
+<button class="choice" onclick="decision('dawit')">
+👤 ዳዊት
+</button>
+
+<button class="choice" onclick="decision('sara')">
+👤 ሳራ
+</button>
+
+<button class="choice" onclick="decision('natnael')">
+👤 ናትናኤል
+</button>
 
 </div>
-
-<button onclick="decision('dawit')">
-👨 ዳዊትን ክሰስ
-</button>
-
-<button onclick="decision('sara')">
-👩 ሳራን ክሰስ
-</button>
-
-<button class="primary" onclick="decision('natnael')">
-👨‍💼 ናትናኤልን ክሰስ
-</button>
-
-<button onclick="decision('none')">
-❓ ማንንም አልከስም
-</button>
 
 </div>
 </section>
 
 
-<!-- RESULT -->
+<!-- ================= CASE 001 RESULT ================= -->
+
 <section id="result" class="screen">
 <div class="container">
 
-<div class="result">
+<div class="header">
+<button class="back" onclick="show('home')">←</button>
+<h2>📁 የጉዳዩ ውጤት</h2>
+</div>
 
-<div class="big" id="resultIcon"></div>
+<div id="resultContent"></div>
 
-<h2 id="resultTitle"></h2>
+</div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- ================= CASE 002 ZODIAC ==================== -->
+<!-- ====================================================== -->
+
+
+<section id="zodiacIntro" class="screen">
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('cases')">←</button>
+<h2>☠️ CASE 002</h2>
+</div>
 
 <div class="card">
-<p id="resultText"></p>
+
+<div class="big-number">☠️</div>
+
+<h2 style="text-align:center">THE ZODIAC</h2>
+
+<br>
+
+<p>
+ካሊፎርኒያ፣ 1968።
+በሰሜን ካሊፎርኒያ ተከታታይ ጥቃቶች
+የህዝብን ትኩረት ሳቡ።
+</p>
+
+<br>
+
+<p>
+ከጊዜ በኋላ ራሱን
+<strong>“Zodiac”</strong>
+ብሎ የሚጠራ ሰው ለጋዜጦች
+ደብዳቤዎችን እና ኮዶችን መላክ ጀመረ።
+</p>
+
+<br>
+
+<div class="warning">
+የዚህ ጉዳይ ዋና ጥያቄ፦
+
+<br><br>
+
+<strong>
+“Zodiac ማን ነበር?”
+</strong>
+
+<br><br>
+
+ይህ ጥያቄ በይፋ የተረጋገጠ
+መልስ አላገኘም።
 </div>
 
-<button class="primary" onclick="show('investigation')">
-🔎 ምርመራውን ቀጥል
-</button>
-
-<button onclick="show('home')">
-🏠 ዋና ገጽ
+<button class="primary" onclick="zodiacHome()">
+🔎 የጉዳዩን ፋይል ክፈት
 </button>
 
 </div>
+
+</div>
+</section>
+
+
+<!-- ================= ZODIAC HOME ================= -->
+
+<section id="zodiacHome" class="screen">
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('cases')">←</button>
+<h2>☠️ ZODIAC FILE</h2>
+</div>
+
+<div class="warning">
+<strong>HISTORICAL CASE</strong><br><br>
+ይህ ጉዳይ በይፋ ያልተፈታ ነው።
+በጉዳዩ ውስጥ ያሉ እውነታዎች፣
+የተጠረጠሩ ሰዎች እና ግምቶች
+በተለያዩ መልኩ መታየት አለባቸው።
+</div>
+
+<div class="grid">
+
+<div class="location" onclick="zodiacPage('timeline')">
+<div class="icon">🕰️</div>
+<strong>Timeline</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('victims')">
+<div class="icon">🕯️</div>
+<strong>Victims</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('letters')">
+<div class="icon">✉️</div>
+<strong>Letters</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('ciphers')">
+<div class="icon">🔐</div>
+<strong>Ciphers</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('evidence')">
+<div class="icon">🔎</div>
+<strong>Evidence</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('persons')">
+<div class="icon">👤</div>
+<strong>Persons</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('investigation')">
+<div class="icon">🧠</div>
+<strong>Investigation</strong>
+</div>
+
+<div class="location" onclick="zodiacPage('sources')">
+<div class="icon">📚</div>
+<strong>Sources</strong>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= ZODIAC CONTENT ================= -->
+
+<section id="zodiacContent" class="screen">
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2 id="zodiacTitle">ZODIAC</h2>
+</div>
+
+<div id="zodiacBody"></div>
 
 </div>
 </section>
@@ -693,723 +867,1386 @@ placeholder="ማስታወሻህን እዚህ ጻፍ..."></textarea>
 
 <script>
 
+/* =========================================================
+   GENERAL
+========================================================= */
+
+let currentCase = 1;
+let previousScreen = "home";
+
+function show(id){
+
+    document.querySelectorAll(".screen").forEach(s=>{
+        s.classList.remove("active");
+    });
+
+    const target=document.getElementById(id);
+
+    if(target){
+        target.classList.add("active");
+    }
+}
+
+function toast(message){
+
+    const t=document.getElementById("toast");
+
+    t.textContent=message;
+    t.style.display="block";
+
+    setTimeout(()=>{
+        t.style.display="none";
+    },2500);
+}
+
+
+/* =========================================================
+   CASE SELECTION
+========================================================= */
+
+function startCase(number){
+
+    currentCase=number;
+
+    if(number===1){
+
+        show("case1intro");
+
+    }else if(number===2){
+
+        show("zodiacIntro");
+
+    }
+}
+
+
+/* =========================================================
+   CASE 001
+========================================================= */
+
 let evidence=JSON.parse(
-localStorage.getItem("detectiveEvidence")||"[]"
+    localStorage.getItem("detectiveEvidence_001") || "[]"
 );
 
-let notes=localStorage.getItem("detectiveNotes")||"";
-
+let notes=localStorage.getItem(
+    "detectiveNotes_001"
+) || "";
 
 const clues={
 
 bedroom:[
-
 {
 id:"blood",
-icon:"🩸",
-title:"የደም ነጠብጣብ",
-text:"በምንጣፉ ላይ ትንሽ የደም ነጠብጣብ ተገኘ። የደሙ መጠን ትልቅ ጉዳት እንደደረሰ አያሳይም። የላብራቶሪ ምርመራ ደሙ የሚካኤል መሆኑን ያረጋግጣል።"
+title:"🩸 የደም ምልክት",
+text:"በአልጋው አጠገብ ትንሽ የደም ምልክት ተገኘ።"
 },
-
 {
 id:"drawer",
-icon:"🗄️",
-title:"የተከፈተው መሳቢያ",
-text:"መሳቢያው ተከፍቶ ነበር። በውስጡ የገንዘብ ካርድ፣ የድሮ ፎቶ እና ባዶ ኤንቨሎፕ አለ። ገንዘብ ግን አልጠፋም።"
+title:"🗄️ የተከፈተ መሳቢያ",
+text:"አንድ መሳቢያ በኃይል እንደተከፈተ ይመስላል።"
 },
-
 {
 id:"watch",
-icon:"⌚",
-title:"የተሰበረው ሰዓት",
-text:"በአልጋው ጎን የሚካኤል ሰዓት ተገኘ። 11:17 ላይ ቆሟል። ይህ በተፈጥሮ የቆመበት ጊዜ መሆኑ ግን ገና አልተረጋገጠም።"
+title:"⌚ የተሰበረ ሰዓት",
+text:"በመሬት ላይ የተሰበረ ሰዓት ተገኘ።"
 }
-
 ],
 
 living:[
-
 {
 id:"glass",
-icon:"🥛",
-title:"የውሃ ብርጭቆ",
-text:"በጠረጴዛው ላይ ግማሽ የተጠጣ ውሃ አለ። ሁለት የጣት አሻራዎች ተገኝተዋል። አንዱ የሚካኤል ነው። ሁለተኛው ግን የናትናኤል አሻራ መሆኑ ተረጋግጧል።"
+title:"🥃 ሁለት ብርጭቆዎች",
+text:"በጠረጴዛው ላይ ሁለት ብርጭቆዎች ነበሩ።"
 },
-
 {
 id:"chair",
-icon:"🪑",
-title:"የተንቀሳቀሰው ወንበር",
-text:"አንድ ወንበር ከጠረጴዛው ርቆ ተገኘ። በመሬቱ ላይ ትንሽ የጭቃ ምልክት አለ።"
+title:"🪑 የተገፋ ወንበር",
+text:"አንድ ወንበር በድንገት እንደተገፋ ይመስላል።"
 },
-
 {
 id:"paper",
-icon:"📄",
-title:"የተቀደደ ወረቀት",
-text:"በቆሻሻ መጣያ ውስጥ '11:30... ቦታውን አትርሳ...' የሚል የተቀደደ ወረቀት ተገኘ። የእጅ ጽሁፉ የናትናኤል ነው።"
+title:"📄 የወረቀት ቁራጭ",
+text:"በወረቀቱ ላይ '11:30' የሚል ምልክት አለ።"
 }
-
 ],
 
 entrance:[
-
 {
 id:"door",
-icon:"🚪",
-title:"የመግቢያ በር",
-text:"በሩ በግድ አልተከፈተም። መቆለፊያው ደህና ነው። ሚካኤል የሚያውቀውን ሰው ወደ ቤቱ እንዳስገባ ይጠቁማል።"
+title:"🚪 የተበላሸ በር",
+text:"የመግቢያው በር ትንሽ ተጎድቷል።"
 },
-
 {
 id:"key",
-icon:"🔑",
-title:"የቤቱ ቁልፍ",
-text:"የቤቱ ቁልፍ ከበሩ አጠገብ ተገኘ። በቁልፉ ላይ ከሚካኤል ውጭ ሌላ የጣት አሻራ ተገኘ። አሻራው ከናትናኤል ጋር ይመሳሰላል።"
+title:"🔑 ቁልፍ",
+text:"ከበሩ አጠገብ ቁልፍ ተገኘ።"
 },
-
 {
 id:"camera",
-icon:"📹",
-title:"የደህንነት ካሜራ",
-text:"የሕንፃው ካሜራ በ11:24 ላይ አንድ ረጅም ኮት የለበሰ ሰው ከሕንፃው ሲወጣ አሳይቷል። ፊቱ ግን በጨለማ አይታይም።"
+title:"📹 የካሜራ ቅጂ",
+text:"ካሜራው 11:27 ላይ አንድ ሰው እንደገባ ያሳያል።"
 }
-
 ],
 
 outside:[
-
 {
 id:"footprints",
-icon:"👣",
-title:"የእግር አሻራ",
-text:"ከሕንፃው ውጭ የእግር አሻራ አለ። አሻራው የተገኘው ከ11:05 በኋላ ከጀመረው ዝናብ በኋላ ነው። የጫማው መጠን 43 ነው።"
+title:"👣 የእግር አሻራ",
+text:"በዝናብ ከተሞላው መሬት ላይ አሻራ ተገኘ።"
 },
-
 {
 id:"taxi",
-icon:"🚕",
-title:"የታክሲ ምስክር",
-text:"አንድ የታክሲ ሹፌር 11:27 አካባቢ አንድ ረጅም ሰው ወደ ታክሲ እንደገባ ይናገራል። ሰውየው ረጅም ኮት ለብሶ ነበር።"
+title:"🚕 የታክሲ መረጃ",
+text:"አንድ ታክሲ 11:40 ላይ አካባቢውን እንደለቀቀ ተመዝግቧል።"
 },
-
 {
 id:"rain",
-icon:"🌧️",
-title:"የዝናብ መረጃ",
-text:"የዝናቡ መረጃ 11:05 ላይ እንደጀመረ ያሳያል። የእግር አሻራው ከዚያ በኋላ ተፈጥሯል።"
+title:"🌧️ የዝናብ ሁኔታ",
+text:"ዝናቡ በሰዓቱ አካባቢ መጀመሩን የአየር ሁኔታ መዝገብ ያሳያል።"
 }
-
 ]
 
 };
-
-
-const suspectData={
-
-dawit:{
-name:"👨 ዳዊት",
-intro:"ዳዊት የሚካኤል የቅርብ ጓደኛ ነው። ሁለቱ በቅርቡ ተጣልተው ነበር።",
-questions:[
-
-{
-q:"በዚያ ምሽት የት ነበርክ?",
-a:"ቤት ነበርኩ። ከምሽቱ ጀምሮ ከቤቴ አልወጣሁም።"
-},
-
-{
-q:"ከሚካኤል ጋር ለምን ተጣላችሁ?",
-a:"ገንዘብ ስለሚመለከት ነገር ነበር። እሱ ከእኔ ገንዘብ ተበድሮ ነበር።"
-},
-
-{
-q:"ከሳምንት በላይ አልተገናኘሁም ብለህ ነበር።",
-a:"እውነቱን ልንገርህ። ሁለት ቀን በፊት ተገናኝተን ነበር። ስለ ገንዘብ ጉዳይ ብቻ ነበር።"
-}
-
-]
-},
-
-
-sara:{
-name:"👩 ሳራ",
-intro:"ሳራ የሚካኤል ጎረቤት ናት። በዚያ ምሽት አንድ ድምፅ እንደሰማች ትናገራለች።",
-questions:[
-
-{
-q:"11:30 ላይ ጩኸት ሰማሁ ብለሽ ነበር። ምን ዓይነት ድምፅ?",
-a:"ልክ እንደ አንድ ከባድ ነገር መሬት ላይ ሲወድቅ የሚሰማ ድምፅ ነበር።"
-},
-
-{
-q:"ሰው ሲወጣ አየሁ ብለሽ ነበር።",
-a:"ፊቱን አላየሁም። ረጅም ኮት ለብሶ ነበር።"
-},
-
-{
-q:"ለምን 11:30 ብለሽ ነገርሽ?",
-a:"ሰዓቴን ተመልክቼ ነበር። አሁን ሳስበው 11:24 ወይም 11:25 ሊሆን ይችላል።"
-}
-
-]
-},
-
-
-natnael:{
-name:"👨‍💼 ናትናኤል",
-intro:"ናትናኤል ከሚካኤል ጋር በአንድ ቢሮ ይሰራል። በሥራ ቦታ ላይ ችግር ነበራቸው።",
-questions:[
-
-{
-q:"በዚያ ምሽት ከሚካኤል ጋር ተገናኘህ?",
-a:"አልተገናኘሁም። በዚያ ምሽት ቤት ነበርኩ።"
-},
-
-{
-q:"በሥራ ቦታ ምን ችግር ነበረ?",
-a:"ሚካኤል አንድ የሥራ ሰነድ እንደጠፋ ይጠረጥር ነበር።"
-},
-
-{
-q:"ሚካኤል እንደሚጠረጥርህ ታውቅ ነበር?",
-a:"አዎ። ግን ሰነዱን እኔ አልሰረቅሁትም። እና በዚያ ምሽት ከሚካኤል ጋር አልተገናኘሁም።"
-}
-
-]
-}
-
-};
-
-
-function show(id){
-
-document.querySelectorAll(".screen").forEach(s=>{
-s.classList.remove("active");
-});
-
-document.getElementById(id).classList.add("active");
-
-if(id==="notes"){
-document.getElementById("noteText").value=notes;
-}
-
-}
-
-
-function startCase(){
-show("intro");
-}
-
-
-function openTelegram(){
-window.open(
-"https://t.me/sufo_clown",
-"_blank"
-);
-}
 
 
 function startInvestigation(){
-show("investigation");
-updateProgress();
+
+    show("investigation");
+
+    updateProgress();
 }
 
 
 function search(location){
 
-const names={
-bedroom:"🛏️ መኝታ ክፍል",
-living:"🛋️ ሳሎን",
-entrance:"🚪 መግቢያ",
-outside:"🌧️ ከሕንፃው ውጭ"
-};
+    const data=clues[location];
 
-document.getElementById(
-"locationTitle"
-).innerText=names[location];
+    let html="";
 
-let html="";
+    data.forEach(c=>{
 
-clues[location].forEach(c=>{
+        const collected=evidence.includes(c.id);
 
-let collected=evidence.includes(c.id);
+        html+=`
+        <div class="evidence ${collected?"collected":""}">
+            <h4>${c.title}</h4>
+            <p>${c.text}</p>
+            <br>
+            ${
+                collected
+                ? `<span class="small">✓ ተሰብስቧል</span>`
+                : `<button class="secondary" onclick="collect('${c.id}')">
+                    🔍 ማስረጃውን ሰብስብ
+                   </button>`
+            }
+        </div>
+        `;
+    });
 
-html+=`
+    document.getElementById("clueContent").innerHTML=html;
 
-<div class="card ${collected?"locked":""}">
-
-<div class="clue">
-
-<div class="emoji">${c.icon}</div>
-
-<h3>${c.title}</h3>
-
-<p>${c.text}</p>
-
-${
-collected
-?
-`<button disabled>✓ ተሰብስቧል</button>`
-:
-`<button class="primary"
-onclick="collect('${c.id}')">
-🔎 ማስረጃውን ሰብስብ
-</button>`
-}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-show("clues");
-
-document.getElementById(
-"clueList"
-).innerHTML=html;
-
+    show("clues");
 }
 
 
 function collect(id){
 
-if(!evidence.includes(id)){
+    if(!evidence.includes(id)){
 
-evidence.push(id);
+        evidence.push(id);
 
-localStorage.setItem(
-"detectiveEvidence",
-JSON.stringify(evidence)
-);
+        localStorage.setItem(
+            "detectiveEvidence_001",
+            JSON.stringify(evidence)
+        );
 
-toast("ማስረጃው ተሰብስቧል 🔎");
+        toast("ማስረጃው ተሰብስቧል ✓");
+    }
 
-updateProgress();
-
+    updateProgress();
+    searchForCollected(id);
 }
 
+
+function searchForCollected(id){
+
+    for(const location in clues){
+
+        const found=clues[location].find(x=>x.id===id);
+
+        if(found){
+
+            search(location);
+            return;
+        }
+    }
 }
 
 
 function updateProgress(){
 
-document.getElementById(
-"count"
-).innerText=evidence.length;
+    const count=document.getElementById("evidenceCount");
+    const bar=document.getElementById("progress");
 
-document.getElementById(
-"progress"
-).style.width=
-(evidence.length/12*100)+"%";
+    if(count){
+        count.textContent=evidence.length+" / 12";
+    }
 
+    if(bar){
+        bar.style.width=(evidence.length/12*100)+"%";
+    }
 }
 
 
 function showEvidence(){
 
-let html="";
+    if(currentCase===2){
 
-const all=[];
+        zodiacPage("evidence");
+        return;
+    }
 
-Object.values(clues).forEach(arr=>{
-arr.forEach(c=>all.push(c));
-});
+    let html="";
 
-const collected=all.filter(
-c=>evidence.includes(c.id)
-);
+    let all=[];
 
-if(collected.length===0){
+    for(const location in clues){
+        all=all.concat(clues[location]);
+    }
 
-html=`
+    all.forEach(c=>{
+
+        if(evidence.includes(c.id)){
+
+            html+=`
+            <div class="evidence collected">
+                <h4>${c.title}</h4>
+                <p>${c.text}</p>
+            </div>
+            `;
+        }
+    });
+
+    if(!html){
+
+        html=`
+        <div class="card">
+            <p>እስካሁን ምንም ማስረጃ አልሰበሰብክም።</p>
+        </div>
+        `;
+    }
+
+    document.getElementById("evidenceContent").innerHTML=html;
+
+    show("evidence");
+}
+
+
+/* =========================================================
+   CASE 001 SUSPECTS
+========================================================= */
+
+const suspectData={
+
+dawit:{
+name:"ዳዊት",
+description:"የጠፋውን ሰው በስራ ቦታ የሚያውቀው ጓደኛ።",
+questions:[
+"በዚያ ምሽት የት ነበርክ?",
+"11:30 ላይ የት ነበርክ?",
+"ከጠፋው ሰው ጋር ችግር ነበረህ?"
+]
+},
+
+sara:{
+name:"ሳራ",
+description:"በቅርቡ ከጠፋው ሰው ጋር የተከራከረች የስራ ባልደረባ።",
+questions:[
+"ለምን ተከራከራችሁ?",
+"በ11:30 የት ነበርሽ?",
+"ቤቱን ታውቂዋለሽ?"
+]
+},
+
+natnael:{
+name:"ናትናኤል",
+description:"በአካባቢው የሚኖር እና ከተጠፋው ሰው ጋር የገንዘብ ጉዳይ የነበረው ሰው።",
+questions:[
+"ከጠፋው ሰው ጋር የገንዘብ ጉዳይ ነበረ?",
+"በ11:30 የት ነበርክ?",
+"በዚያ ምሽት ወደ ቤቱ ሄደህ ነበር?"
+]
+}
+
+};
+
+
+function showSuspects(){
+
+    let html="";
+
+    for(const id in suspectData){
+
+        const s=suspectData[id];
+
+        html+=`
+        <div class="card">
+            <h3>👤 ${s.name}</h3>
+            <p>${s.description}</p>
+            <br>
+            <button class="secondary" onclick="question('${id}')">
+                🗣️ ጠይቅ
+            </button>
+        </div>
+        `;
+    }
+
+    document.getElementById("suspectContent").innerHTML=html;
+
+    show("suspects");
+}
+
+
+function question(id){
+
+    const s=suspectData[id];
+
+    let html=`
+    <div class="card">
+        <h3>${s.name}</h3>
+        <p>${s.description}</p>
+    </div>
+    `;
+
+    s.questions.forEach((q,i)=>{
+
+        html+=`
+        <div class="card">
+            <p><strong>${q}</strong></p>
+            <button class="secondary" onclick="answer('${id}',${i})">
+                መልሱን ስማ
+            </button>
+        </div>
+        `;
+    });
+
+    document.getElementById("interrogationContent").innerHTML=html;
+
+    show("interrogation");
+}
+
+
+function answer(id,index){
+
+    const answers={
+
+    dawit:[
+    "ከስራ በኋላ በቤት ነበርኩ ብሎ ተናገረ።",
+    "11:30 ላይ ቤት እንደነበር ተናገረ።",
+    "አዎ፣ ክርክር ነበረን ግን ትልቅ ነገር አልነበረም አለ።"
+    ],
+
+    sara:[
+    "በስራ ጉዳይ ብቻ እንደተከራከሩ ተናገረች።",
+    "በ11:30 ከጓደኛዋ ጋር እንደነበረች ተናገረች።",
+    "አዎ፣ ቤቱን አውቃለሁ አለች።"
+    ],
+
+    natnael:[
+    "አዎ፣ ገንዘብ እንደተበደረው ተናገረ።",
+    "11:30 ላይ በአካባቢው እንደነበር ተናገረ።",
+    "መጀመሪያ አይ አለ፣ በኋላ ግን አጠገብ እንደሄደ ተናገረ።"
+    ]
+
+    };
+
+    toast(answers[id][index]);
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+function showNotes(){
+
+    document.getElementById("notesArea").value=
+        currentCase===2
+        ? localStorage.getItem("detectiveNotes_002") || ""
+        : localStorage.getItem("detectiveNotes_001") || "";
+
+    previousScreen=
+        document.querySelector(".screen.active")?.id || "home";
+
+    show("notes");
+}
+
+
+function saveNotes(){
+
+    const text=document.getElementById("notesArea").value;
+
+    if(currentCase===2){
+
+        localStorage.setItem("detectiveNotes_002",text);
+
+    }else{
+
+        localStorage.setItem("detectiveNotes_001",text);
+    }
+
+    notes=text;
+
+    toast("ማስታወሻው ተቀምጧል ✓");
+}
+
+
+function goBackFromNotes(){
+
+    if(currentCase===2){
+
+        show("zodiacHome");
+
+    }else{
+
+        show("investigation");
+    }
+}
+
+
+/* =========================================================
+   CASE 001 DECISION
+========================================================= */
+
+function showDecision(){
+    show("decision");
+}
+
+
+function decision(choice){
+
+    const result=document.getElementById("resultContent");
+
+    if(choice==="natnael"){
+
+        result.innerHTML=`
+
+        <div class="success">
+
+        <h2>✓ ትክክለኛ ውሳኔ</h2>
+
+        <br>
+
+        <p>
+        ናትናኤል በጉዳዩ ውስጥ ዋናው ጥፋተኛ ነበር።
+        </p>
+
+        <br>
+
+        <p>
+        የገንዘብ ጉዳይ፣ የሰዓት መረጃ፣
+        እና በአካባቢው መገኘቱ በርካታ
+        ማስረጃዎችን አንድ ላይ አያይዘዋል።
+        </p>
+
+        </div>
+
+        <br>
+
+        <button class="primary" onclick="show('home')">
+        🏠 ወደ መነሻ
+        </button>
+        `;
+
+    }else{
+
+        result.innerHTML=`
+
+        <div class="card">
+
+        <h2>❌ የተሳሳተ ውሳኔ</h2>
+
+        <br>
+
+        <p>
+        ማስረጃዎቹን እንደገና ተመልከት።
+        በተለይ የ11:30 ሰዓት፣
+        የገንዘብ ጉዳይ እና የመግቢያ ማስረጃዎችን።
+        </p>
+
+        </div>
+
+        <br>
+
+        <button class="primary" onclick="show('investigation')">
+        🔎 እንደገና መርምር
+        </button>
+        `;
+    }
+
+    show("result");
+}
+
+
+/* =========================================================
+   ZODIAC
+========================================================= */
+
+function zodiacHome(){
+
+    show("zodiacHome");
+}
+
+
+/* ---------------------------------------------------------
+   ZODIAC TIMELINE
+--------------------------------------------------------- */
+
+const zodiacTimeline=[
+
+{
+date:"20 ዲሴምበር 1968",
+title:"Vallejo — የመጀመሪያው የተረጋገጠ ጥቃት",
+text:"David Faraday እና Betty Lou Jensen በLake Herman Road አቅራቢያ ተገደሉ።"
+},
+
+{
+date:"4 ጁላይ 1969",
+title:"Blue Rock Springs",
+text:"Darlene Ferrin ተገደለች፤ Michael Mageau በጥቃቱ ተጎድቶ ተረፈ።"
+},
+
+{
+date:"31 ጁላይ 1969",
+title:"የደብዳቤዎች መጀመሪያ",
+text:"ለሳን ፍራንሲስኮ ጋዜጦች ደብዳቤዎች እና የኮድ ክፍሎች ተላኩ።"
+},
+
+{
+date:"27 ሴፕቴምበር 1969",
+title:"Lake Berryessa",
+text:"Cecelia Shepard ተገደለች፤ Bryan Hartnell ከጥቃቱ ተረፈ።"
+},
+
+{
+date:"11 ኦክቶበር 1969",
+title:"San Francisco",
+text:"የታክሲ ሹፌሩ Paul Stine ተገደለ። ከዚህ ጉዳይ ጋር የተያያዘ የደብዳቤ ማስረጃ በኋላ ተገኘ።"
+},
+
+{
+date:"8 ኖቬምበር 1969",
+title:"340 Cipher",
+text:"340 ምልክቶች ያሉት ኮድ ተላከ።"
+},
+
+{
+date:"1969 መጨረሻ",
+title:"408 Cipher",
+text:"የ408 ምልክት ኮድ በDonald እና Bettye Harden ተፈታ።"
+},
+
+{
+date:"2020",
+title:"340 Cipher ተፈታ",
+text:"ከ50 ዓመታት በኋላ የ340 ኮድ መፍትሄ ታወቀ።"
+}
+
+];
+
+
+function renderTimeline(){
+
+    let html=`
+
+    <div class="card">
+
+    <h3>🕰️ የጊዜ መስመር</h3>
+
+    <p>
+    እነዚህ በጉዳዩ ላይ የተመዘገቡ
+    ዋና ክስተቶች ናቸው።
+    </p>
+
+    </div>
+
+    <div class="timeline">
+    `;
+
+    zodiacTimeline.forEach(item=>{
+
+        html+=`
+
+        <div class="timeline-item">
+
+            <div class="date">${item.date}</div>
+
+            <h3>${item.title}</h3>
+
+            <p>${item.text}</p>
+
+        </div>
+
+        `;
+    });
+
+    html+=`</div>`;
+
+    return html;
+}
+
+
+/* ---------------------------------------------------------
+   VICTIMS
+--------------------------------------------------------- */
+
+function renderVictims(){
+
+return `
 
 <div class="card">
 
+<h3>🕯️ የተመዘገቡ ተጎጂዎች</h3>
+
 <p>
-እስካሁን ምንም ማስረጃ አልሰበሰብክም።
-ወደ የምርመራ ቦታዎች ተመለስ።
+የZodiac ጉዳይ ላይ የተለያዩ ጥቃቶች
+ከሱ ጋር ተያይዘዋል።
+እዚህ የሚታዩት በጉዳዩ ውስጥ
+በጣም በግልጽ የተመዘገቡ ጉዳዮች ናቸው።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🕯️ David Faraday & Betty Lou Jensen</h3>
+
+<p>
+20 ዲሴምበር 1968።
+በLake Herman Road አቅራቢያ ተገደሉ።
+ይህ በብዙ የZodiac መዝገቦች
+የመጀመሪያው ዋና ጥቃት ተብሎ ይታወቃል።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🕯️ Darlene Ferrin</h3>
+
+<p>
+4 ጁላይ 1969።
+በBlue Rock Springs ጥቃት ተገደለች።
+Michael Mageau ግን በጥቃቱ ተረፈ።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🕯️ Cecelia Shepard</h3>
+
+<p>
+27 ሴፕቴምበር 1969።
+በLake Berryessa ጥቃት ተፈጸመባት።
+Bryan Hartnell ተረፈ።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🕯️ Paul Stine</h3>
+
+<p>
+11 ኦክቶበር 1969።
+በSan Francisco የታክሲ ሹፌር ነበር።
+በጥቃቱ ተገደለ።
+</p>
+
+</div>
+
+
+<div class="warning">
+
+<strong>⚠️ አስፈላጊ</strong>
+
+<br><br>
+
+Zodiac ራሱ ተጨማሪ ተጎጂዎችን
+እንደገደለ በደብዳቤዎቹ ገልጿል።
+ነገር ግን ራሱ የተናገረው ሁሉ
+በተመሳሳይ ደረጃ የተረጋገጠ እውነታ አይደለም።
+
+</div>
+
+`;
+
+}
+
+
+/* ---------------------------------------------------------
+   LETTERS
+--------------------------------------------------------- */
+
+function renderLetters(){
+
+return `
+
+<div class="card">
+
+<h3>✉️ የZodiac ደብዳቤዎች</h3>
+
+<p>
+በ1969 ለሳን ፍራንሲስኮ አካባቢ
+ጋዜጦች የተላኩ ደብዳቤዎች
+የጉዳዩ ዋና ክፍል ሆኑ።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>✉️ 31 ጁላይ 1969</h3>
+
+<p>
+ለተለያዩ ጋዜጦች የተላኩ ደብዳቤዎች
+የተለያዩ የcipher ክፍሎችን ያካተቱ ነበሩ።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>📰 የጋዜጣ ፍላጎት</h3>
+
+<p>
+ደብዳቤዎቹ ጋዜጦች ላይ እንዲታተሙ
+ጫና የሚያሳይ ይዘት ነበራቸው።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🧩 የደብዳቤ ማስረጃ</h3>
+
+<p>
+FBI የZodiac ፋይል ውስጥ
+የተላኩ ደብዳቤዎች፣ envelopes
+እና ciphers ቅጂዎችን አካቷል።
+</p>
+
+</div>
+
+
+<div class="warning">
+
+የZodiac ደብዳቤ ማለት
+“እውነት ብቻ” ማለት አይደለም።
+
+አንድ የመርማሪ ጥያቄ ሁሌም ይህ ነው፦
+
+<br><br>
+
+<strong>
+“ይህን መረጃ ከሌላ ማስረጃ ጋር ማረጋገጥ እንችላለን?”
+</strong>
+
+</div>
+
+`;
+
+}
+
+
+/* ---------------------------------------------------------
+   CIPHERS
+--------------------------------------------------------- */
+
+function renderCiphers(){
+
+return `
+
+<div class="card">
+
+<h3>🔐 408 CIPHER</h3>
+
+<p>
+በ1969 የተላከው የ408 ምልክት
+cipher በDonald እና Bettye Harden
+ተፈታ።
+</p>
+
+<br>
+
+<p>
+ኮዱ በሦስት የጋዜጣ ደብዳቤዎች
+ክፍሎች ተላከ።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🔐 340 CIPHER</h3>
+
+<p>
+የ340 ምልክት cipher በ8 ኖቬምበር
+1969 ተላከ።
+</p>
+
+<br>
+
+<p>
+ለብዙ አስርተ ዓመታት ሳይፈታ
+ቆየ።
+</p>
+
+<br>
+
+<p>
+በ2020 የcipher ቡድን መፍትሄውን
+አሳወቀ።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🧠 ለመርማሪው ጥያቄ</h3>
+
+<p>
+ኮድ መፍታት ማለት ገዳዩን መለየት
+ማለት ነው?
+</p>
+
+<br>
+
+<button class="secondary"
+onclick="toast('አይ። አንድ cipher ሊፈታ ይችላል፤ ግን የላኪውን ማንነት በቀጥታ ላያረጋግጥ ይችላል።')">
+💡 መልሱን እይ
+</button>
+
+</div>
+
+
+<div class="warning">
+
+<strong>
+ኮድ ≠ ማንነት
+</strong>
+
+<br><br>
+
+የZodiac ጉዳይ ትልቁ ትምህርት
+አንድ ማስረጃ ብቻ በቂ አለመሆኑ ነው።
+
+</div>
+
+`;
+
+}
+
+
+/* ---------------------------------------------------------
+   EVIDENCE
+--------------------------------------------------------- */
+
+function renderZodiacEvidence(){
+
+return `
+
+<div class="card">
+
+<h3>🔎 ዋና ዋና ማስረጃዎች</h3>
+
+<p>
+ከታች ያሉት የጉዳዩን ታሪካዊ
+ምርመራ ለመረዳት የሚረዱ ዋና ነጥቦች ናቸው።
+</p>
+
+</div>
+
+
+<div class="evidence">
+
+<h4>📰 የጋዜጣ ደብዳቤዎች</h4>
+
+<p>
+በ1969 የተላኩ ደብዳቤዎች
+በFBI ፋይሎች ውስጥ ተመዝግበዋል።
+</p>
+
+</div>
+
+
+<div class="evidence">
+
+<h4>🔐 Ciphers</h4>
+
+<p>
+408 እና 340 የተለያዩ የZodiac
+cipher ማስረጃዎች ናቸው።
+</p>
+
+</div>
+
+
+<div class="evidence">
+
+<h4>👮 የፖሊስ ሪከርዶች</h4>
+
+<p>
+የተለያዩ የፖሊስ እና FBI ሰነዶች
+በጉዳዩ ላይ ተመዝግበዋል።
+</p>
+
+</div>
+
+
+<div class="evidence">
+
+<h4>✍️ የእጅ ጽሁፍ / የማተሚያ ምርመራ</h4>
+
+<p>
+FBI ላብራቶሪ በጉዳዩ ላይ
+የጽሁፍ እና ሌሎች የሰነድ ምርመራዎችን
+አድርጓል።
+</p>
+
+</div>
+
+
+<div class="evidence">
+
+<h4>❓ የማይታወቀው</h4>
+
+<p>
+የZodiac እውነተኛ ማንነት
+በይፋ አልተረጋገጠም።
 </p>
 
 </div>
 
 `;
 
-}else{
+}
 
-collected.forEach(c=>{
 
-html+=`
+/* ---------------------------------------------------------
+   PERSONS OF INTEREST
+--------------------------------------------------------- */
+
+function renderPersons(){
+
+return `
 
 <div class="card">
 
-<h3>
-${c.icon} ${c.title}
-</h3>
+<h3>👤 Persons of Interest</h3>
 
-<p>${c.text}</p>
-
-</div>
-
-`;
-
-});
-
-}
-
-show("evidence");
-
-document.getElementById(
-"evidenceList"
-).innerHTML=html;
-
-}
-
-
-function showSuspects(){
-show("suspects");
-}
-
-
-function question(id){
-
-const s=suspectData[id];
-
-document.getElementById(
-"suspectName"
-).innerText=s.name;
-
-document.getElementById(
-"dialogue"
-).innerHTML=`
-
-<div class="card">
-
-<p>${s.intro}</p>
-
-</div>
-
-`;
-
-let qs="";
-
-s.questions.forEach((q,i)=>{
-
-qs+=`
-
-<button onclick="answer('${id}',${i})">
-❓ ${q.q}
-</button>
+<p>
+በዓመታት ውስጥ ብዙ ሰዎች
+ከZodiac ጉዳይ ጋር ተያይዘው
+ተመርምረዋል ወይም በሚዲያ
+ተጠቁሰዋል።
+</p>
 
 <br>
 
-`;
+<div class="warning">
 
-});
+<strong>⚠️ አስፈላጊ</strong>
 
-document.getElementById(
-"questions"
-).innerHTML=qs;
+<br><br>
 
-show("interrogation");
-
-}
-
-
-function answer(id,index){
-
-const q=suspectData[id].questions[index];
-
-let html=document.getElementById(
-"dialogue"
-).innerHTML;
-
-html+=`
-
-<div class="dialogue you">
-
-<strong>🕵️ ዲቴክቲቭ፦</strong><br>
-
-${q.q}
+“Person of interest” ወይም
+“suspect” መባል አንድ ሰው
+Zodiac ነበር ተብሎ የተረጋገጠ
+ማለት አይደለም።
 
 </div>
 
-<div class="dialogue">
+</div>
 
-<strong>
-${suspectData[id].name}፦
-</strong><br>
 
-${q.a}
+<div class="card">
+
+<h3>👤 Arthur Leigh Allen</h3>
+
+<p>
+Arthur Leigh Allen በZodiac ጉዳይ
+ውስጥ በብዙ የታሪክ ምንጮች
+ከተጠቀሱ የፍላጎት ሰዎች አንዱ ነው።
+</p>
+
+<br>
+
+<p>
+ነገር ግን እሱ Zodiac ነበር
+ብሎ የሚያረጋግጥ የመጨረሻ
+የይፋ ማስረጃ የለም።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>👥 ሌሎች ስሞች</h3>
+
+<p>
+በዓመታት ውስጥ ሌሎች ሰዎችም
+በመጽሐፍት፣ በጋዜጦች እና
+በግል ምርመራዎች ውስጥ ተጠቁሰዋል።
+</p>
+
+<br>
+
+<p>
+ነገር ግን ሁሉንም ስሞች እንደ
+“ገዳዩ” መግለጽ ታሪካዊ እውነታን
+ይዛባል።
+</p>
 
 </div>
 
 `;
 
-document.getElementById(
-"dialogue"
-).innerHTML=html;
-
 }
 
 
-function showNotes(){
+/* ---------------------------------------------------------
+   INVESTIGATION
+--------------------------------------------------------- */
 
-show("notes");
+function renderZodiacInvestigation(){
 
-document.getElementById(
-"noteText"
-).value=notes;
+return `
 
-}
+<div class="card">
 
+<h3>🧠 የመርማሪው ጠረጴዛ</h3>
 
-function saveNotes(){
+<p>
+አሁን ያገኘኸውን ማስረጃ
+አንድ ላይ አስብ።
+</p>
 
-notes=document.getElementById(
-"noteText"
-).value;
-
-localStorage.setItem(
-"detectiveNotes",
-notes
-);
-
-toast("ማስታወሻው ተቀምጧል 📓");
-
-}
+</div>
 
 
-function showDecision(){
+<div class="card">
 
-if(evidence.length<6){
+<h3>1️⃣ የተረጋገጠው ምንድነው?</h3>
 
-toast(
-"በመጀመሪያ ቢያንስ 6 ማስረጃዎችን ሰብስብ።"
-);
+<p>
+• በ1968–1969 በካሊፎርኒያ በርካታ
+ጥቃቶች ተፈጽመዋል።
+</p>
 
-return;
+<br>
 
-}
+<p>
+• ደብዳቤዎች ለጋዜጦች ተላኩ።
+</p>
 
-show("decision");
+<br>
 
-}
+<p>
+• ኮዶች ተላኩ።
+</p>
 
+<br>
 
-function decision(choice){
+<p>
+• የZodiac ማንነት በይፋ
+አልተረጋገጠም።
+</p>
 
-show("result");
-
-const icon=document.getElementById(
-"resultIcon"
-);
-
-const title=document.getElementById(
-"resultTitle"
-);
-
-const text=document.getElementById(
-"resultText"
-);
+</div>
 
 
-/* TRUE CULPRIT */
+<div class="card">
 
-if(choice==="natnael"){
+<h3>2️⃣ የማይታወቀው ምንድነው?</h3>
 
-icon.innerText="🔴";
+<p>
+ደብዳቤዎቹን በእርግጥ
+ማን እንደላከ፣
+እና የZodiac እውነተኛ
+ማንነት ማን እንደነበረ።
+</p>
 
-title.innerText="ትክክል! ወንጀለኛውን አግኝተሃል";
+</div>
 
-text.innerHTML=`
 
-<strong>ናትናኤል ወንጀለኛው ነው።</strong>
+<div class="card">
 
-<br><br>
+<h3>3️⃣ የመጨረሻ ውሳኔ</h3>
 
-ናትናኤል ከሚካኤል ጋር በሥራ ቦታ ላይ
-ከባድ ችግር ነበረበት። ሚካኤል የጠፋውን
-የሥራ ሰነድ እንደወሰደ ይጠረጥረው ነበር።
+<p>
+ከሚከተሉት አንዱን ምረጥ።
+</p>
 
-<br><br>
+<br>
 
-ናትናኤል ሚካኤልን ለመገናኘት ወደ ቤቱ
-ሄደ። ሚካኤል በሩን ራሱ ከፈተለት።
-ስለዚህ በሩ በግድ አልተከፈተም።
+<button class="choice"
+onclick="zodiacDecision('unknown')">
+❓ ማንነቱ አልተረጋገጠም
+</button>
 
-<br><br>
+<button class="choice"
+onclick="zodiacDecision('allen')">
+👤 Arthur Leigh Allen ነበር
+</button>
 
-በሳሎን የተገኘው ብርጭቆ የናትናኤል
-አሻራ እንዳለበት ተረጋግጧል።
+<button class="choice"
+onclick="zodiacDecision('other')">
+👥 ሌላ የተጠቆመ ሰው
+</button>
 
-<br><br>
-
-ከዚያ በላይ በቆሻሻ መጣያው ውስጥ
-የተገኘው ወረቀት በናትናኤል የእጅ ጽሁፍ
-ተጽፎ ነበር።
-
-<br><br>
-
-ይህ ብቻ በቂ አልነበረም።
-
-<br><br>
-
-በቁልፉ ላይ የተገኘው አሻራ፣
-የካሜራው 11:24 መረጃ፣
-የታክሲ ሹፌሩ 11:27 ምስክርነት
-እና የዝናብ መረጃ በአንድ ላይ
-ሲገናኙ የጊዜ መስመሩ ግልጽ ሆነ።
-
-<br><br>
-
-ናትናኤል በመጀመሪያ
-<strong>“በዚያ ምሽት ቤት ነበርኩ”</strong>
-ብሎ ዋሽቷል።
-
-<br><br>
-
-ነገር ግን የተገኘው ማስረጃ
-በዚያ ምሽት በሚካኤል ቤት እንደነበረ
-ያሳያል።
-
-<br><br>
-
-<strong>
-ዳዊት እና ሳራ አጠራጣሪ የሚመስሉ
-ነገሮችን ደብቀዋል፣ ግን ወንጀሉን
-እንደፈጸሙ የሚያሳይ ተጨባጭ
-ማስረጃ የለም።
-</strong>
-
-<br><br>
-
-ነገር ግን ጉዳዩ እዚህ አያበቃም።
-
-<br><br>
-
-<strong>ሚካኤል ከዚያ በኋላ የት ሄደ?</strong>
+</div>
 
 `;
 
 }
 
 
-else if(choice==="dawit"){
+/* ---------------------------------------------------------
+   ZODIAC DECISION
+--------------------------------------------------------- */
 
-icon.innerText="❌";
+function zodiacDecision(choice){
 
-title.innerText="የተሳሳተ ክስ";
+    const body=document.getElementById("zodiacBody");
 
-text.innerHTML=`
+    if(choice==="unknown"){
 
-ዳዊት አጠራጣሪ የሚያደርገው ምክንያት
-አለው። ከሚካኤል ጋር ተጣልቷል፣
-ስለ ገንዘብም ውሸት ተናግሯል።
+        body.innerHTML=`
+
+        <div class="success">
+
+        <h2>✓ የታሪክ መዝገቡን ትክክለኛ አነበብክ</h2>
+
+        <br>
+
+        <p>
+        የZodiac ጉዳይ ዋናው እውነታ
+        ይህ ነው፦
+        </p>
+
+        <br>
+
+        <h3>
+        የZodiac እውነተኛ ማንነት
+        በይፋ አልተረጋገጠም።
+        </h3>
+
+        <br>
+
+        <p>
+        የተለያዩ ሰዎች ተጠቁሰዋል፣
+        ግን አንድ ሰው እንደ Zodiac
+        በመጨረሻ አልተረጋገጠም።
+        </p>
+
+        </div>
+
+        <br>
+
+        <button class="primary" onclick="show('zodiacHome')">
+        ☠️ ወደ Zodiac ፋይል
+        </button>
+
+        <br><br>
+
+        <button class="secondary" onclick="show('home')">
+        🏠 ወደ መነሻ
+        </button>
+
+        `;
+
+    }else{
+
+        body.innerHTML=`
+
+        <div class="unknown">
+
+        <h2>⚠️ ይህ እንደ ታሪካዊ እውነታ
+        ሊቀርብ አይችልም።</h2>
+
+        <br>
+
+        <p>
+        ${choice==="allen"
+        ? "Arthur Leigh Allen በጉዳዩ ውስጥ በተጠቀሱ የፍላጎት ሰዎች መካከል አንዱ ነው።"
+        : "ብዙ ሌሎች ሰዎችም ተጠቁሰዋል።"}
+
+        </p>
+
+        <br>
+
+        <p>
+        ነገር ግን ይህ ሰው Zodiac
+        ነበር ብሎ የሚያረጋግጥ
+        የመጨረሻ የተረጋገጠ ማስረጃ
+        የለም።
+        </p>
+
+        </div>
+
+        <br>
+
+        <button class="primary"
+        onclick="zodiacPage('investigation')">
+        ← ወደ ምርመራ
+        </button>
+
+        `;
+
+    }
+
+    show("zodiacContent");
+}
+
+
+/* ---------------------------------------------------------
+   SOURCES
+--------------------------------------------------------- */
+
+function renderSources(){
+
+return `
+
+<div class="card">
+
+<h3>📚 የምንጭ ማህደር</h3>
+
+<p>
+የCASE 002 ዋና ታሪካዊ መረጃ
+ከFBI Vault የZodiac ፋይሎች
+ተመርኩዟል።
+</p>
+
+<br>
+
+<p>
+FBI የ1969 የZodiac ደብዳቤዎችን፣
+ciphers እና የላብራቶሪ ሰነዶችን
+በFOIA ፋይሎቹ ውስጥ ያስቀምጣል።
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🏛️ FBI Vault</h3>
+
+<p>
+The Zodiac Killer — FBI archival files
+</p>
+
+<br>
+
+<p class="small">
+vault.fbi.gov/The-Zodiac-Killer
+</p>
+
+</div>
+
+
+<div class="warning">
+
+ይህ መተግበሪያ የታሪክ
+እና የምርመራ ማስተማሪያ ነው።
 
 <br><br>
 
-ግን ይህ በራሱ ወንጀለኛ መሆኑን
-አያረጋግጥም።
+በዚህ ጉዳይ ላይ ያሉ ያልተረጋገጡ
+ግምቶች እንደ እውነት አይቀርቡም።
 
-<br><br>
-
-በቤቱ ውስጥ የተገኙት አሻራዎች
-እና የጊዜ መስመሩ ዳዊትን
-በቀጥታ አያገናኙትም።
-
-<br><br>
-
-<strong>
-የሚጠራጠር ሰው እና ወንጀለኛ
-ሁልጊዜ አንድ ሰው አይደሉም።
-</strong>
+</div>
 
 `;
 
 }
 
 
-else if(choice==="sara"){
+/* ---------------------------------------------------------
+   ZODIAC PAGE ROUTER
+--------------------------------------------------------- */
 
-icon.innerText="❌";
+function zodiacPage(page){
 
-title.innerText="የተሳሳተ ክስ";
+    let title="";
+    let body="";
 
-text.innerHTML=`
+    if(page==="timeline"){
 
-ሳራ የሰማችውን ጊዜ በትክክል
-አላስታወሰችም። ይህም ቃሏን
-አጠራጣሪ ያደርጋል።
+        title="🕰️ Timeline";
+        body=renderTimeline();
 
-<br><br>
+    }else if(page==="victims"){
 
-ግን እሷ የተመለከተችው ሰው
-እሷ እንዳላወቀችው ተናግራለች።
+        title="🕯️ Victims";
+        body=renderVictims();
 
-<br><br>
+    }else if(page==="letters"){
 
-የእሷ አሻራ ወይም ዕቃ ከዋናው
-ወንጀል ጋር የሚያገናኝ ማስረጃ
-አልተገኘም።
+        title="✉️ Letters";
+        body=renderLetters();
 
-<br><br>
+    }else if(page==="ciphers"){
 
-<strong>
-የምስክር ቃል ብቻ ወንጀለኛን
-ለመለየት በቂ አይደለም።
-</strong>
+        title="🔐 Ciphers";
+        body=renderCiphers();
 
-`;
+    }else if(page==="evidence"){
 
+        title="🔎 Evidence";
+        body=renderZodiacEvidence();
+
+    }else if(page==="persons"){
+
+        title="👤 Persons of Interest";
+        body=renderPersons();
+
+    }else if(page==="investigation"){
+
+        title="🧠 Investigation";
+        body=renderZodiacInvestigation();
+
+    }else if(page==="sources"){
+
+        title="📚 Sources";
+        body=renderSources();
+
+    }
+
+    document.getElementById("zodiacTitle").textContent=title;
+    document.getElementById("zodiacBody").innerHTML=body;
+
+    show("zodiacContent");
 }
 
 
-else{
+/* =========================================================
+   INITIALIZATION
+========================================================= */
 
-icon.innerText="❓";
-
-title.innerText="ጉዳዩ አልተፈታም";
-
-text.innerHTML=`
-
-ወንጀለኛውን ለመለየት
-በቂ ማስረጃ አለህ።
-
-<br><br>
-
-እንደገና የሰበሰብከውን ማስረጃ
-ተመልከት።
-
-<br><br>
-
-በተለይም የብርጭቆውን አሻራ፣
-የተቀደደውን ወረቀት፣
-የቁልፉን አሻራ እና
-የካሜራውን ጊዜ አነጻጽር።
-
-`;
-
-}
-
-}
-
-
-function toast(message){
-
-const t=document.getElementById("toast");
-
-t.innerText=message;
-
-t.style.display="block";
-
-setTimeout(()=>{
-t.style.display="none";
-},2200);
-
-}
+updateProgress();
 
 </script>
 
