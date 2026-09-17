@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ምስጢር — የኢትዮጵያ ዲቴክቲቭ</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HOME -->
+<div id="home" class="screen active">
+  <div class="container">
+
+    <div class="logo">🕵️</div>
+
+    <h1 class="title">ምስጢር</h1>
+
+    <p class="subtitle">
+      የኢትዮጵያ ዲቴክቲቭ
+    </p>
+
+    <div class="menu">
+
+      <button class="primary"
+        onclick="location.href='case001.html'">
+        🔎 CASE 001 — የጠፋው ሰው
+      </button>
+
+      <button class="dark"
+        onclick="location.href='case002.html'">
+        ☠️ CASE 002 — ZODIAC
+      </button>
+
+      <button class="secondary"
+        onclick="show('cases')">
+        📁 ሁሉንም ጉዳዮች ተመልከት
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ALL CASES -->
+<div id="cases" class="screen">
+
+  <div class="container">
+
+    <div class="header">
+
+      <button class="back"
+        onclick="show('home')">
+        ←
+      </button>
+
+      <h2>📁 ሁሉም ጉዳዮች</h2>
+
+    </div>
+
+
+    <!-- CASE 001 -->
+    <div class="case-card"
+      onclick="location.href='case001.html'">
+
+      <span class="badge">
+        CASE 001
+      </span>
+
+      <h3>
+        🔎 የጠፋው ሰው
+      </h3>
+
+      <p>
+        አንድ ሰው በሚስጥራዊ ሁኔታ ጠፍቷል።
+        ፍንጮችን ፈልግ፣ ምስክሮችን ጠይቅ
+        እና እውነቱን አግኝ።
+      </p>
+
+      <button class="primary">
+        CASE 001 ክፈት →
+      </button>
+
+    </div>
+
+
+    <!-- CASE 002 -->
+    <div class="case-card zodiac"
+      onclick="location.href='case002.html'">
+
+      <span class="badge">
+        CASE 002
+      </span>
+
+      <h3>
+        ☠️ ZODIAC
+      </h3>
+
+      <p>
+        በ1960ዎቹ የአሜሪካን የዞዲያክ ገዳይ
+        ጉዳይን መርምር። የተገኙ ማስረጃዎችን፣
+        ደብዳቤዎችን፣ ሲፈሮችን እና ተጠርጣሪዎችን
+        ተመልከት።
+      </p>
+
+      <button class="dark">
+        CASE 002 ክፈት →
+      </button>
+
+    </div>
+
+
+    <!-- FUTURE CASE -->
+    <div class="case-card">
+
+      <span class="badge">
+        CASE 003
+      </span>
+
+      <h3>
+        🔒 በቅርቡ...
+      </h3>
+
+      <p>
+        አዲስ ጉዳይ በቅርቡ ይጨመራል።
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function show(id) {
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  const target = document.getElementById(id);
+
+  if (target) {
+    target.classList.add("active");
+  }
+
+}
+
+</script>
+
+</body>
+</html>
