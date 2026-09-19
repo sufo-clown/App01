@@ -1,154 +1,1801 @@
 <!DOCTYPE html>
 <html lang="am">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ምስጢር — የኢትዮጵያ ዲቴክቲቭ</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<title>CASE 002 — ዘዲያክት</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.story-box {
+    background:#111827;
+    border:1px solid #263244;
+    border-radius:16px;
+    padding:22px;
+    margin:18px 0;
+    line-height:2;
+}
+
+.story-box p {
+    margin:0 0 17px;
+}
+
+.story-box p:last-child {
+    margin-bottom:0;
+}
+
+.chapter {
+    color:#ef4444;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.year {
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.big-title {
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.quote-box {
+    border-left:3px solid #ef4444;
+    padding:13px 16px;
+    margin:20px 0;
+    background:#0b1220;
+    color:#d1d5db;
+    font-style:italic;
+}
+
+.investigation-card {
+    background:#0d1524;
+    border:1px solid #263244;
+    border-radius:14px;
+    padding:18px;
+    margin:14px 0;
+}
+
+.investigation-card h3 {
+    margin-top:0;
+}
+
+.choice-btn {
+    width:100%;
+    text-align:left;
+    margin-top:10px;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #334155;
+    background:#172033;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.answer {
+    display:none;
+    margin-top:12px;
+    padding:14px;
+    border-radius:10px;
+    background:#0b1220;
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.answer.show {
+    display:block;
+}
+
+.investigation-card.locked {
+    opacity:.55;
+}
+
+.timeline-big {
+    border-left:2px solid #334155;
+    margin-left:8px;
+    padding-left:22px;
+}
+
+.timeline-big .event {
+    margin-bottom:27px;
+    position:relative;
+    line-height:1.8;
+}
+
+.timeline-big .event:before {
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:#ef4444;
+    border-radius:50%;
+    left:-28px;
+    top:8px;
+}
+
+.timeline-big .event strong {
+    display:block;
+    color:#f87171;
+    margin-bottom:5px;
+}
+
+.fact {
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:15px;
+    margin:10px 0;
+    background:#0d1524;
+    line-height:1.8;
+}
+
+.fact strong {
+    color:#f8fafc;
+}
+
+.note {
+    color:#94a3b8;
+    font-size:13px;
+}
+
+.score {
+    text-align:center;
+    padding:25px;
+    margin-top:20px;
+    border-radius:15px;
+    background:#111827;
+    border:1px solid #334155;
+}
+
+</style>
 </head>
 
 <body>
 
-<!-- HOME -->
-<div id="home" class="screen active">
-  <div class="container">
 
-    <div class="logo">🕵️</div>
+<!-- =====================================
+     መነሻ
+===================================== -->
 
-    <h1 class="title">ምስጢር</h1>
+<section id="zodiacIntro" class="screen active">
 
-    <p class="subtitle">
-      የኢትዮጵያ ዲቴክቲቭ
-    </p>
+<div class="container">
 
-    <div class="menu">
+<div class="header">
+    <button class="back" onclick="goHome()">←</button>
+    <h2>CASE 002</h2>
+</div>
 
-      <button class="primary"
-        onclick="location.href='case001.html'">
-        🔎 CASE 001 — የጠፋው ሰው
-      </button>
+<div class="story-box">
 
-      <button class="dark"
-        onclick="location.href='case002.html'">
-        ☠️ CASE 002 — ZODIAC
-      </button>
+<div class="chapter">የእውነተኛ ታሪክ ምርመራ</div>
 
-      <button class="secondary"
-        onclick="show('cases')">
-        📁 ሁሉንም ጉዳዮች ተመልከት
-      </button>
+<div class="big-title">ዘዲያክት</div>
 
-    </div>
+<div class="year">ካሊፎርኒያ — 1968–1970</div>
 
-  </div>
+<p>
+ወደዚህ ጉዳይ ስትገባ የምትመረምረው ልብ ወለድ ታሪክ አይደለም።
+</p>
+
+<p>
+ይህ ጉዳይ በእውነት ተከስቷል።
+</p>
+
+<p>
+በ1960ዎቹ መጨረሻ በሰሜን ካሊፎርኒያ ተከታታይ
+ግድያዎች ተፈጸሙ።
+</p>
+
+<p>
+ከዚያም ራሱን ከእነዚህ ወንጀሎች ጋር የሚያገናኝ
+አንድ ሰው ለጋዜጦች ደብዳቤዎችን መላክ ጀመረ።
+</p>
+
+<p>
+ይህ ሰው ራሱን በአንድ ስም ጠራ፦
+<strong>“Zodiac” — ዘዲያክት።</strong>
+</p>
+
+<div class="quote-box">
+የአንተ ተግባር የጠፋውን መልስ መፍጠር አይደለም።
+ማስረጃውን መከተል ነው።
+</div>
+
+<p>
+በዚህ ምርመራ ውስጥ ክስተቶቹን በተከሰቱበት
+ቅደም ተከተል ትከተላለህ።
+</p>
+
+<p>
+በእያንዳንዱ ደረጃ መርማሪዎች በዚያን ጊዜ
+ምን እንደሚያውቁ፣ ምን እንደማያውቁ እና
+በኋላ የተገኘው ማስረጃ ጉዳዩን እንዴት
+እንደቀየረው ትመለከታለህ።
+</p>
+
+</div>
+
+<button class="primary" onclick="startCase()">
+ምርመራውን ጀምር
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ዋና ገጽ
+===================================== -->
+
+<section id="zodiacHome" class="screen">
+
+<div class="container">
+
+<div class="header">
+    <button class="back" onclick="show('zodiacIntro')">←</button>
+    <h2>ዘዲያክት</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">የምርመራ ፋይል</div>
+
+<p>
+1968 ላይ የአንድ መርማሪ ፋይል እንደምትከፍት አስብ።
+</p>
+
+<p>
+በዚያን ጊዜ ማንም “ዘዲያክት” ብሎ የሚጠራውን
+ገዳይ አያውቅም።
+</p>
+
+<p>
+ምንም የምስጢር ምልክት የለም።
+ምንም ምስጢራዊ ኮድ የለም።
+</p>
+
+<p>
+ያሉት የወንጀል ቦታዎች፣ ተጎጂዎች፣
+ምስክሮች እና መርማሪዎች ብቻ ናቸው።
+</p>
+
+<p>
+ከዚያ ግን አንድ ሰው ለጋዜጦች መጻፍ ጀመረ።
+</p>
+
+<p>
+ከዚያ በኋላ ጉዳዩ ሙሉ በሙሉ ተለወጠ።
+</p>
+
+</div>
+
+<div class="investigation-card">
+<h3>🔎 ምዕራፍ 1 — የመጀመሪያው ወንጀል</h3>
+<p>ታህሳስ 20፣ 1968 — Lake Herman Road</p>
+<button class="choice-btn" onclick="openChapter(1)">
+ወደ ወንጀል ቦታው ግባ
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>🔎 ምዕራፍ 2 — Blue Rock Springs</h3>
+<p>ሐምሌ 4፣ 1969</p>
+<button class="choice-btn" onclick="openChapter(2)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>✉️ ምዕራፍ 3 — አንድ ሰው ይጽፋል</h3>
+<p>ገዳዩ ለጋዜጦች መጻፍ ይጀምራል።</p>
+<button class="choice-btn" onclick="openChapter(3)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>🔐 ምዕራፍ 4 — 408 ኮድ</h3>
+<p>እንግዳ የሆነ የምስጢር መልዕክት ይመጣል።</p>
+<button class="choice-btn" onclick="openChapter(4)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>🌲 ምዕራፍ 5 — Lake Berryessa</h3>
+<p>ሌላ አስፈሪ ጥቃት።</p>
+<button class="choice-btn" onclick="openChapter(5)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>🚕 ምዕራፍ 6 — የታክሲ ሹፌሩ</h3>
+<p>ጥቅምት 11፣ 1969</p>
+<button class="choice-btn" onclick="openChapter(6)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>✉️ ምዕራፍ 7 — ዘዲያክት ይናገራል</h3>
+<p>ገዳዩ ደብዳቤዎቹን ይቀጥላል።</p>
+<button class="choice-btn" onclick="openChapter(7)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>🔐 ምዕራፍ 8 — 340 ኮድ</h3>
+<p>ለ51 ዓመታት ያልተፈታው ኮድ።</p>
+<button class="choice-btn" onclick="openChapter(8)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>👤 ምዕራፍ 9 — ማን ነበር?</h3>
+<p>መርማሪዎች የሰውየውን ማንነት መፈለግ ይጀምራሉ።</p>
+<button class="choice-btn" onclick="openChapter(9)">
+ቀጥል
+</button>
+</div>
+
+<div class="investigation-card locked">
+<h3>🧩 ምዕራፍ 10 — የመጨረሻው ፋይል</h3>
+<p>በእውነት ምን ማረጋገጥ ይቻላል?</p>
+<button class="choice-btn" onclick="openChapter(10)">
+የመጨረሻውን ፋይል ክፈት
+</button>
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 1
+===================================== -->
+
+<section id="chapter1" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 1</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">ታህሳስ 20፣ 1968</div>
+
+<div class="big-title">የመጀመሪያው ወንጀል</div>
+
+<div class="year">Lake Herman Road — ካሊፎርኒያ</div>
+
+<p>
+ሌሊት ነው።
+</p>
+
+<p>
+17 ዓመቱ ዴቪድ ፋራዴይ እና 16 ዓመቷ ቤቲ ሉ ጄንሰን
+በLake Herman Road አካባቢ አብረው ናቸው።
+</p>
+
+<p>
+ቦታው ጸጥ ያለ እና ከብዙ ሰዎች የራቀ ነው።
+</p>
+
+<p>
+ከዚያ ግን የጥይት ድምጽ ይሰማል።
+</p>
+
+<p>
+መርማሪዎች ወደ ቦታው ሲደርሱ ዴቪድ እና
+ቤቲ ሉ ሞተው ያገኛሉ።
+</p>
+
+<p>
+በዚያን ጊዜ ግን ማንም “ዘዲያክት” የሚባል ሰው
+እንዳለ አያውቅም።
+</p>
+
+<p>
+ምስጢራዊ ደብዳቤ የለም።
+ኮድ የለም።
+</p>
+
+<p>
+የሚታየው የሁለት ወጣቶች ግድያ ብቻ ነው።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🔎 የመርማሪው የመጀመሪያ ጥያቄ</h3>
+
+<p>
+አንተ በዚያ ሌሊት ወደ ወንጀል ቦታው የደረስክ
+መርማሪ ብትሆን መጀመሪያ ምን ማወቅ ትፈልጋለህ?
+</p>
+
+<button class="choice-btn" onclick="answer(this,'correct')">
+A. ምን እንደተፈጠረ እና ጥቃቱ እንዴት እንደተፈጸመ።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+B. የዘዲያክትን ምልክት መፈለግ።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+C. የገዳዩን ኮድ መፍታት።
+</button>
+
+<div class="answer">
+<strong>ትክክል።</strong><br><br>
+
+በዚህ ጊዜ የዘዲያክት ስም እንኳን አልተሰጠም።
+ኮድም ሆነ ምስጢራዊ ደብዳቤ የለም።
+መርማሪዎች መጀመሪያ ወንጀሉን መረዳት አለባቸው።
+</div>
+
+</div>
+
+<div class="story-box">
+
+<p>
+ይህንን ነገር ማስታወስ አስፈላጊ ነው።
+</p>
+
+<p>
+ዛሬ የዘዲያክትን ታሪክ ስናውቅ የዛሬውን እውቀት
+ወደ 1968 መመለስ ቀላል ነው።
+</p>
+
+<p>
+ነገር ግን የዚያን ጊዜ መርማሪዎች ወደፊት
+ምን እንደሚፈጠር አያውቁም ነበር።
+</p>
+
+<p>
+ለእነሱ ይህ አንድ የሁለት ሰዎች ግድያ ጉዳይ ብቻ ነበር።
+</p>
+
+</div>
+
+<button class="primary" onclick="unlock(2)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 2
+===================================== -->
+
+<section id="chapter2" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 2</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">ሐምሌ 4፣ 1969</div>
+
+<div class="big-title">BLUE ROCK SPRINGS</div>
+
+<div class="year">Vallejo — ካሊፎርኒያ</div>
+
+<p>
+ከመጀመሪያው ግድያ ከስድስት ወራት በላይ አልፏል።
+</p>
+
+<p>
+ከዚያ ሐምሌ 4፣ 1969 ሌላ ጥቃት ይፈጸማል።
+</p>
+
+<p>
+ዳርሊን ፌሪን እና ማይክል ማጆ በBlue Rock Springs
+በመኪና ውስጥ አሉ።
+</p>
+
+<p>
+ሌላ መኪና ወደ እነሱ ይቀርባል።
+</p>
+
+<p>
+በድንገት ሁኔታው ወደ አስፈሪ ጥቃት ይቀየራል።
+</p>
+
+<p>
+ዳርሊን ፌሪን በጥቃቱ ሞተች።
+ማይክል ማጆ ግን ተርፏል።
+</p>
+
+<p>
+ለመርማሪዎች ይህ በጣም አስፈላጊ ነገር ነው።
+</p>
+
+<p>
+አንድ ሰው ከጥቃቱ ተርፏል።
+ምናልባት ስለ አጥቂው ጠቃሚ መረጃ ሊሰጥ ይችላል።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🧠 ማስረጃ — ምስክሩ</h3>
+
+<p>
+ማይክል ማጆ ከጥቃቱ ተርፎ ስለ አጥቂው
+መረጃ ለመርማሪዎች መስጠት ችሏል።
+</p>
+
+<p>
+ነገር ግን የሰው ማስታወስ ሁልጊዜ ፍጹም አይደለም።
+ስለዚህ የምስክር መረጃ ከሌሎች ማስረጃዎች
+ጋር መነጻጸር አለበት።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>ጥያቄ</h3>
+
+<p>
+ተርፎ የሚታይ ምስክር ለምን ጠቃሚ ነው?
+</p>
+
+<button class="choice-btn" onclick="answer(this,'correct')">
+A. ስለ አጥቂው ጠቃሚ መረጃ ሊሰጥ ስለሚችል።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+B. ምስክሩ የገዳዩን ማንነት ሁልጊዜ ስለሚያውቅ።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+C. የምስክር ቃል ሁልጊዜ ፍጹም ስለሆነ።
+</button>
+
+<div class="answer">
+<strong>ትክክል።</strong><br><br>
+
+ምስክሩ ጠቃሚ መረጃ ሊሰጥ ይችላል።
+ነገር ግን መርማሪዎች ያንን መረጃ
+ከሌሎች ማስረጃዎች ጋር ማረጋገጥ አለባቸው።
+</div>
+
+</div>
+
+<div class="story-box">
+
+<p>
+ከዚያ ግን ሌላ ነገር ይፈጠራል።
+</p>
+
+<p>
+ፖሊስ የሚደውል ሰው ይቀበላል።
+</p>
+
+<p>
+ደዋዩ የBlue Rock Springs ጥቃትን እና
+ከዚያ በፊት በLake Herman Road የተፈጸመውን
+ግድያ እሱ እንደፈጸመ ይናገራል።
+</p>
+
+<p>
+አሁን መርማሪዎች በሁለቱ ጉዳዮች መካከል
+ሊኖር የሚችል ግንኙነት አገኙ።
+</p>
+
+<p>
+ግን ደዋዩ ማን እንደሆነ አያውቁም።
+</p>
+
+<p>
+ይህ የምርመራው መጀመሪያ ብቻ ነው።
+</p>
+
+</div>
+
+<button class="primary" onclick="unlock(3)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 3
+===================================== -->
+
+<section id="chapter3" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 3</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">ሐምሌ 31፣ 1969</div>
+
+<div class="big-title">አንድ ሰው ይጽፋል</div>
+
+<div class="year">የካሊፎርኒያ ጋዜጦች</div>
+
+<p>
+አሁን ምርመራው ወደ ሙሉ በሙሉ አዲስ አቅጣጫ ይገባል።
+</p>
+
+<p>
+ሶስት ጋዜጦች ደብዳቤ ይቀበላሉ።
+</p>
+
+<p>
+ደብዳቤዎቹን የጻፈው ሰው የቀድሞ ግድያዎችን
+እሱ እንደፈጸመ ይናገራል።
+</p>
+
+<p>
+ከዚያም ጋዜጦቹ መልዕክቱን እንዲያትሙ ይጠይቃል።
+</p>
+
+<p>
+ከደብዳቤዎቹ ጋር እንግዳ የሆነ የምስጢር ኮድ ክፍሎች
+ይላካሉ።
+</p>
+
+<p>
+ገዳዩ ጋዜጦቹ ፍላጎቱን ካልፈጸሙ ተጨማሪ
+ሰዎችን እንደሚገድል ያስፈራራል።
+</p>
+
+</div>
+
+<div class="quote-box">
+ገዳዩ ወንጀል ብቻ አይፈጽምም።
+ሆን ብሎ ከህዝብ ጋር መገናኘት ጀምሯል።
+</div>
+
+<div class="investigation-card">
+
+<h3>✉️ ማስረጃ A</h3>
+
+<p>
+ሶስት ጋዜጦች የ408 ምልክቶች ኮድ የተለያዩ
+ክፍሎችን ይቀበላሉ።
+</p>
+
+<p>
+ክፍሎቹ ሲጣመሩ አንድ ሙሉ ምስጢራዊ መልዕክት
+ይፈጠራል።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🧩 የመርማሪው ጥያቄ</h3>
+
+<p>
+መርማሪዎች የደብዳቤዎቹን ይዘት ከቀድሞዎቹ
+ወንጀሎች ማስረጃ ጋር ለምን ማነጻጸር ይፈልጋሉ?
+</p>
+
+<button class="choice-btn" onclick="answer(this,'correct')">
+A. ደብዳቤውን የጻፈው ሰው ከወንጀሎቹ ጋር በእውነት የተገናኘ መሆኑን ለመመርመር።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+B. ማንኛውም ደብዳቤ እውነት ስለሆነ።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+C. ኮዱ ብቻ የገዳዩን ማንነት ስለሚያረጋግጥ።
+</button>
+
+<div class="answer">
+<strong>ትክክል።</strong><br><br>
+
+አንድ ሰው “እኔ ነኝ” ማለቱ ብቻ
+በቂ ማስረጃ አይደለም።
+መርማሪዎች ከሌሎች ማስረጃዎች ጋር ማነጻጸር አለባቸው።
+</div>
+
+</div>
+
+<div class="story-box">
+
+<p>
+ጋዜጦቹ ኮዱን ለህዝብ ያሳትማሉ።
+</p>
+
+<p>
+አሁን ሁሉም ሰው ኮዱን ማየት ይችላል።
+</p>
+
+<p>
+ከካሊፎርኒያ ውስጥ አንድ ሰው ግን በተለየ መንገድ
+ይህንን ኮድ ለመፍታት መሞከር ይጀምራል።
+</p>
+
+<div class="quote-box">
+በዚህ መልዕክት ውስጥ ምን ተደብቆ ይሆን?
+</div>
+
+</div>
+
+<button class="primary" onclick="unlock(4)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 4
+===================================== -->
+
+<section id="chapter4" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 4</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">408 ኮድ</div>
+
+<div class="big-title">ኮዱን መፍታት</div>
+
+<div class="year">ነሐሴ 1969</div>
+
+<p>
+ኮዱ ለመመልከት እጅግ የተወሳሰበ ነው።
+</p>
+
+<p>
+ተለያዩ ምልክቶች በረድፍ ተደርድረዋል።
+</p>
+
+<p>
+የተለመዱ ቃላት አይታዩም።
+</p>
+
+<p>
+የተለመደ ዓረፍተ ነገርም አይታይም።
+</p>
+
+<p>
+ነገር ግን ዶናልድ እና ቤቲ ሃርደን የተባሉ
+ሁለት ሰዎች ኮዱን ለመፍታት ይሞክራሉ።
+</p>
+
+<p>
+በመጨረሻም መፍትሄውን ያገኛሉ።
+</p>
+
+<p>
+ነገር ግን መልዕክቱ የገዳዩን ስም አይገልጥም።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🔐 የማስረጃ ፋይል</h3>
+
+<p>
+408 ኮዱ በ1969 በዶናልድ እና ቤቲ ሃርደን
+ተፈቷል።
+</p>
+
+<p>
+ነገር ግን ይህ መፍትሄ የገዳዩን ማንነት
+በቀጥታ አይገልጥም።
+</p>
+
+</div>
+
+<div class="fact">
+<strong>አስፈላጊ፦</strong><br>
+408 ኮድ ተፈትቶ ቢሆንም የገዳዩን ማንነት
+የሚያረጋግጥ መልስ አልሰጠም።
+</div>
+
+<div class="story-box">
+
+<p>
+ለህዝቡ ኮዱ እጅግ ሚስጥራዊ ነገር ነው።
+</p>
+
+<p>
+ለመርማሪዎች ግን ዋናው ጥያቄ ሌላ ነው።
+</p>
+
+<div class="quote-box">
+ይህንን መልዕክት የጻፈው ሰው ማን ነው?
+</div>
+
+<p>
+ጥያቄው መልስ ሳያገኝ ሌላ ጥቃት ይፈጸማል።
+</p>
+
+</div>
+
+<button class="primary" onclick="unlock(5)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 5
+===================================== -->
+
+<section id="chapter5" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 5</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">መስከረም 27፣ 1969</div>
+
+<div class="big-title">LAKE BERRYESSA</div>
+
+<div class="year">Napa County — ካሊፎርኒያ</div>
+
+<p>
+ብራያን ሃርትኔል እና ሴሲሊያ ሼፓርድ
+በLake Berryessa አካባቢ ናቸው።
+</p>
+
+<p>
+አንድ ሰው ወደ እነሱ ይቀርባል።
+</p>
+
+<p>
+የሚከተለው ከቀድሞዎቹ ጥቃቶች የተለየ ነው።
+</p>
+
+<p>
+አጥቂው ልዩ የሆነ መልክ ያለው ኮፍያ ለብሷል።
+</p>
+
+<p>
+ሃርትኔል እና ሼፓርድ በቢላ ይጠቃሉ።
+</p>
+
+<p>
+ብራያን ሃርትኔል ተርፏል።
+ሴሲሊያ ሼፓርድ ግን በኋላ በጉዳቷ ሞተች።
+</p>
+
+<p>
+አጥቂው ከቦታው ከመሄዱ በፊት
+በሃርትኔል መኪና ላይ መልዕክት ጽፎ ይሄዳል።
+</p>
+
+</div>
+
+<div class="quote-box">
+መልዕክቱ ከቀድሞ ጥቃቶች ጋር የተያያዙ
+ቀኖችን እና ከዘዲያክት ጋር የተያያዘውን
+ምልክት ይይዛል።
+</div>
+
+<div class="investigation-card">
+
+<h3>🔎 አዲስ ማስረጃ</h3>
+
+<p>
+አሁን መርማሪዎች ከወንጀል ቦታው ጋር በቀጥታ
+የተያያዘ መልዕክት አላቸው።
+</p>
+
+<p>
+ይህ የጉዳዩ ሌላ ጠቃሚ ክፍል ይሆናል።
+</p>
+
+</div>
+
+<div class="story-box">
+
+<p>
+ጉዳዩ እየተወሳሰበ ነው።
+</p>
+
+<p>
+የተለያዩ ቦታዎች።
+</p>
+
+<p>
+የተለያዩ ተጎጂዎች።
+</p>
+
+<p>
+የተለያዩ የጥቃት መንገዶች።
+</p>
+
+<p>
+ነገር ግን ደብዳቤዎቹ ሁሉም ከአንድ ሰው
+ሊመጡ እንደሚችሉ ይጠቁማሉ።
+</p>
+
+<p>
+ከዚያ ከጥቂት ሳምንታት በኋላ
+ሌላ አስፈሪ ግድያ ይፈጸማል።
+</p>
+
+</div>
+
+<button class="primary" onclick="unlock(6)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 6
+===================================== -->
+
+<section id="chapter6" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 6</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">ጥቅምት 11፣ 1969</div>
+
+<div class="big-title">የታክሲ ሹፌሩ</div>
+
+<div class="year">Presidio Heights — San Francisco</div>
+
+<p>
+ፖል ስታይን የታክሲ ሹፌር ነው።
+</p>
+
+<p>
+አንድ ተሳፋሪ ይዞ ወደ Presidio Heights
+አካባቢ ይጓዛል።
+</p>
+
+<p>
+በጉዞው ወቅት ነገሮች በድንገት ይቀየራሉ።
+</p>
+
+<p>
+ፖል ስታይን ይገደላል።
+</p>
+
+<p>
+ከዚያ ገዳዩ ከታክሲው ይወጣል።
+</p>
+
+<p>
+ፖሊስ አካባቢውን መፈተሽ ይጀምራል።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🚨 አስፈላጊ ጊዜ</h3>
+
+<p>
+አንዳንድ ምስክሮች በአካባቢው የነበረውን
+ሰው ይመለከታሉ።
+</p>
+
+<p>
+ፖሊስ ስለ ሰውየው መግለጫ ይቀበላል።
+</p>
+
+<p>
+ነገር ግን በመግባባት ላይ በተፈጠረ ስህተት
+ፖሊሶች መጀመሪያ የተሳሳተ መግለጫ ይከተላሉ።
+</p>
+
+<p>
+ይህ በጉዳዩ ላይ እጅግ አስፈላጊ ክስተት ይሆናል።
+</p>
+
+</div>
+
+<div class="story-box">
+
+<p>
+ከሶስት ቀናት በኋላ የSan Francisco Chronicle
+ጋዜጣ አንድ ደብዳቤ ይቀበላል።
+</p>
+
+<p>
+በደብዳቤው ውስጥ ከፖል ስታይን ደም የተነካ
+የሸሚዝ ቁራጭ አለ።
+</p>
+
+<p>
+ደብዳቤውን የጻፈው ሰው የፖል ስታይንን
+ግድያ እሱ እንደፈጸመ ይናገራል።
+</p>
+
+</div>
+
+<div class="quote-box">
+አሁን ገዳዩ በጋዜጦች ላይ የሚታይ ስም ብቻ አይደለም።
+መርማሪዎችን በቀጥታ እየተገዳደረ ነው።
+</div>
+
+<button class="primary" onclick="unlock(7)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 7
+===================================== -->
+
+<section id="chapter7" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 7</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">ጥቅምት–ህዳር 1969</div>
+
+<div class="big-title">ዘዲያክት ይናገራል</div>
+
+<p>
+ደብዳቤዎቹ የምርመራው ዋና ክፍል ይሆናሉ።
+</p>
+
+<p>
+ጸሐፊው “Zodiac” የሚለውን ስም ይጠቀማል።
+</p>
+
+<p>
+ስለቀድሞ ወንጀሎች ይናገራል።
+</p>
+
+<p>
+ተጨማሪ ጥቃቶችን ያስፈራራል።
+</p>
+
+<p>
+ፖሊስን እና ህዝቡን ሆን ብሎ ይገዳደራል።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>✉️ የማስረጃ ሰሌዳ</h3>
+
+<div class="fact">
+<strong>ሐምሌ 31፣ 1969</strong><br>
+ሶስት ጋዜጦች የ408 ኮድ ክፍሎችን ይቀበላሉ።
+</div>
+
+<div class="fact">
+<strong>ነሐሴ 4፣ 1969</strong><br>
+አንድ ደብዳቤ “Zodiac” የሚለውን ስም ይጠቀማል።
+</div>
+
+<div class="fact">
+<strong>ጥቅምት 13፣ 1969</strong><br>
+የፖል ስታይንን ግድያ እንደፈጸመ የሚናገር
+ደብዳቤ ይላካል።
+</div>
+
+<div class="fact">
+<strong>ህዳር 8፣ 1969</strong><br>
+340 ምልክቶች ያሉት አዲስ ኮድ ይላካል።
+</div>
+
+</div>
+
+<div class="story-box">
+
+<p>
+በዚህ ጊዜ መርማሪዎች ብዙ መረጃ አላቸው።
+</p>
+
+<p>
+ነገር ግን ብዙ መረጃ መኖሩ የሰውየውን
+ማንነት ማረጋገጥ አይደለም።
+</p>
+
+<p>
+አንድ ሰው ወንጀል እንደፈጸመ ሊጽፍ ይችላል።
+</p>
+
+<p>
+ግን መርማሪዎች እውነት መሆኑን በሌሎች
+ማስረጃዎች ማረጋገጥ አለባቸው።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🧠 እንደ መርማሪ አስብ</h3>
+
+<p>
+ከሚከተሉት የትኛው የበለጠ ጠንካራ ማስረጃ ነው?
+</p>
+
+<button class="choice-btn" onclick="answer(this,'wrong')">
+A. አንድ ሰው በደብዳቤ ወንጀል እንደፈጸመ መናገሩ።
+</button>
+
+<button class="choice-btn" onclick="answer(this,'correct')">
+B. አንድን ሰው ከወንጀሉ ጋር የሚያገናኝ ገለልተኛ አካላዊ ወይም የምስክር ማስረጃ።
+</button>
+
+<div class="answer">
+<strong>ትክክል።</strong><br><br>
+
+የአንድ ሰው የራሱ አባባል ጠቃሚ ሊሆን ይችላል።
+ነገር ግን ከሌሎች ማስረጃዎች ጋር መረጋገጥ አለበት።
+</div>
+
+</div>
+
+<button class="primary" onclick="unlock(8)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 8
+===================================== -->
+
+<section id="chapter8" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 8</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">ህዳር 8፣ 1969</div>
+
+<div class="big-title">340 ኮድ</div>
+
+<p>
+San Francisco Chronicle ሌላ ሚስጥራዊ መልዕክት ይቀበላል።
+</p>
+
+<p>
+በዚህ ጊዜ ኮዱ 340 ምልክቶች አሉት።
+</p>
+
+<p>
+ለብዙ ዓመታት ሰዎች ይህንን ኮድ ለመፍታት ይሞክራሉ።
+</p>
+
+<p>
+ባለሙያዎች፣ ኮድ ፈቺዎች እና በጉዳዩ ላይ
+የሚመራመሩ ሰዎች ሁሉ ይሞክራሉ።
+</p>
+
+<p>
+ግን መልዕክቱ አይፈታም።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>🔐 የማስረጃ ፋይል</h3>
+
+<p>
+ኮዱ በኋላ <strong>Z340</strong> ተብሎ ይጠራል።
+</p>
+
+<p>
+ከ1969 ጀምሮ ለአስርተ ዓመታት ያህል
+መፍትሄ ሳያገኝ ይቆያል።
+</p>
+
+<p>
+1969...
+</p>
+
+<p>
+1970...
+</p>
+
+<p>
+1980...
+</p>
+
+<p>
+1990...
+</p>
+
+<p>
+2000...
+</p>
+
+<p>
+ኮዱ አሁንም አልተፈታም።
+</p>
+
+</div>
+
+<div class="story-box">
+
+<div class="chapter">2020</div>
+
+<p>
+ከኮዱ መላክ ከ51 ዓመታት በኋላ
+ዴቪድ ኦራንቻክ፣ ሳም ብሌክ እና ጃርል ቫን ኢክ
+Z340ን መፍታት ቻሉ።
+</p>
+
+<p>
+መፍትሄው እውነተኛ መሆኑ ተረጋገጠ።
+</p>
+
+<p>
+ነገር ግን አንድ ትልቅ ጥያቄ እንደነበረ
+ቀጥሏል።
+</p>
+
+<p>
+ኮዱ የገዳዩን ስም አልገለጠም።
+</p>
+
+</div>
+
+<div class="quote-box">
+ኮዱ ተፈታ።
+ግን ገዳዩ አልታወቀም።
+</div>
+
+<div class="investigation-card">
+
+<h3>🔎 ይህ ምን ማለት ነው?</h3>
+
+<p>
+አንድ ኮድ መፍታት ማለት የግድያ ጉዳዩን
+ሙሉ በሙሉ መፍታት ማለት አይደለም።
+</p>
+
+<p>
+Z340 ተጨማሪ መረጃ ሰጥቷል።
+ነገር ግን የዘዲያክትን ማንነት አላረጋገጠም።
+</p>
+
+</div>
+
+<button class="primary" onclick="unlock(9)">
+ቀጣዩን ምዕራፍ ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 9
+===================================== -->
+
+<section id="chapter9" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>ምዕራፍ 9</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">የማንነት ፍለጋ</div>
+
+<div class="big-title">ዘዲያክት ማን ነበር?</div>
+
+<p>
+አሁን ወደ ምርመራው ከባድ ክፍል ደርሰናል።
+</p>
+
+<p>
+መርማሪዎች ከወንጀል ቦታዎች የተገኙ ማስረጃዎችን፣
+የምስክሮችን መረጃ፣ ደብዳቤዎችን፣ ኮዶችን
+እና ሌሎች መረጃዎችን አንድ ላይ ማየት አለባቸው።
+</p>
+
+<p>
+ከዚያም እነዚህ ሁሉ ወደ አንድ ሰው
+ይመራሉን? የሚለውን ጥያቄ መመለስ አለባቸው።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>👤 የተጠረጠሩ ሰዎች</h3>
+
+<p>
+በአመታት ውስጥ ብዙ ሰዎች ከዘዲያክት ጋር
+ሊገናኙ እንደሚችሉ ተጠቁመዋል።
+</p>
+
+<p>
+ከታወቁት ሰዎች አንዱ Arthur Leigh Allen ነበር።
+</p>
+
+<p>
+ነገር ግን አንድ ሰው በምርመራ ውስጥ
+መጠራጠሩ ወይም የፍላጎት ሰው መሆኑ
+እሱ ገዳዩ መሆኑን አያረጋግጥም።
+</p>
+
+<p>
+Allen የዘዲያክት ገዳይ መሆኑ በማስረጃ
+በመጨረሻ አልተረጋገጠም።
+</p>
+
+</div>
+
+<div class="investigation-card">
+
+<h3>⚠️ የመርማሪው ህግ</h3>
+
+<p>
+<strong>
+“ይህ ሰው ተመርምሯል”
+</strong>
+</p>
+
+<p>
+ማለት፦
+</p>
+
+<p>
+<strong>
+“ይህ ሰው ገዳዩ መሆኑ ተረጋግጧል”
+</strong>
+</p>
+
+<p>
+ማለት አይደለም።
+</p>
+
+</div>
+
+<div class="story-box">
+
+<p>
+ይህ በዘዲያክት ጉዳይ ላይ ብዙ ግራ መጋባት
+የሚፈጠርበት ቦታ ነው።
+</p>
+
+<p>
+በአመታት ውስጥ የተለያዩ ሰዎች ተጠቁመዋል።
+</p>
+
+<p>
+የተለያዩ ሰዎች ደብዳቤዎቹን በተለያየ መንገድ
+ተርጉመዋል።
+</p>
+
+<p>
+የተለያዩ ንድፈ ሐሳቦችም ተቀርበዋል።
+</p>
+
+<p>
+ነገር ግን ንድፈ ሐሳብ መሆን እና በማስረጃ
+መረጋገጥ ሁለት የተለያዩ ነገሮች ናቸው።
+</p>
+
+</div>
+
+<button class="primary" onclick="unlock(10)">
+የመጨረሻውን ፋይል ክፈት
+</button>
+
+</div>
+</section>
+
+
+<!-- =====================================
+     ምዕራፍ 10
+===================================== -->
+
+<section id="chapter10" class="screen">
+
+<div class="container">
+
+<div class="header">
+<button class="back" onclick="show('zodiacHome')">←</button>
+<h2>የመጨረሻ ፋይል</h2>
+</div>
+
+<div class="story-box">
+
+<div class="chapter">የመጨረሻ ምርመራ</div>
+
+<div class="big-title">በእውነት ምን ማረጋገጥ ይቻላል?</div>
+
+<p>
+ከመጀመሪያው ግድያ ጀምረህ የደብዳቤዎቹን፣
+የኮዶቹን እና የተለያዩ ጥቃቶችን ተከትለሃል።
+</p>
+
+<p>
+አሁን የተለያዩ ንድፈ ሐሳቦችን ለጊዜው አስወግድ።
+</p>
+
+<p>
+በተረጋገጠው ማስረጃ ላይ ብቻ ተመስርተህ አስብ።
+</p>
+
+</div>
+
+<div class="timeline-big">
+
+<div class="event">
+<strong>ታህሳስ 20፣ 1968</strong>
+ዴቪድ ፋራዴይ እና ቤቲ ሉ ጄንሰን
+በLake Herman Road አካባቢ ተገደሉ።
+</div>
+
+<div class="event">
+<strong>ሐምሌ 4፣ 1969</strong>
+ዳርሊን ፌሪን በBlue Rock Springs ተገደለች።
+ማይክል ማጆ ተረፈ።
+</div>
+
+<div class="event">
+<strong>ሐምሌ 31፣ 1969</strong>
+ሶስት ጋዜጦች ደብዳቤዎችን እና የ408 ኮድ
+ክፍሎችን ተቀበሉ።
+</div>
+
+<div class="event">
+<strong>ነሐሴ 1969</strong>
+408 ኮድ በዶናልድ እና ቤቲ ሃርደን ተፈታ።
+</div>
+
+<div class="event">
+<strong>መስከረም 27፣ 1969</strong>
+ብራያን ሃርትኔል እና ሴሲሊያ ሼፓርድ
+በLake Berryessa ተጠቁ።
+</div>
+
+<div class="event">
+<strong>ጥቅምት 11፣ 1969</strong>
+የታክሲ ሹፌሩ ፖል ስታይን በSan Francisco ተገደለ።
+</div>
+
+<div class="event">
+<strong>ጥቅምት 13፣ 1969</strong>
+የፖል ስታይን ግድያን እንደፈጸመ የሚናገር
+ደብዳቤ እና የሸሚዝ ቁራጭ ተላከ።
+</div>
+
+<div class="event">
+<strong>ህዳር 8፣ 1969</strong>
+340 ምልክቶች ያሉት ኮድ ተላከ።
+</div>
+
+<div class="event">
+<strong>2020</strong>
+340 ኮድ ከ51 ዓመታት በኋላ ተፈታ።
+</div>
+
 </div>
 
 
-<!-- ALL CASES -->
-<div id="cases" class="screen">
+<div class="investigation-card">
 
-  <div class="container">
+<h3>🧠 የመጨረሻ ግምገማ</h3>
 
-    <div class="header">
+<p>
+አሁን እውነተኛ መርማሪ እንደሆንክ አስብ።
+</p>
 
-      <button class="back"
-        onclick="show('home')">
-        ←
-      </button>
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+1. የዘዲያክት ማንነት በእርግጠኝነት ተረጋግጧል?
+</button>
 
-      <h2>📁 ሁሉም ጉዳዮች</h2>
-
-    </div>
-
-
-    <!-- CASE 001 -->
-    <div class="case-card"
-      onclick="location.href='case001.html'">
-
-      <span class="badge">
-        CASE 001
-      </span>
-
-      <h3>
-        🔎 የጠፋው ሰው
-      </h3>
-
-      <p>
-        አንድ ሰው በሚስጥራዊ ሁኔታ ጠፍቷል።
-        ፍንጮችን ፈልግ፣ ምስክሮችን ጠይቅ
-        እና እውነቱን አግኝ።
-      </p>
-
-      <button class="primary">
-        CASE 001 ክፈት →
-      </button>
-
-    </div>
+<div class="answer">
+<strong>አይ።</strong><br><br>
+የዘዲያክት ማንነት በእርግጠኝነት አልተረጋገጠም።
+</div>
 
 
-    <!-- CASE 002 -->
-    <div class="case-card zodiac"
-      onclick="location.href='case002.html'">
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+2. 340 ኮድ ተፈቷል?
+</button>
 
-      <span class="badge">
-        CASE 002
-      </span>
-
-      <h3>
-        ☠️ ZODIAC
-      </h3>
-
-      <p>
-        በ1960ዎቹ የአሜሪካን የዞዲያክ ገዳይ
-        ጉዳይን መርምር። የተገኙ ማስረጃዎችን፣
-        ደብዳቤዎችን፣ ሲፈሮችን እና ተጠርጣሪዎችን
-        ተመልከት።
-      </p>
-
-      <button class="dark">
-        CASE 002 ክፈት →
-      </button>
-
-    </div>
+<div class="answer">
+<strong>አዎ።</strong><br><br>
+ኮዱ በ2020 ከ51 ዓመታት በኋላ ተፈቷል።
+</div>
 
 
-    <!-- FUTURE CASE -->
-    <div class="case-card">
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+3. 340 ኮድ የገዳዩን ስም አጋልጧል?
+</button>
 
-      <span class="badge">
-        CASE 003
-      </span>
+<div class="answer">
+<strong>አይ።</strong><br><br>
+ኮዱ የገዳዩን ማንነት አላሳየም።
+</div>
 
-      <h3>
-        🔒 በቅርቡ...
-      </h3>
 
-      <p>
-        አዲስ ጉዳይ በቅርቡ ይጨመራል።
-      </p>
+<button class="choice-btn"
+onclick="answer(this,'correct')">
+4. የተለያዩ ሰዎች ተመርምረዋል?
+</button>
 
-    </div>
-
-  </div>
+<div class="answer">
+<strong>አዎ።</strong><br><br>
+ብዙ ሰዎች ተመርምረዋል ወይም ተጠርጥረዋል።
+ነገር ግን መጠርጠር ወይም መመርመር
+የጥፋተኝነት ማረጋገጫ አይደለም።
+</div>
 
 </div>
+
+
+<div class="story-box">
+
+<div class="chapter">የጉዳዩ ሪፖርት</div>
+
+<div class="big-title">እውነቱ</div>
+
+<p>
+የዘዲያክት ጉዳይ ልዩ የሚያደርገው
+ከጉዳዩ አንዳንድ ምስጢሮች መፈታታቸው ነው።
+</p>
+
+<p>
+በተለያዩ ወንጀሎች ሰዎች ተገድለዋል።
+</p>
+
+<p>
+ገዳዩ ለጋዜጦች ደብዳቤዎችን ልኳል።
+</p>
+
+<p>
+አንዳንድ የላካቸው መልዕክቶች ከወንጀሎቹ
+ጋር የተያያዙ ነበሩ።
+</p>
+
+<p>
+408 ኮድ በ1969 ተፈቷል።
+</p>
+
+<p>
+340 ኮድ ደግሞ በ2020 ተፈቷል።
+</p>
+
+<p>
+ነገር ግን አንድ ትልቅ ጥያቄ እስከዛሬ
+የተረጋገጠ መልስ አላገኘም።
+</p>
+
+<div class="quote-box">
+የዘዲያክት ስም ማን ነበር?
+</div>
+
+<p>
+በአመታት ውስጥ ተጠርጣሪዎች እና ብዙ ንድፈ ሐሳቦች
+ተቀርበዋል።
+</p>
+
+<p>
+ነገር ግን ከሁሉም ማስረጃዎች በኋላም
+የዘዲያክት ማንነት በእርግጠኝነት አልተረጋገጠም።
+</p>
+
+<div class="quote-box">
+<strong>የመጨረሻ ውሳኔ፦ የዘዲያክት ማንነት አሁንም ያልተረጋገጠ ነው።</strong>
+</div>
+
+</div>
+
+
+<div class="score">
+
+<div class="big-number">CASE COMPLETE</div>
+
+<p>
+የዘዲያክትን ማንነት አልፈታኸውም።
+</p>
+
+<p>
+ነገር ግን እውነተኛ መርማሪ ማድረግ ያለበትን
+ነገር አድርገሃል፦
+</p>
+
+<p>
+<strong>
+ማስረጃን ከግምት መለየት።
+</strong>
+</p>
+
+</div>
+
+
+<div class="story-box">
+
+<h3>📚 ምንጮች</h3>
+
+<p class="note">
+ይህ ክፍል የእውነተኛውን የዘዲያክት ጉዳይ
+በጨዋታ መልክ ለማቅረብ የተዘጋጀ ነው።
+</p>
+
+<p class="note">
+የዘዲያክት ማንነት እንደተፈታ ወይም
+አንድ ተጠርጣሪ በእርግጥ ገዳዩ እንደሆነ
+የሚያስመስል የተፈጠረ መልስ አይሰጥም።
+</p>
+
+</div>
+
+<button class="primary" onclick="goHome()">
+ወደ ዋናው ገጽ ተመለስ
+</button>
+
+</div>
+</section>
 
 
 <script>
 
+/* =========================
+   NAVIGATION
+========================= */
+
 function show(id) {
 
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.remove("active");
-  });
+    document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+    });
 
-  const target = document.getElementById(id);
+    const target = document.getElementById(id);
 
-  if (target) {
-    target.classList.add("active");
-  }
+    if (target) {
+        target.classList.add("active");
+        window.scrollTo(0,0);
+    }
+}
 
+
+/* =========================
+   START
+========================= */
+
+function startCase() {
+    show("zodiacHome");
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function goHome() {
+    window.location.href = "index.html";
+}
+
+
+/* =========================
+   CHAPTER SYSTEM
+========================= */
+
+let unlocked = 1;
+
+function openChapter(number) {
+
+    if (number > unlocked) {
+        alert("መጀመሪያ ያለፈውን ምዕራፍ ጨርስ።");
+        return;
+    }
+
+    show("chapter" + number);
+}
+
+
+/* =========================
+   UNLOCK NEXT
+========================= */
+
+function unlock(number) {
+
+    if (number > unlocked) {
+        unlocked = number;
+    }
+
+    show("chapter" + number);
+}
+
+
+/* =========================
+   ANSWERS
+========================= */
+
+function answer(button,type) {
+
+    const card = button.parentElement;
+
+    const answers = card.querySelectorAll(".answer");
+
+    answers.forEach(function(a) {
+        a.classList.add("show");
+    });
+
+    if (type === "correct") {
+        button.style.borderColor = "#22c55e";
+    } else {
+        button.style.borderColor = "#ef4444";
+    }
 }
 
 </script>
