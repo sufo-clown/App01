@@ -1,0 +1,793 @@
+```html
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASE 003 — የጠፋው ሰዓት</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.story {
+    line-height: 1.9;
+}
+
+.stage {
+    display: none;
+}
+
+.stage.active {
+    display: block;
+}
+
+.choice button {
+    margin: 8px 0;
+    width: 100%;
+}
+
+.clue-box {
+    padding: 15px;
+    margin: 12px 0;
+    border-left: 4px solid #888;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+}
+
+.suspect-box {
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+}
+
+.final-box {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+}
+
+.stage-number {
+    font-size: 13px;
+    opacity: .7;
+    margin-bottom: 5px;
+}
+
+.next-btn {
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="screen active">
+<div class="container story">
+
+    <div class="header">
+        <button class="back" onclick="location.href='index.html'">←</button>
+        <h2>CASE 003</h2>
+    </div>
+
+
+    <!-- INTRO -->
+    <div id="stage0" class="stage active">
+
+        <span class="badge">CASE 003</span>
+
+        <h1>⌚ የጠፋው ሰዓት</h1>
+
+        <p>
+            ሌሊቱ አስር ሰዓት አካባቢ ነበር።
+            አዲስ አበባ ዝናብ በሚዘንብበት ጸጥ ያለ ምሽት ውስጥ
+            የዩኒቨርሲቲ ተማሪው ሳሙኤል ወደ መኖሪያ ቤቱ
+            ሊመለስ ነበር።
+        </p>
+
+        <p>
+            ነገር ግን በዚያ ሌሊት ሳሙኤል ወደ ቤቱ አልደረሰም።
+        </p>
+
+        <p>
+            በማግስቱ ጠዋት የክፍሉ በር እንደተለመደው ተዘግቶ
+            ተገኘ። የመግቢያ ምልክት የለም።
+            ላፕቶፑ ጠረጴዛው ላይ ነበር።
+            ቦርሳው እና ገንዘቡም እንደነበሩ ነበር።
+        </p>
+
+        <p>
+            ነገር ግን ስልኩ በጠረጴዛው ላይ ተገኘ።
+            ስልኩ እንደተተወ ይመስላል።
+        </p>
+
+        <p>
+            ከሁሉም የሚያስገርመው ግን...
+        </p>
+
+        <div class="warning">
+            <strong>የሳሙኤል የእጅ ሰዓት ጠፍቷል።</strong>
+        </div>
+
+        <p>
+            ይህ ተራ የመጥፋት ጉዳይ አልመሰለም።
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ምርመራውን ጀምር →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 1 -->
+    <div id="stage1" class="stage">
+
+        <div class="stage-number">ደረጃ 1 / 8</div>
+
+        <h2>🏠 የሳሙኤል ክፍል</h2>
+
+        <p>
+            የመጀመሪያው ምርመራ የተጀመረው ከሳሙኤል ክፍል ነበር።
+        </p>
+
+        <div class="clue-box">
+            <h3>📱 ስልኩ</h3>
+            <p>
+                ስልኩ ጠረጴዛው ላይ ነበር።
+                የመጨረሻው ጥሪ ከማይታወቅ ቁጥር የመጣ ነበር።
+                ጥሪው ለ47 ሰከንድ ቆይቷል።
+            </p>
+        </div>
+
+        <div class="clue-box">
+            <h3>💻 ላፕቶፑ</h3>
+            <p>
+                ላፕቶፑ ተከፍቶ ነበር።
+                አንድ ፋይል ግን በቅርቡ እንደተሰረዘ
+                የሚያሳይ ምልክት ነበር።
+            </p>
+        </div>
+
+        <div class="clue-box">
+            <h3>⌚ ሰዓቱ</h3>
+            <p>
+                ሳሙኤል ሁልጊዜ የሚያደርገው የእጅ ሰዓት
+                ከክፍሉ ጠፍቷል።
+                ሌሎች ውድ ነገሮች ግን አልተነኩም።
+            </p>
+        </div>
+
+        <p>
+            ይህ አንድ ነገር ያስጠራጥራል፦
+            <strong>ሰዓቱ በአጋጣሚ የጠፋ ነው?</strong>
+        </p>
+
+        <p>
+            ወይስ ሰዓቱ ራሱ የምስጢሩ አካል ነው?
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ቀጥል →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 2 -->
+    <div id="stage2" class="stage">
+
+        <div class="stage-number">ደረጃ 2 / 8</div>
+
+        <h2>🎓 የዩኒቨርሲቲው ምርመራ</h2>
+
+        <p>
+            ሳሙኤል በዩኒቨርሲቲ የሚያጠናው የኮምፒውተር
+            ሳይንስ ትምህርት ነበር።
+            በጓደኞቹ መካከል ግን በቅርቡ አንድ ነገር
+            እያጣራ እንደነበር ተሰማ።
+        </p>
+
+        <p>
+            ሦስት ሰዎች በተለይ ትኩረት ሳቡ።
+        </p>
+
+        <div class="suspect-box">
+            <h3>👩 ሀና</h3>
+            <p>
+                የሳሙኤል ቅርብ ጓደኛ።
+                እሷ እንደምትለው ሳሙኤልን
+                በዚያ ምሽት ለመጨረሻ ጊዜ ያናገረችው እሷ ነበረች።
+            </p>
+        </div>
+
+        <div class="suspect-box">
+            <h3>👨 ዮናስ</h3>
+            <p>
+                የሳሙኤል አብሮ ክፍል ተጠቃሚ።
+                በቅርቡ ከሳሙኤል ጋር ተከራክረው ነበር።
+            </p>
+        </div>
+
+        <div class="suspect-box">
+            <h3>👨 ዳዊት</h3>
+            <p>
+                የቀድሞ የሳሙኤል ጓደኛ።
+                ሳሙኤል ስለ እሱ አንድ የማይመች ነገር
+                እንዳወቀ ይነገራል።
+            </p>
+        </div>
+
+        <p>
+            ነገር ግን አንድ ጥያቄ ቀረ፦
+            <strong>ሳሙኤል ምን እያጣራ ነበር?</strong>
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ቀጥል →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 3 -->
+    <div id="stage3" class="stage">
+
+        <div class="stage-number">ደረጃ 3 / 8</div>
+
+        <h2>📹 የካሜራ ምስል</h2>
+
+        <p>
+            የዩኒቨርሲቲው ካሜራ በሳሙኤል ላይ አንድ
+            ጠቃሚ ፍንጭ ሰጠ።
+        </p>
+
+        <p>
+            ከምሽቱ 9:18 ላይ ሳሙኤል ከህንፃው ወጥቶ
+            ወደ መኪና ማቆሚያው ሲሄድ ታይቷል።
+        </p>
+
+        <p>
+            ከጥቂት ሰከንዶች በኋላ አንድ ሰው
+            ከኋላው ተከትሎት ወጣ።
+        </p>
+
+        <div class="warning">
+            ፊቱ ግን በካሜራው ላይ በግልጽ አይታይም።
+        </div>
+
+        <p>
+            ሰውየው የለበሰው ጥቁር ጃኬት ነበር።
+            በእጁ ግን አንድ ትንሽ ነገር ይዞ ነበር።
+        </p>
+
+        <p>
+            ቪዲዮውን በቅርብ ሲመለከቱ...
+        </p>
+
+        <div class="clue-box">
+            <strong>⌚ እንደ የእጅ ሰዓት ያለ ነገር ነበር።</strong>
+        </div>
+
+        <p>
+            አሁን ምርመራው ተለወጠ።
+            ሰዓቱ ለምን ተወሰደ?
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ቀጥል →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 4 -->
+    <div id="stage4" class="stage">
+
+        <div class="stage-number">ደረጃ 4 / 8</div>
+
+        <h2>📞 የመጨረሻው ጥሪ</h2>
+
+        <p>
+            የስልኩን መረጃ ሲመረምሩ የመጨረሻው ጥሪ
+            ከማይታወቅ ቁጥር እንደመጣ ታወቀ።
+        </p>
+
+        <p>
+            ቁጥሩን ሲከታተሉ ወደ አንድ ተንቀሳቃሽ
+            ስልክ ካርድ ተመዝግቦ እንደነበር ታወቀ።
+        </p>
+
+        <p>
+            ግን የሚያስገርመው ነገር ይህ ነበር፦
+        </p>
+
+        <div class="clue-box">
+            <p>
+                የጥሪው ጊዜ <strong>9:03</strong> ነበር።
+            </p>
+
+            <p>
+                የዮናስ መልዕክት ግን 9:10 ላይ
+                “አሁን ክፍሌ ውስጥ ነኝ” ይላል።
+            </p>
+        </div>
+
+        <p>
+            ይህ በመጀመሪያ ዮናስን ከጥርጣሬ ውጭ
+            ያደርገዋል።
+        </p>
+
+        <p>
+            ነገር ግን አንድ ነገር ተረስቷል።
+        </p>
+
+        <div class="warning">
+            የስልክ ጥሪው የተደረገበት ቦታ
+            ከዮናስ ክፍል በጣም ቅርብ ነበር።
+        </div>
+
+        <p>
+            ነገር ግን ይህ እሱ ጥፋተኛ ነው ለማለት
+            ብቻውን በቂ አይደለም።
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ቀጥል →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 5 -->
+    <div id="stage5" class="stage">
+
+        <div class="stage-number">ደረጃ 5 / 8</div>
+
+        <h2>🗣️ ምስክሮች</h2>
+
+        <p>
+            አሁን ሦስቱን ተጠርጣሪዎች ማነጋገር ነበረበት።
+        </p>
+
+        <div class="dialogue">
+
+            <p>
+                <span class="name">ሀና:</span>
+                “ሳሙኤል በ9:00 አካባቢ አነጋግሬው ነበር።
+                ወደ ቤት እንደሚሄድ ነግሮኝ ነበር።”
+            </p>
+
+            <p>
+                <span class="name">ዳዊት:</span>
+                “ከሳሙኤል ጋር ችግር ነበረን።
+                ግን በዚያ ሌሊት አላየሁትም።”
+            </p>
+
+            <p>
+                <span class="name">ዮናስ:</span>
+                “ሳሙኤል በቅርቡ ብዙ ጊዜ ውጭ ይወጣ ነበር።
+                በዚያ ምሽት እኔ ክፍሌ ውስጥ ነበርኩ።”
+            </p>
+
+        </div>
+
+        <p>
+            ሦስቱም የተለያየ ታሪክ ነገሩ።
+            ነገር ግን አንድ ንግግር በተለይ የሚያስገርም ነበር።
+        </p>
+
+        <p>
+            ዮናስ እንዲህ አለ፦
+        </p>
+
+        <div class="clue-box">
+            <strong>
+                “ሳሙኤል ያንን ሰዓት በዚያ ምሽት
+                ለምን እንደያዘ አላውቅም።”
+            </strong>
+        </div>
+
+        <p>
+            ይህ ንግግር እንግዳ ነበር።
+        </p>
+
+        <p>
+            መርማሪው ስለ ሰዓቱ ዝርዝር ለማንም
+            እንዳልነገረ ያውቃል።
+        </p>
+
+        <p>
+            <strong>
+                ታዲያ ዮናስ ስለ ሰዓቱ ለምን አወቀ?
+            </strong>
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ቀጥል →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 6 -->
+    <div id="stage6" class="stage">
+
+        <div class="stage-number">ደረጃ 6 / 8</div>
+
+        <h2>💻 የተሰረዘው ፋይል</h2>
+
+        <p>
+            የሳሙኤል ላፕቶፕ እንደገና ተመረመረ።
+            በቴክኒክ መንገድ የተሰረዘው ፋይል ተመልሶ ተገኘ።
+        </p>
+
+        <div class="clue-box">
+
+            <h3>📄 የፋይሉ ስም</h3>
+
+            <p>
+                <strong>“PROJECT_17”</strong>
+            </p>
+
+            <p>
+                ፋይሉ የተወሰኑ የዩኒቨርሲቲ
+                የፋይናንስ መረጃዎችን ይዟል።
+            </p>
+
+        </div>
+
+        <p>
+            ሳሙኤል አንድ ሰው የተማሪዎችን ገንዘብ
+            በማጭበርበር እንደሚወስድ እያጣራ ነበር።
+        </p>
+
+        <p>
+            እና በፋይሉ መጨረሻ ላይ አንድ ስም ነበር።
+        </p>
+
+        <div class="warning">
+            <strong>ዮናስ</strong>
+        </div>
+
+        <p>
+            አሁን የምስጢሩ ምክንያት መታየት ጀመረ።
+        </p>
+
+        <p>
+            ሳሙኤል ስለ ዮናስ አንድ ከባድ ነገር
+            እያወቀ ነበር።
+        </p>
+
+        <p>
+            ግን አሁንም አንድ ጥያቄ ነበር፦
+        </p>
+
+        <p>
+            <strong>
+                ዮናስ ሳሙኤልን ከወሰደ ሰዓቱን ለምን ወሰደ?
+            </strong>
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            ቀጥል →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 7 -->
+    <div id="stage7" class="stage">
+
+        <div class="stage-number">ደረጃ 7 / 8</div>
+
+        <h2>⌚ የሰዓቱ ምስጢር</h2>
+
+        <p>
+            የሳሙኤል ሰዓት ተራ ሰዓት አልነበረም።
+        </p>
+
+        <p>
+            ሳሙኤል በሰዓቱ ውስጥ ትንሽ የማስታወሻ
+            ካርድ እንዳስቀመጠ ታወቀ።
+        </p>
+
+        <div class="clue-box">
+
+            <h3>📝 በካርዱ ላይ የተጻፈው</h3>
+
+            <p>
+                “17 — 21:30 — Y”
+            </p>
+
+        </div>
+
+        <p>
+            ሳሙኤል ምናልባት ለራሱ የሚሆን መረጃ
+            ለመያዝ ነበር የጻፈው።
+        </p>
+
+        <p>
+            ቁጥሩ “17” ከPROJECT_17 ጋር ይገናኛል።
+            “Y” ደግሞ ዮናስን ይወክላል።
+        </p>
+
+        <p>
+            እንዲሁም 21:30 የሚለው ጊዜ
+            የሳሙኤል መጨረሻ ጊዜ እንደሆነ ታወቀ።
+        </p>
+
+        <div class="success">
+
+            <h3>🧩 ሁሉም ፍንጮች መገናኘት ጀመሩ</h3>
+
+            <p>
+                ሳሙኤል ዮናስን እየመረመረ ነበር።
+            </p>
+
+            <p>
+                ዮናስ ሳሙኤል ምን እንደሚያውቅ
+                አውቆ ነበር።
+            </p>
+
+            <p>
+                እና ሰዓቱ የሳሙኤል ሚስጥራዊ መረጃ
+                የነበረበት ቦታ ነበር።
+            </p>
+
+        </div>
+
+        <p>
+            አሁን የመጨረሻው ውሳኔ ይቀራል።
+        </p>
+
+        <button class="primary next-btn" onclick="nextStage()">
+            የመጨረሻ ውሳኔ →
+        </button>
+
+    </div>
+
+
+    <!-- STAGE 8 -->
+    <div id="stage8" class="stage">
+
+        <div class="stage-number">ደረጃ 8 / 8</div>
+
+        <h2>⚖️ የመጨረሻ ውሳኔ</h2>
+
+        <p>
+            አሁን ሶስት ተጠርጣሪዎች አሉ።
+            አንዱን መምረጥ አለብህ።
+        </p>
+
+        <div class="choice">
+
+            <button class="secondary" onclick="accuse('hana')">
+                👩 ሀና
+            </button>
+
+            <button class="secondary" onclick="accuse('dawit')">
+                👨 ዳዊት
+            </button>
+
+            <button class="secondary" onclick="accuse('yonas')">
+                👨 ዮናስ
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+
+    </div>
+
+
+</div>
+</div>
+
+
+<script>
+
+let stage = 0;
+
+function nextStage() {
+
+    document.getElementById("stage" + stage)
+        .classList.remove("active");
+
+    stage++;
+
+    document.getElementById("stage" + stage)
+        .classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+function accuse(person) {
+
+    const result = document.getElementById("result");
+
+    if (person === "yonas") {
+
+        result.innerHTML = `
+
+        <div class="final-box success">
+
+            <h2>✅ ትክክለኛ ውሳኔ</h2>
+
+            <h3>ዮናስ ሳሙኤልን ወስዶታል።</h3>
+
+            <hr>
+
+            <h3>🧠 ለምን?</h3>
+
+            <p>
+                ይህንን ጉዳይ የሚፈታው አንድ ብቻ
+                የሆነ ማስረጃ አይደለም።
+                ብዙ ትንንሽ ፍንጮች አንድ ላይ
+                ሲገናኙ እውነቱ ይገለጣል።
+            </p>
+
+            <h3>1️⃣ ዮናስ ስለ ሰዓቱ አውቆ ነበር</h3>
+
+            <p>
+                ምርመራው ሲጀመር ስለ ጠፋው ሰዓት
+                ዝርዝር መረጃ ለሰዎች አልተነገረም።
+                ዮናስ ግን በራሱ ፈቃድ ስለ ሰዓቱ
+                ተናገረ።
+            </p>
+
+            <p>
+                ይህ ማለት ሰዓቱን ከማንም በፊት
+                የሚያውቅበት ምክንያት ነበረው።
+            </p>
+
+            <h3>2️⃣ የሳሙኤል ምርመራ</h3>
+
+            <p>
+                PROJECT_17 የተባለው ፋይል ሳሙኤል
+                የዩኒቨርሲቲውን የገንዘብ ማጭበርበር
+                እየመረመረ እንደነበር ያሳያል።
+            </p>
+
+            <p>
+                የመጨረሻው ስም ዮናስ ነበር።
+                ስለዚህ ዮናስ ሳሙኤል ምን
+                እንዳወቀ ለማወቅ ምክንያት ነበረው።
+            </p>
+
+            <h3>3️⃣ የ9:03 ጥሪ</h3>
+
+            <p>
+                ዮናስ በ9:10 ክፍሉ ውስጥ እንዳለ
+                መልዕክት ላከ።
+                ግን የሳሙኤል የመጨረሻ ጥሪ
+                9:03 ላይ ከዮናስ አካባቢ ተደርጓል።
+            </p>
+
+            <p>
+                ይህ በራሱ የመጨረሻ ማስረጃ አይደለም።
+                ግን ከሌሎቹ ፍንጮች ጋር ሲገናኝ
+                ጥርጣሬውን ያጠናክራል።
+            </p>
+
+            <h3>4️⃣ ካሜራው</h3>
+
+            <p>
+                9:18 ላይ ሳሙኤልን አንድ ሰው
+                እንደተከተለው ካሜራው አሳይቷል።
+                ያ ሰው የሳሙኤልን ሰዓት ይዞ ነበር።
+            </p>
+
+            <h3>5️⃣ የሰዓቱ ምስጢር</h3>
+
+            <p>
+                ሰዓቱ ውስጥ የተደበቀው ካርድ
+                PROJECT_17 እና “Y” የሚለውን ፍንጭ
+                አሳይቷል።
+            </p>
+
+            <p>
+                ሳሙኤል ዮናስን በሚመለከት መረጃ
+                እየሰበሰበ እንደነበር ይህ ያሳያል።
+            </p>
+
+            <hr>
+
+            <h2>🔍 ምን እንደተፈጠረ</h2>
+
+            <p>
+                ዮናስ ሳሙኤል ስለ እሱ የሚያውቀውን
+                ነገር እንደሚያጋልጥ ሲያውቅ
+                ሳሙኤልን ለማነጋገር ወጣ።
+            </p>
+
+            <p>
+                ሳሙኤልን ከዩኒቨርሲቲው አካባቢ
+                ተከትሎት ሄደ።
+                ከዚያ ሳሙኤልን እንዲሄድ
+                ለማሳመን ሞከረ።
+            </p>
+
+            <p>
+                ነገር ግን ሳሙኤል ለመተው ፈቃደኛ
+                አልነበረም።
+                ስለዚህ ሁኔታው ወደ ክርክር
+                ተቀየረ።
+            </p>
+
+            <p>
+                በመጨረሻ ዮናስ ሳሙኤልን
+                ከአካባቢው ወሰደው።
+            </p>
+
+            <p>
+                ሰዓቱንም ወሰደ፤ ምክንያቱም በሰዓቱ
+                ውስጥ የተደበቀው ካርድ ሳሙኤል
+                ስለ እሱ የሰበሰበውን መረጃ
+                ሊያጋልጥ ስለሚችል ነበር።
+            </p>
+
+            <div class="warning">
+
+                <h3>🕵️ የዲቴክቲቭ ትምህርት</h3>
+
+                <p>
+                    አንድ ፍንጭ ብቻ አትመን።
+                    ጥሩ ዲቴክቲቭ የሚጠይቀው
+                    “ይህ ምን ያሳያል?” ብቻ አይደለም።
+                </p>
+
+                <p>
+                    <strong>
+                    “ይህ ፍንጭ ከሌሎቹ ፍንጮች ጋር
+                    ሲገናኝ ምን ታሪክ ይነግረኛል?”
+                    </strong>
+                </p>
+
+            </div>
+
+        </div>
+        `;
+
+    } else {
+
+        result.innerHTML = `
+
+        <div class="final-box warning">
+
+            <h2>❌ የተሳሳተ ውሳኔ</h2>
+
+            <p>
+                ይህ ሰው ጥርጣሬ ሊያስነሳ ይችላል፣
+                ግን ሁሉንም ፍንጮች አያገናኝም።
+            </p>
+
+            <p>
+                ወደ ፍንጮቹ ተመለስ።
+                በተለይ ዮናስ ስለ ሰዓቱ
+                እንዴት እንዳወቀ አስብ።
+            </p>
+
+            <button class="primary" onclick="location.reload()">
+                እንደገና ሞክር
+            </button>
+
+        </div>
+
+        `;
+    }
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
+
+</script>
+
+</body>
+</html>
+```
