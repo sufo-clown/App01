@@ -147,7 +147,54 @@
 
     </div>
 </div>
+<!-- CRIME AI -->
+<section id="crimeAI" class="screen">
 
+<div class="container">
+
+<button class="back" onclick="show('home')">
+← ወደ ዋና ገጽ
+</button>
+
+<div class="case-header">
+
+<h2>🕵️ Crime AI</h2>
+
+<p>AI Detective Assistant</p>
+
+</div>
+
+<div id="aiChat" class="ai-chat">
+
+<div class="ai-message">
+<strong>🕵️ Crime AI</strong>
+<br><br>
+Hello, Detective. I can analyze the evidence you've collected,
+compare suspects, and help you build a timeline.
+<br><br>
+What would you like to investigate?
+</div>
+
+</div>
+
+<div class="ai-input-area">
+
+<input
+id="aiInput"
+type="text"
+placeholder="Ask about the case..."
+autocomplete="off"
+>
+
+<button class="primary" onclick="sendCrimeAI()">
+Send
+</button>
+
+</div>
+
+</div>
+
+</section>
 
 <script>
 
@@ -161,6 +208,253 @@ function show(id) {
 
     window.scrollTo(0, 0);
 }
+/* =========================
+   CRIME AI
+========================= */
+
+const CRIME_AI_URL =
+"https://mystery-crime-ai.sung-jin-woo-xlay.workers.dev/";
+
+function getCrimeCaseContext(){
+
+let collected = [];
+
+Object.values(clues).forEach(group => {
+
+group.forEach(c => {
+
+if(evidence.includes(c.id)){
+collected.push(
+c.title + ": " + c.text
+);
+}
+
+});
+
+});
+
+return `
+CASE #001 — የጠፋው ሰው
+
+LOCATION:
+Bole, Addis Ababa
+
+TIME:
+11:40 PM
+
+PERSON:
+Michael
+
+CASE:
+Michael disappeared from his home.
+There was a small amount of blood.
+The door showed no forced entry.
+
+COLLECTED EVIDENCE:
+
+${collected.length
+? collected.map((x,i) => `${i+1}. ${x}`).join("\n")
+: "No evidence has been collected yet."
+}
+
+SUSPECTS:
+
+Dawit:
+Michael's close friend.
+They had a recent argument about money.
+Dawit said he was home all evening.
+
+Sara:
+Michael's neighbor.
+She heard a heavy sound and saw a tall person
+wearing a long coat.
+
+Natnael:
+Michael's coworker.
+Michael suspected Natnael regarding a missing work document.
+Natnael says he did not meet Michael that night.
+
+IMPORTANT:
+Analyze only the evidence provided.
+Do not invent evidence.
+`;
+}
+
+
+async function sendCrimeAI(){
+
+const input =
+document.getElementById("aiInput");
+
+const message =
+input.value.trim();
+
+if(!message) return;
+
+const chat =
+document.getElementById("aiChat");
+
+
+/* USER MESSAGE */
+
+chat.innerHTML += `
+
+<div class="user-message">
+<strong>🕵️ You</strong>
+<br><br>
+${escapeAIText(message)}
+</div>
+
+`;
+
+input.value = "";
+
+chat.innerHTML += `
+
+<div id="aiThinking" class="ai-message">
+<strong>🕵️ Crime AI</strong>
+<br><br>
+Analyzing the evidence...
+</div>
+
+`;
+
+chat.scrollTop = chat.scrollHeight;
+
+
+try{
+
+const response = await fetch(
+CRIME_AI_URL,
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+message:message,
+
+caseContext:getCrimeCaseContext()
+
+})
+
+}
+);
+
+
+const data =
+await response.json();
+
+
+document.getElementById(
+"aiThinking"
+).remove();
+
+
+if(data.answer){
+
+chat.innerHTML += `
+
+<div class="ai-message">
+
+<strong>🕵️ Crime AI</strong>
+
+<br><br>
+
+${formatAIText(data.answer)}
+
+</div>
+
+`;
+
+}else{
+
+chat.innerHTML += `
+
+<div class="ai-message">
+
+<strong>🕵️ Crime AI</strong>
+
+<br><br>
+
+I couldn't analyze the case right now.
+
+</div>
+
+`;
+
+}
+
+}catch(error){
+
+const thinking =
+document.getElementById("aiThinking");
+
+if(thinking) thinking.remove();
+
+chat.innerHTML += `
+
+<div class="ai-message">
+
+<strong>🕵️ Crime AI</strong>
+
+<br><br>
+
+Connection error. Check your internet connection
+and try again.
+
+</div>
+
+`;
+
+}
+
+chat.scrollTop = chat.scrollHeight;
+
+}
+
+
+/* Prevent AI responses from injecting HTML */
+
+function escapeAIText(text){
+
+return text
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function formatAIText(text){
+
+return escapeAIText(text)
+.replace(/\n/g,"<br>");
+
+}
+
+
+/* ENTER KEY */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter" &&
+document.activeElement.id === "aiInput"
+){
+
+sendCrimeAI();
+
+}
+
+});
 
 </script>
 
